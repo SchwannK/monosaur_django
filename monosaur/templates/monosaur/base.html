@@ -6,20 +6,20 @@
       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
       <link href="//fonts.googleapis.com/css?family=Lobster&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
       <link rel="stylesheet" href="{% static 'css/monosaur.css' %}">
-      <title>Django Girls blog</title>
+      <title>Monosaur</title>
     </head>
 
     <body>
-      <div class="page-header">
-        <h1><a href="/">Monosaur global template test</a></h1>
-      </div>
-      <div class="content container">
-        <div class="row">
-          <div class="col-md-8">
-            <p>Block content goes here</p>
-          </div>
+
+      <div class="container">
+        <div class="jumbotron">
+          <h1>Monosaur</h1>
+          <p>We make subscriptions fucking easy to manage!</p>
         </div>
       </div>
+
+      {% block content %}
+      {% endblock %}
 
     </body>
 </html>
