@@ -1,0 +1,36 @@
+{% extends "monosaur/base.html" %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <h1>Transaction List</h1>
+
+          <!-- display list of transactions here -->
+
+          <table class="table">
+            <tr>
+              <th>#</th>
+              <th>Date</th>
+              <th>Transaction</th>
+              <th>Type</th>
+              <th>Amount</th>
+            </tr>
+
+            {% for transaction in transactions %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ transaction.date }}</td>
+              <td>{{ transaction.name }}</td>
+              <td>{{ transaction.classification }}</td>
+              <td>{{ transaction.amount|floatformat:2 }}</td>
+            </tr>
+            {% endfor %}
+
+          </table>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
