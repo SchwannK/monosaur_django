@@ -5,4 +5,5 @@ myvenv
 venv
 db.sqlite3
 /static
+/media
 .DR_Store

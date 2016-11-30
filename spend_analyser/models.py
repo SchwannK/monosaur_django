@@ -11,3 +11,7 @@ class Transaction(models.Model):
 
     def __str__(self):
         return self.name
+
+class Document(models.Model):
+    document = models.FileField(upload_to='documents/')
+    upload_time = models.DateTimeField(auto_now_add=True)
