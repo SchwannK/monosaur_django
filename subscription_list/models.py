@@ -9,7 +9,7 @@ class Subscription(models.Model):
     description = models.TextField()
     monthly_price = models.FloatField()
     subscription_url = models.CharField(max_length=200)
-    transaction_id = models.CharField(max_length=100)
+    transaction_reference = models.CharField(max_length=100)
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

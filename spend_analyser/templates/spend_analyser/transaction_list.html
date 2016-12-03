@@ -21,6 +21,7 @@
               <th>Date</th>
               <th>Transaction</th>
               <th>Type</th>
+              <th>Subscription?</th>
               <th>Amount</th>
             </tr>
 
@@ -29,7 +30,8 @@
               <td>{{ forloop.counter }}</td>
               <td>{{ transaction.date }}</td>
               <td>{{ transaction.name }}</td>
-              <td>{{ transaction.classification }}</td>
+              <td>{{ transaction.category }}</td>
+              <td>{{ transaction.subscription }}</td>
               <td>{{ transaction.amount|floatformat:2 }}</td>
             </tr>
             {% endfor %}
