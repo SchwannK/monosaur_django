@@ -1,0 +1,121 @@
+[
+  {
+    "model": "spend_analyser.Category",
+    "pk": null,
+    "fields": {
+      "name": "Bank Payments & Transfers"
+    }
+  },
+  {
+    "model": "spend_analyser.Category",
+    "pk": null,
+    "fields": {
+      "name": "Business & Donations"
+    }
+  },
+  {
+    "model": "spend_analyser.Category",
+    "pk": null,
+    "fields": {
+      "name": "Cash Withdrawals"
+    }
+  },
+  {
+    "model": "spend_analyser.Category",
+    "pk": null,
+    "fields": {
+      "name": "Childcare & Education"
+    }
+  },
+  {
+    "model": "spend_analyser.Category",
+    "pk": null,
+    "fields": {
+      "name": "Clothing & Grooming"
+    }
+  },
+  {
+    "model": "spend_analyser.Category",
+    "pk": null,
+    "fields": {
+      "name": "Entertainment & Leisure"
+    }
+  },
+  {
+    "model": "spend_analyser.Category",
+    "pk": null,
+    "fields": {
+      "name": "Food & Drink"
+    }
+  },
+  {
+    "model": "spend_analyser.Category",
+    "pk": null,
+    "fields": {
+      "name": "Healthcare"
+    }
+  },
+  {
+    "model": "spend_analyser.Category",
+    "pk": null,
+    "fields": {
+      "name": "Holiday"
+    }
+  },
+  {
+    "model": "spend_analyser.Category",
+    "pk": null,
+    "fields": {
+      "name": "Home & Garden"
+    }
+  },
+  {
+    "model": "spend_analyser.Category",
+    "pk": null,
+    "fields": {
+      "name": "Household Bills & Utilities"
+    }
+  },
+  {
+    "model": "spend_analyser.Category",
+    "pk": null,
+    "fields": {
+      "name": "Income"
+    }
+  },
+  {
+    "model": "spend_analyser.Category",
+    "pk": null,
+    "fields": {
+      "name": "Loans & Credit Cards"
+    }
+  },
+  {
+    "model": "spend_analyser.Category",
+    "pk": null,
+    "fields": {
+      "name": "Motoring Expenses"
+    }
+  },
+  {
+    "model": "spend_analyser.Category",
+    "pk": null,
+    "fields": {
+      "name": "Public Transport"
+    }
+  },
+  {
+    "model": "spend_analyser.Category",
+    "pk": null,
+    "fields": {
+      "name": "Retail (Other)"
+    }
+  },
+  {
+    "model": "spend_analyser.Category",
+    "pk": null,
+    "fields": {
+      "name": "Savings & Financial"
+    }
+  }
+]
