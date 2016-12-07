@@ -3,6 +3,7 @@ from ofxparse import OfxParser
 from .models import Transaction, Category, Company
 from subscription_list.models import Subscription
 import io, operator
+from monosaur.utils import randomword
 
 DEFAULT_TRANSACTION_CAT = "Other"
 DEFAULT_SUBSCRIPTION_NAME = "-"
@@ -10,18 +11,33 @@ DEFAULT_SUBSCRIPTION_NAME = "-"
 # Create your views here.
 
 def spend_analyser(request):
+    session_id = None
+    
+    if 'sessionid' in request.COOKIES:
+        session_id = request.COOKIES['sessionid']
+ 
+    if session_id == None and 'mysessionid' in request.COOKIES:
+        session_id = request.COOKIES['mysessionid']
+     
+    if session_id == None:
+        session_id = "rand-" + randomword(30)
+     
+    print(session_id)
+    
     if request.method == "POST":
-        add_transactions_to_db(request.FILES['ofx_file'].file)
-
+        add_transactions_to_db(session_id, request.FILES['ofx_file'].file)
+    transactions = Transaction.objects.filter(user=session_id).order_by('-date')
+    
     chart_data = process_data()
     chart_labels = list(list(zip(*chart_data))[0])
     chart_values = list(list(zip(*chart_data))[1])
+    
+    response = render(request, 'spend_analyser/transaction_list.html', {'transactions': transactions, 'chart_values': chart_values, 'chart_labels': chart_labels,})
+    
+    response.cookies['mysessionid'] = session_id
+    return response
 
-    transactions = Transaction.objects.order_by('-date')
-    return render(request, 'spend_analyser/transaction_list.html', {'transactions': transactions, 'chart_values': chart_values, 'chart_labels': chart_labels,})
-
-def add_transactions_to_db(ofx_file):
-
+def add_transactions_to_db(session, ofx_file):
     try:
         ofx = OfxParser.parse(ofx_file)
 
@@ -38,7 +54,7 @@ def add_transactions_to_db(ofx_file):
                     if subscription.transaction_reference.upper() in transaction.payee:
                         subscription_name = subscription.subscription_name
 
-                newTransaction = Transaction.objects.get_or_create(name=transaction.payee, amount=transaction.amount, date=transaction.date, category=transaction_cat, subscription=subscription_name)
+                newTransaction = Transaction.objects.get_or_create(name=transaction.payee, amount=transaction.amount, date=transaction.date, category=transaction_cat, subscription=subscription_name, user=session)
             except:
                 print("Transaction error.")
     except:
