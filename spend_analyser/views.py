@@ -69,7 +69,7 @@ def process_data():
         category_totals[category.name] = 0      # Initialise all totals to 0
 
     for transaction in Transaction.objects.all():
-        category_totals[transaction.category] -= transaction.amount # minus to invert sign
+        category_totals[transaction.category] = category_totals.get(transaction.category, 0) - transaction.amount # minus to invert sign
         overall_total -= transaction.amount
 
 #     other_total = category_totals.pop(DEFAULT_TRANSACTION_CAT)
@@ -80,7 +80,9 @@ def process_data():
         top_total += category_totals[top_cat]
 
     sorted_categories.append(DEFAULT_TRANSACTION_CAT)
-    category_totals[DEFAULT_TRANSACTION_CAT] = overall_total - top_total
+    
+    if DEFAULT_TRANSACTION_CAT in category_totals:
+        category_totals[DEFAULT_TRANSACTION_CAT] = overall_total - top_total
 
     chart_data = [(cat, round(category_totals[cat],2)) for cat in sorted_categories]
 
