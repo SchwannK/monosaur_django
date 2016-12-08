@@ -1,12 +1,13 @@
+import io, operator
+
 from django.shortcuts import render
 
-from subscription_list.models import Subscription
-import io, operator
 from monosaur.utils import randomword
+
 from .ofx_handler import *
 
-# Create your views here.
 
+# Create your views here.
 def spend_analyser(request):
     session_id = None
     
@@ -30,7 +31,7 @@ def spend_analyser(request):
     chart_labels = list(list(zip(*chart_data))[0])
     chart_values = list(list(zip(*chart_data))[1])
     
-    response = render(request, 'spend_analyser/transaction_list.html', {'transactions': transactions, 'chart_values': chart_values, 'chart_labels': chart_labels,})
+    response = render(request, 'spend_analyser/transaction_list.html', {'transactions': transactions, 'chart_values': chart_values, 'chart_labels': chart_labels, })
     
     response.cookies['mysessionid'] = session_id
     return response

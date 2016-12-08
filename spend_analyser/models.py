@@ -1,9 +1,9 @@
 from django.db import models
 from django.utils import timezone
 from ofxparse import OfxParser
+
 from subscription_list.models import Subscription
 
-# Create your models here.
 
 class Category(models.Model):
     name = models.CharField(max_length=50)

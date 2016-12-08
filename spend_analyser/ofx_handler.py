@@ -1,6 +1,9 @@
 from ofxparse import OfxParser
 
+from subscription_list.models import Subscription
+
 from .models import Transaction, Category, Company
+
 
 DEFAULT_TRANSACTION_CAT = "Other"
 DEFAULT_SUBSCRIPTION_NAME = "-"
@@ -10,8 +13,7 @@ def read_transactions(ofx_file):
 
 def save_transactions(transactions, session_id):
     try:
-        for transaction in transaction:
-
+        for transaction in transactions:
             try:
                 transaction_cat = DEFAULT_TRANSACTION_CAT
                 for company in Company.objects.all():
@@ -24,10 +26,10 @@ def save_transactions(transactions, session_id):
                         subscription_name = subscription.subscription_name
 
                 newTransaction = Transaction.objects.get_or_create(name=transaction.payee, amount=transaction.amount, date=transaction.date, category=transaction_cat, subscription=subscription_name, user=session_id)
-            except:
-                print("Transaction error.")
-    except:
-        print("File not valid!")
+            except Exception as e:
+                print("Transaction error: " + str(e))
+    except Exception as e:
+        print("File not valid: " + str(e))
         
 def get_chart():
     category_totals = {}  # Initialise dictionary which will store totals for each category
