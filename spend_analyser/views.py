@@ -26,7 +26,7 @@ def spend_analyser(request):
     
     if request.method == "POST":
         add_transactions_to_db(session_id, request.FILES['ofx_file'].file)
-    transactions = Transaction.objects.filter(user=session_id).order_by('-date')
+    transactions = Transaction.objects.order_by('-date')
     
     chart_data = process_data()
     chart_labels = list(list(zip(*chart_data))[0])
@@ -72,7 +72,7 @@ def process_data():
         category_totals[transaction.category] -= transaction.amount # minus to invert sign
         overall_total -= transaction.amount
 
-    other_total = category_totals.pop(DEFAULT_TRANSACTION_CAT)
+#     other_total = category_totals.pop(DEFAULT_TRANSACTION_CAT)
 
     sorted_categories = sorted(category_totals, key=category_totals.get, reverse=True)[:4]
     top_total = 0
