@@ -117,5 +117,12 @@
     "fields": {
       "name": "Savings & Financial"
     }
+  },
+  {
+    "model": "spend_analyser.Category",
+    "pk": null,
+    "fields": {
+      "name": "Other"
+    }
   }
 ]
