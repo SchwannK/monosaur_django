@@ -84,7 +84,7 @@ def process_data():
     if DEFAULT_TRANSACTION_CAT in category_totals:
         category_totals[DEFAULT_TRANSACTION_CAT] = overall_total - top_total
 
-    chart_data = [(cat, round(category_totals[cat],2)) for cat in sorted_categories]
+    chart_data = [(cat, round(category_totals.get(cat, 0),2)) for cat in sorted_categories]
 
     # for key, value in chart_data:
     #    print("%s: %d" % (key, value))
