@@ -1,7 +1,7 @@
 from django.db import models
-from ofxparse import OfxParser
 
-from monosaur.models import Category, Subscription
+from monosaur.models import Category
+from subscriptions.models import Subscription
 
 
 class Transaction(models.Model):

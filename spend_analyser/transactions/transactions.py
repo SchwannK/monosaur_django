@@ -1,9 +1,10 @@
 import traceback
 
-from monosaur.models import Category, Company, Subscription
+from monosaur.models import Category, Company
 from spend_analyser.models import Transaction
+from subscriptions.models import Subscription
 
-from .constants import *
+from .constants import DEFAULT_TRANSACTION_CATEGORY
 
 
 def save_transactions(transactions, session_id):
@@ -26,7 +27,7 @@ def get_category(transaction):
 
 def get_subscription(transaction):
     # Not the best solution as it's specific to SQLite. And the point of querysets is to be abstracted from the concrete db implementation. But it's ok for now
-    subscriptions = Subscription.objects.raw("SELECT * FROM monosaur_subscription where %s LIKE '%%' || reference || '%%'", [transaction.payee])[:1]
+    subscriptions = Subscription.objects.raw("SELECT * FROM subscriptions_subscription where %s LIKE '%%' || reference || '%%'", [transaction.payee])[:1]
     if subscriptions:
         return subscriptions[0]
     else:

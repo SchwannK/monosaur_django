@@ -1,6 +1,6 @@
 [
   {
-    "model": "monosaur.Subscription",
+    "model": "subscriptions.Subscription",
     "pk": 0,
     "fields": {
       "name": "Whole Foods Subscription",
@@ -13,7 +13,7 @@
     }
   },
   {
-    "model": "monosaur.Subscription",
+    "model": "subscriptions.Subscription",
     "pk": 1,
     "fields": {
       "name": "TFL Train subscription",

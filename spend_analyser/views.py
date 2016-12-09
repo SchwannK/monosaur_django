@@ -1,12 +1,12 @@
-import io, operator
-
 from django.shortcuts import render
 
+from monosaur.models import Category
 from monosaur.utils import get_session_id
 
-from .transactions.constants import *
-from .transactions.ofx_helper import *
-from .transactions.transactions import *
+from .models import Transaction
+from .transactions.constants import DEFAULT_TRANSACTION_CATEGORY
+from .transactions.ofx_helper import read_transactions
+from .transactions.transactions import save_transactions
 
 
 # Create your views here.
@@ -17,7 +17,7 @@ def spend_analyser(request):
     if request.method == "POST":
         transactions = read_transactions(request.FILES['ofx_file'].file)
         save_transactions(transactions, session_id)
-    transactions = Transaction.objects.filter(user = session_id).order_by('-date')
+    transactions = Transaction.objects.filter(user=session_id).order_by('-date')
     
     chart_data = get_chart(Category.objects.all(), Transaction.objects.all())
     chart_labels = list(list(zip(*chart_data))[0])
