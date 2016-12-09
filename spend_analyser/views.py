@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from monosaur.models import Category
-from monosaur.utils import get_session_id
+from monosaur.cookie import get_session_id
 
 from .models import Transaction
 from .transactions.constants import DEFAULT_TRANSACTION_CATEGORY
@@ -12,7 +12,7 @@ from .transactions.transactions import save_transactions
 # Create your views here.
 def spend_analyser(request):
     print("==================== spend_analyser ======================")
-    session_id = get_session_id(request, True)
+    session_id = get_session_id(request, False)
     
     if request.method == "POST":
         transactions = read_transactions(request.FILES['ofx_file'].file)
@@ -22,11 +22,8 @@ def spend_analyser(request):
     chart_data = get_chart(Category.objects.all(), Transaction.objects.all())
     chart_labels = list(list(zip(*chart_data))[0])
     chart_values = list(list(zip(*chart_data))[1])
-    
-    response = render(request, 'spend_analyser/transaction_list.html', {'transactions': transactions, 'chart_values': chart_values, 'chart_labels': chart_labels, })
-    
-    response.cookies['mysessionid'] = session_id
-    return response
+    print("Result: " + str(len(transactions)))
+    return render(request, 'spend_analyser/transaction_list.html', {'transactions': transactions, 'chart_values': chart_values, 'chart_labels': chart_labels, })
 
 
 def get_chart(categories, transactions):

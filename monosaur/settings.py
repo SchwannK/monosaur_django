@@ -57,6 +57,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'monosaur.cookie.MyCookieProcessingMiddleware'
 ]
 
 ROOT_URLCONF = 'monosaur.urls'
