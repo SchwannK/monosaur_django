@@ -1,0 +1,11 @@
+[
+  {
+    "model": "monosaur.Company",
+    "pk": 0,
+    "fields": {
+      "name": "Whole Foods",
+      "reference": "WHOLE FOODS",
+      "category_id": 1
+    }
+  }
+]

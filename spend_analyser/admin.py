@@ -1,9 +1,8 @@
 from django.contrib import admin
 
-from .models import Transaction, Category, Company
+from spend_analyser.models import Transaction
 
 
-# Register your models here.
-myModels = [Transaction, Category, Company]
+myModels = [Transaction]
 
 admin.site.register(myModels)

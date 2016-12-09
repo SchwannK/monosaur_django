@@ -21,7 +21,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'', include('subscription_list.urls')),
+    url(r'', include('subscriptions.urls')),
     url(r'^analyse/', include('spend_analyser.urls')),
 ]
 

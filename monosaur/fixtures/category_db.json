@@ -1,128 +1,128 @@
 [
   {
-    "model": "spend_analyser.Category",
-    "pk": null,
+    "model": "monosaur.Category",
+    "pk": 0,
+    "fields": {
+      "name": "Other"
+    }
+  },
+  {
+    "model": "monosaur.Category",
+    "pk": 1,
     "fields": {
       "name": "Bank Payments & Transfers"
     }
   },
   {
-    "model": "spend_analyser.Category",
-    "pk": null,
+    "model": "monosaur.Category",
+    "pk": 2,
     "fields": {
       "name": "Business & Donations"
     }
   },
   {
-    "model": "spend_analyser.Category",
-    "pk": null,
+    "model": "monosaur.Category",
+    "pk": 3,
     "fields": {
       "name": "Cash Withdrawals"
     }
   },
   {
-    "model": "spend_analyser.Category",
-    "pk": null,
+    "model": "monosaur.Category",
+    "pk": 4,
     "fields": {
       "name": "Childcare & Education"
     }
   },
   {
-    "model": "spend_analyser.Category",
-    "pk": null,
+    "model": "monosaur.Category",
+    "pk": 5,
     "fields": {
       "name": "Clothing & Grooming"
     }
   },
   {
-    "model": "spend_analyser.Category",
-    "pk": null,
+    "model": "monosaur.Category",
+    "pk": 6,
     "fields": {
       "name": "Entertainment & Leisure"
     }
   },
   {
-    "model": "spend_analyser.Category",
-    "pk": null,
+    "model": "monosaur.Category",
+    "pk": 7,
     "fields": {
       "name": "Food & Drink"
     }
   },
   {
-    "model": "spend_analyser.Category",
-    "pk": null,
+    "model": "monosaur.Category",
+    "pk": 8,
     "fields": {
       "name": "Healthcare"
     }
   },
   {
-    "model": "spend_analyser.Category",
-    "pk": null,
+    "model": "monosaur.Category",
+    "pk": 9,
     "fields": {
       "name": "Holiday"
     }
   },
   {
-    "model": "spend_analyser.Category",
-    "pk": null,
+    "model": "monosaur.Category",
+    "pk": 10,
     "fields": {
       "name": "Home & Garden"
     }
   },
   {
-    "model": "spend_analyser.Category",
-    "pk": null,
+    "model": "monosaur.Category",
+    "pk": 11,
     "fields": {
       "name": "Household Bills & Utilities"
     }
   },
   {
-    "model": "spend_analyser.Category",
-    "pk": null,
+    "model": "monosaur.Category",
+    "pk": 12,
     "fields": {
       "name": "Income"
     }
   },
   {
-    "model": "spend_analyser.Category",
-    "pk": null,
+    "model": "monosaur.Category",
+    "pk": 13,
     "fields": {
       "name": "Loans & Credit Cards"
     }
   },
   {
-    "model": "spend_analyser.Category",
-    "pk": null,
+    "model": "monosaur.Category",
+    "pk": 14,
     "fields": {
       "name": "Motoring Expenses"
     }
   },
   {
-    "model": "spend_analyser.Category",
-    "pk": null,
+    "model": "monosaur.Category",
+    "pk": 15,
     "fields": {
       "name": "Public Transport"
     }
   },
   {
-    "model": "spend_analyser.Category",
-    "pk": null,
+    "model": "monosaur.Category",
+    "pk": 16,
     "fields": {
       "name": "Retail (Other)"
     }
   },
   {
-    "model": "spend_analyser.Category",
-    "pk": null,
+    "model": "monosaur.Category",
+    "pk": 17,
     "fields": {
       "name": "Savings & Financial"
-    }
-  },
-  {
-    "model": "spend_analyser.Category",
-    "pk": null,
-    "fields": {
-      "name": "Other"
     }
   }
 ]

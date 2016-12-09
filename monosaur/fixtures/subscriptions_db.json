@@ -1,0 +1,15 @@
+[
+  {
+    "model": "monosaur.Subscription",
+    "pk": 0,
+    "fields": {
+      "name": "Whole Foods Subscription",
+	  "company": 0,
+	  "description": "dunno, random food delivered weekly?",
+	  "monthly_price": 100.00,
+	  "subscription_url": "whaev",
+	  "created": "2016-12-09 10:49:50",
+	  "reference": "WHOLE FOODS"
+    }
+  }
+]

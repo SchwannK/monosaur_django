@@ -42,7 +42,7 @@ PREREQ_APPS = [
 ]
 
 PROJECT_APPS = [
-    'subscription_list',
+    'subscriptions',
     'spend_analyser',
     'monosaur',
 ]

@@ -10,8 +10,8 @@
           <!-- display list of subscriptions in DB here -->
 
         {% for subscription in subscriptions %}
-          <h2><a href="{{ subscription.subscription_url }}">{{ subscription.subscription_name }}</a></h2>
-          <b>{{ subscription.company_name }}</b>
+          <h2><a href="{{ subscription.subscription_url }}">{{ subscription.name }}</a></h2>
+          <b>{{ subscription.company }}</b>
           <p>{{ subscription.description }}</p>
           <p>£{{ subscription.monthly_price }} per month</p>
           <hr>
