@@ -11,5 +11,18 @@
 	  "created": "2016-12-09 10:49:50",
 	  "reference": "WHOLE FOODS"
     }
+  },
+  {
+    "model": "monosaur.Subscription",
+    "pk": 1,
+    "fields": {
+      "name": "TFL Train subscription",
+	  "company": 1,
+	  "description": "Monthly train subscription",
+	  "monthly_price": 50.00,
+	  "subscription_url": "whaev",
+	  "created": "2016-12-09 13:32:50",
+	  "reference": "TFL.GOV.UK/CP"
+    }
   }
 ]

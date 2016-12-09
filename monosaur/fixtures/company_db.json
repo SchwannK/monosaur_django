@@ -3,9 +3,18 @@
     "model": "monosaur.Company",
     "pk": 0,
     "fields": {
-      "name": "Whole Foods",
+      "name": "Whole Foods Inc.",
       "reference": "WHOLE FOODS",
-      "category_id": 1
+      "category_id": 0
+    }
+  },
+  {
+    "model": "monosaur.Company",
+    "pk": 1,
+    "fields": {
+      "name": "Transport for London",
+      "reference": "TFL.GOV.UK",
+      "category_id": 6
     }
   }
 ]

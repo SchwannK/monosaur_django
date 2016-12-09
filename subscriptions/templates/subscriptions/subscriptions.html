@@ -1,23 +1,24 @@
-{% extends "monosaur/base.html" %}
+{% extends "monosaur/base.html" %} 
 
 {% block content %}
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
 
-        <h1>Subscription list</h1>
+			<h1>Your Subscriptions</h1>
 
-          <!-- display list of subscriptions in DB here -->
+			{% for subscription in subscriptions %}
+			<h2>
+				<a href="{{ subscription.subscription_url }}">{{ subscription.subscription__name }}</a>
+			</h2>
+			<b>{{ subscription.subscription__company__name }}</b>
+			 ({{ subscription.subscription__company__category__name }})
+			<p>{{ subscription.subscription__description }}</p>
+			<p>£{{ subscription.subscription__monthly_price }} per month</p>
+			<hr>
+			{% endfor %}
 
-        {% for subscription in subscriptions %}
-          <h2><a href="{{ subscription.subscription_url }}">{{ subscription.name }}</a></h2>
-          <b>{{ subscription.company }}</b>
-          <p>{{ subscription.description }}</p>
-          <p>£{{ subscription.monthly_price }} per month</p>
-          <hr>
-        {% endfor %}
-
-      </div>
-    </div>
-  </div>
+		</div>
+	</div>
+</div>
 {% endblock %}

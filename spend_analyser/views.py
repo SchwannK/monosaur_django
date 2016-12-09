@@ -2,7 +2,7 @@ import io, operator
 
 from django.shortcuts import render
 
-from monosaur.utils import randomword
+from monosaur.utils import get_session_id
 
 from .transactions.constants import *
 from .transactions.ofx_helper import *
@@ -12,23 +12,12 @@ from .transactions.transactions import *
 # Create your views here.
 def spend_analyser(request):
     print("==================== spend_analyser ======================")
-    session_id = None
-    
-    if 'sessionid' in request.COOKIES:
-        session_id = request.COOKIES['sessionid']
- 
-    if session_id == None and 'mysessionid' in request.COOKIES:
-        session_id = request.COOKIES['mysessionid']
-     
-    if session_id == None:
-        session_id = "rand-" + randomword(30)
-     
-    print(session_id)
+    session_id = get_session_id(request, True)
     
     if request.method == "POST":
         transactions = read_transactions(request.FILES['ofx_file'].file)
         save_transactions(transactions, session_id)
-    transactions = Transaction.objects.order_by('-date')
+    transactions = Transaction.objects.filter(user = session_id).order_by('-date')
     
     chart_data = get_chart(Category.objects.all(), Transaction.objects.all())
     chart_labels = list(list(zip(*chart_data))[0])
