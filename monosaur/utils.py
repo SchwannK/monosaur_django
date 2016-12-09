@@ -18,4 +18,5 @@ def get_session_id(request, generate):
         
     if generate and session_id == None:
         session_id = "rand-" + randomword(30)
+    print(session_id)
     return session_id
