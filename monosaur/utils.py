@@ -8,6 +8,8 @@ def randomword(length):
    return ''.join((random.choice(valid_letters) for i in xrange(length)))
 
 def get_session_id(request, generate):
+    session_id = None
+    
     if 'sessionid' in request.COOKIES:
         session_id = request.COOKIES['sessionid']
  
