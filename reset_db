@@ -1,0 +1,20 @@
+# Unix/Linux only!
+
+# delete database and migration files
+rm db.sqlite3
+rm -rf monosaur/migrations/*
+rm -rf spend_analyser/migrations/*
+rm -rf subscriptions/migrations/*
+
+# regenerate migration files and database based on current models
+python manage.py makemigrations monosaur
+python manage.py makemigrations spend_analyser
+python manage.py makemigrations subscriptions
+python manage.py migrate
+
+# populate database
+python manage.py loaddata monosaur/fixtures/category_db.json
+python manage.py loaddata monosaur/fixtures/company_db.json
+python manage.py loaddata subscriptions/fixtures/subscriptions_db.json
+
+# ready to upload files!

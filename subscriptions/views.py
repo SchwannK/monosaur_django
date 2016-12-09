@@ -5,6 +5,7 @@ from spend_analyser.models import Transaction
 
 
 def subscriptions(request):
+    print("==================== subscriptions ======================")
     session_id = get_session_id(request, False)
     transactions = Transaction.objects\
         .filter(subscription__isnull=False, user=session_id)\
