@@ -3,9 +3,9 @@
     "model": "monosaur.Company",
     "pk": 0,
     "fields": {
-      "name": "Whole Foods Inc.",
+      "name": "Whole Foods",
       "reference": "WHOLE FOODS",
-      "category_id": 0
+      "category_id": 16
     }
   },
   {
@@ -14,6 +14,33 @@
     "fields": {
       "name": "Transport for London",
       "reference": "TFL.GOV.UK",
+      "category_id": 15
+    }
+  },
+  {
+    "model": "monosaur.Company",
+    "pk": 2,
+    "fields": {
+      "name": "Tesco",
+      "reference": "TESCO",
+      "category_id": 16
+    }
+  },
+  {
+    "model": "monosaur.Company",
+    "pk": 3,
+    "fields": {
+      "name": "Kings College Food",
+      "reference": "KCL KINGS FOOD",
+      "category_id": 7
+    }
+  },
+  {
+    "model": "monosaur.Company",
+    "pk": 4,
+    "fields": {
+      "name": "Songkick",
+      "reference": "SONGKICK",
       "category_id": 6
     }
   }

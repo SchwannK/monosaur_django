@@ -12,6 +12,7 @@
           <button type="submit">Upload</button>
         </form>
 
+        {% if chart_values %}
         <hr>
 
         <h1>Personal finance analytics</h1>
@@ -54,9 +55,18 @@
               }
           });
           </script>
+
+        {% endif %}
+
         <hr>
 
         <h1>Transaction List</h1>
+
+        {% if chart_values == None %}
+        <div class="alert alert-warning">
+          <strong>Data-less Donkey!</strong> You have no transaction data at the moment. Fancy uploading some above?
+        </div>
+        {% endif %}
 
           <!-- display list of transactions here -->
 
@@ -82,7 +92,6 @@
             {% endfor %}
 
           </table>
-
       </div>
     </div>
   </div>
