@@ -17,4 +17,6 @@ python manage.py loaddata monosaur\fixtures\category_db.json
 python manage.py loaddata monosaur\fixtures\company_db.json
 python manage.py loaddata subscriptions\fixtures\subscriptions_db.json
 
-REM ready to upload files!
+pip install -r requirements
+
+REM All done
