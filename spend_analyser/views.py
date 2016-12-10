@@ -14,32 +14,27 @@ def spend_analyser(request):
     print("==================== spend_analyser ======================")
     session_id = get_session_id(request, False)
     transactions = []
-    
+
     if request.method == "POST":
         transactions = read_transactions(request.FILES['ofx_file'].file, session_id)
         save_transactions(transactions, session_id)
     transactions = Transaction.objects.filter(user=session_id).order_by('-date')
-    
-    chart_data = get_chart(Category.objects.all(), Transaction.objects.all())
-    chart_labels = list(list(zip(*chart_data))[0])
-    chart_values = list(list(zip(*chart_data))[1])
-    
+
     subscriptions = Transaction.objects\
         .filter(subscription__isnull=False, user=session_id)\
         .values('name', 'subscription__name', 'subscription__company__name', \
                 'subscription__company__category__name', 'subscription__description', 'subscription__monthly_price')\
         .distinct()
-    print("Subscriptions: " + str(subscriptions))    
+    print("Subscriptions: " + str(subscriptions))
     print("Total transaction count: " + str(len(transactions)))
-    return render(request, 'spend_analyser/transaction_list.html', {'transactions': transactions, 'chart_values': chart_values, 'chart_labels': chart_labels, 'subscriptions': subscriptions})
 
     # If transactions exist, perform analysis and show chart
-    if Transaction.objects.all().count() > 0:
+    if len(transactions) > 0:
         chart_data = get_chart(Category.objects.all(), Transaction.objects.all())
         chart_labels = list(list(zip(*chart_data))[0])
         chart_values = list(list(zip(*chart_data))[1])
     # print("Result: " + str(len(transactions)))
-        return render(request, 'spend_analyser/transaction_list.html', {'navbar':'spend_analyser', 'transactions': transactions, 'chart_values': chart_values, 'chart_labels': chart_labels, })
+        return render(request, 'spend_analyser/transaction_list.html', {'navbar':'spend_analyser', 'transactions': transactions, 'chart_values': chart_values, 'chart_labels': chart_labels, 'subscriptions': subscriptions, })
 
     # If no transactions exist, don't show anything
     else:
