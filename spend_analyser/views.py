@@ -5,7 +5,8 @@ from monosaur.cookie import get_session_id
 
 from .models import Transaction
 from .transactions.constants import DEFAULT_TRANSACTION_CATEGORY
-from .transactions.ofx_helper import read_transactions
+from .transactions.ofx_helper import OfxHelper
+from .transactions.qif_helper import QifHelper
 from .transactions.transactions import save_transactions
 
 
@@ -16,7 +17,7 @@ def spend_analyser(request):
     transactions = []
 
     if request.method == "POST":
-        transactions = read_transactions(request.FILES['ofx_file'].file, session_id)
+        transactions = QifHelper().read_transactions(request.FILES['file'].file, session_id)
         save_transactions(transactions, session_id)
     transactions = Transaction.objects.filter(user=session_id).order_by('-date')
 
@@ -25,8 +26,6 @@ def spend_analyser(request):
         .values('name', 'subscription__name', 'subscription__company__name', \
                 'subscription__company__category__name', 'subscription__description', 'subscription__monthly_price')\
         .distinct()
-    print("Subscriptions: " + str(subscriptions))
-    print("Total transaction count: " + str(len(transactions)))
 
     # If transactions exist, perform analysis and show chart
     if len(transactions) > 0:
@@ -49,9 +48,9 @@ def get_chart(categories, transactions):
         overall_total -= transaction.amount
 
     # Remove Other category to find top 4 non-Other categories
-    other_total = category_totals.pop(DEFAULT_TRANSACTION_CATEGORY)
-
-    print(other_total)
+    if DEFAULT_TRANSACTION_CATEGORY in category_totals:
+        other_total = category_totals.pop(DEFAULT_TRANSACTION_CATEGORY)
+        print(other_total)
 
     sorted_categories = sorted(category_totals, key=category_totals.get, reverse=True)[:4] # get top 4 non-Other categories in sorted list
 

@@ -8,7 +8,7 @@
         <h1>Transaction file upload</h1>
         <form action="/analyse/" method="post" enctype="multipart/form-data">
           {% csrf_token %}
-          <input type="file" name="ofx_file">
+          <input type="file" name="file">
           <button type="submit">Upload</button>
         </form>
 

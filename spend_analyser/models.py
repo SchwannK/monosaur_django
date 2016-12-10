@@ -18,4 +18,4 @@ class Transaction(models.Model):
         unique_together = (('name', 'amount', 'date'),)
     
     def __str__(self):
-        return self.name
+        return "\n".join([self.name, str(self.amount) + "GBP", str(self.date), str(self.category), str(self.subscription)])
