@@ -1,20 +1,20 @@
-{% extends "monosaur/base.html" %} 
+{% extends "monosaur/base.html" %}
 
 {% block content %}
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
 			<h1>Subscription Directory</h1>
-			<a href="/analyse">Scan bank statements</a>
 
-			{% for subscription in subscriptions %}
-          		<h2><a href="{{ subscription.subscription_url }}">{{ subscription.name }}</a></h2>
-          		<b>{{ subscription.company }}</b>
-          		<p>{{ subscription.description }}</p>
-          		<p>&pound;{{ subscription.monthly_price }} per month</p>
-          		<hr>
-        	{% endfor %}
 		</div>
+			{% for subscription in subscriptions %}
+				<div class="col-md-3 subscription-listing">
+		  		<h2><a href="{{ subscription.subscription_url }}" target="_blank">{{ subscription.name }}</a></h2>
+		  		<b>{{ subscription.company }}</b>
+		  		<p>{{ subscription.description }}</p>
+		  		<p><b><i>&pound;{{ subscription.monthly_price|floatformat:2 }} per month</i></b></p>
+	  		</div>
+    	{% endfor %}
 	</div>
 </div>
 {% endblock %}

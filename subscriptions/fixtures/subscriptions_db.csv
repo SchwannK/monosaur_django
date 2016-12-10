@@ -3,11 +3,11 @@
    "model": "subscriptions.Subscription",
    "pk": 0,
    "fields": {
-      "name": "Netflix Basic",
-      "company": 23,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "monthly_price": 5.99,
-      "subscription_url": "https://www.netflix.com",
+      "name": "(Test) Whole Foods Subscription",
+      "company": 0,
+      "description": "Food delivered weekly",
+      "monthly_price": 100,
+      "subscription_url": "-",
       "created": "2016-12-09 10:49:50",
       "reference": "WHOLE FOODS"
    }
@@ -16,11 +16,11 @@
    "model": "subscriptions.Subscription",
    "pk": 1,
    "fields": {
-      "name": "Netflix Standard",
-      "company": 23,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "monthly_price": 7.49,
-      "subscription_url": "https://www.netflix.com",
+      "name": "(Test) TFL Train subscription",
+      "company": 1,
+      "description": "Monthly train subscription",
+      "monthly_price": 50,
+      "subscription_url": "-",
       "created": "2016-12-09 10:49:50",
       "reference": "TFL.GOV.UK"
    }
@@ -29,11 +29,11 @@
    "model": "subscriptions.Subscription",
    "pk": 2,
    "fields": {
-      "name": "Netflix Premium",
-      "company": 23,
+      "name": "Netflix",
+      "company": 6,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "monthly_price": 8.99,
-      "subscription_url": "https://www.netflix.com",
+      "monthly_price": 9.99,
+      "subscription_url": "-",
       "created": "2016-12-09 10:49:50",
       "reference": "Netflix"
    }
@@ -42,11 +42,11 @@
    "model": "subscriptions.Subscription",
    "pk": 3,
    "fields": {
-      "name": "Spotify Premium",
-      "company": 24,
+      "name": "Spotify",
+      "company": 6,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "monthly_price": 9.99,
-      "subscription_url": "https://www.spotify.com/uk/premium/",
+      "subscription_url": "-",
       "created": "2016-12-09 10:49:50",
       "reference": "Spotify"
    }
@@ -55,11 +55,11 @@
    "model": "subscriptions.Subscription",
    "pk": 4,
    "fields": {
-      "name": "Crunchyroll Premium",
-      "company": 30,
+      "name": "Google Play",
+      "company": 6,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "monthly_price": 4.99,
-      "subscription_url": "http://www.crunchyroll.com/",
+      "monthly_price": 9.99,
+      "subscription_url": "-",
       "created": "2016-12-09 10:49:50",
       "reference": "Blah"
    }
@@ -69,36 +69,75 @@
    "pk": 5,
    "fields": {
       "name": "Amazon Prime",
-      "company": 25,
+      "company": 16,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "monthly_price": 7.99,
-      "subscription_url": "https://www.amazon.co.uk/prime",
+      "monthly_price": 9.99,
+      "subscription_url": "-",
       "created": "2016-12-09 10:49:50",
       "reference": "Blah"
    }
 },
  {
    "model": "subscriptions.Subscription",
-   "pk": 42,
+   "pk": 6,
    "fields": {
-      "name": "(Test) Whole Foods Subscription",
-      "company": 43,
+      "name": "Crunchyroll",
+      "company": 6,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "monthly_price": 1,
-      "subscription_url": "#",
+      "monthly_price": 9.99,
+      "subscription_url": "-",
       "created": "2016-12-09 10:49:50",
       "reference": "Blah"
    }
 },
  {
    "model": "subscriptions.Subscription",
-   "pk": 43,
+   "pk": 7,
    "fields": {
-      "name": "(Test) TFL Train subscription",
-      "company": 44,
+      "name": "Hello Fresh",
+      "company": 7,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "monthly_price": 1,
-      "subscription_url": "#",
+      "monthly_price": 9.99,
+      "subscription_url": "-",
+      "created": "2016-12-09 10:49:50",
+      "reference": "Blah"
+   }
+},
+ {
+   "model": "subscriptions.Subscription",
+   "pk": 8,
+   "fields": {
+      "name": "Pact",
+      "company": 7,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "monthly_price": 9.99,
+      "subscription_url": "-",
+      "created": "2016-12-09 10:49:50",
+      "reference": "Blah"
+   }
+},
+ {
+   "model": "subscriptions.Subscription",
+   "pk": 9,
+   "fields": {
+      "name": "Graze",
+      "company": 7,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "monthly_price": 9.99,
+      "subscription_url": "-",
+      "created": "2016-12-09 10:49:50",
+      "reference": "Blah"
+   }
+},
+ {
+   "model": "subscriptions.Subscription",
+   "pk": 10,
+   "fields": {
+      "name": "Close Shave Society",
+      "company": 5,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "monthly_price": 9.99,
+      "subscription_url": "-",
       "created": "2016-12-09 10:49:50",
       "reference": "Blah"
    }

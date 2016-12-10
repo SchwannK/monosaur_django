@@ -79,7 +79,7 @@
            			<td>{{ subscription.subscription__company__name }}</td>
            			<td>{{ subscription.subscription__company__category__name }}</td>
            			<td>{{ subscription.subscription__description }}</td>
-           			<td>&pound;{{ subscription.subscription__monthly_price }} per month</td>
+           			<td>&pound;{{ subscription.subscription__monthly_price|floatformat:2 }} per month</td>
            		</tr>
            	{% endfor %}
 		</table>
