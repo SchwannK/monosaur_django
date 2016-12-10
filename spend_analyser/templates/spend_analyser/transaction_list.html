@@ -60,7 +60,31 @@
 
         <hr>
 
-        <h1>Transaction List</h1>
+		<h1>My Subscriptions</h1>
+
+		<table class="table">
+            <tr>
+           		<th>#</th>
+           		<th>Name</th>
+           		<th>Company</th>
+           		<th>Category</th>
+           		<th>Description</th>
+	       		<th>per Months</th>
+           	</tr>
+
+           	{% for subscription in subscriptions %}
+           		<tr>
+	           		<td>{{ forloop.counter }}</td>
+           			<td><a href="{{ subscription.subscription_url }}">{{ subscription.subscription__name }}</a></td>
+           			<td>{{ subscription.subscription__company__name }}</td>
+           			<td>{{ subscription.subscription__company__category__name }}</td>
+           			<td>{{ subscription.subscription__description }}</td>
+           			<td>&pound;{{ subscription.subscription__monthly_price }} per month</td>
+           		</tr>
+           	{% endfor %}
+		</table>
+
+        <h1>My Transactions</h1>
 
         {% if chart_values == None %}
         <div class="alert alert-warning">

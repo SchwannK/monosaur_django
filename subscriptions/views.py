@@ -1,13 +1,12 @@
 from django.shortcuts import render
 
 from monosaur.cookie import get_session_id
-from spend_analyser.models import Transaction
-from django.contrib.sessions.middleware import SessionMiddleware
+from subscriptions.models import Subscription
 
 
 def subscriptions(request):
-    SessionMiddleware
     print("==================== subscriptions ======================")
+<<<<<<< HEAD
     session_id = get_session_id(request, False)
     transactions = Transaction.objects\
         .filter(subscription__isnull=False, user=session_id)\
@@ -16,3 +15,8 @@ def subscriptions(request):
         .distinct()
     print("Result: " + str(transactions))
     return render(request, 'subscriptions/subscriptions.html', {'navbar':'subscriptions', 'subscriptions': transactions})
+=======
+    subscriptions = Subscription.objects.order_by('company__name')
+    return render(request, 'subscriptions/subscriptions.html', {'subscriptions': subscriptions})
+
+>>>>>>> origin/master
