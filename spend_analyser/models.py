@@ -14,5 +14,8 @@ class Transaction(models.Model):
     )
     user = models.CharField(max_length=40, null=True)
     
+    class Meta:
+        unique_together = (('name', 'amount', 'date'),)
+    
     def __str__(self):
         return self.name

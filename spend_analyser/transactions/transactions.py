@@ -1,5 +1,6 @@
 import traceback
 
+from django.db.utils import IntegrityError
 from monosaur.models import Category, Company
 from subscriptions.models import Subscription
 
@@ -23,9 +24,12 @@ def get_subscription(payee):
         return None
     
 def save_transactions(transactions, session_id):
-    try:
         for transaction in transactions:
-            transaction.save_or_create()
-    except Exception as e:
-        print("error saving transaction: " + str(e))
-        traceback.print_exc()
+            try:
+                transaction.save(force_insert=False, force_update=False)
+            except IntegrityError as e:
+                if "UNIQUE" in str(e) :
+                    print("unique constraint failed: " + transaction.name + " " + str(transaction.amount) + " " + str(transaction.date))
+                else:
+                    raise e
+                

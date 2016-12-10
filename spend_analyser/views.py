@@ -18,7 +18,7 @@ def spend_analyser(request):
     if request.method == "POST":
         transactions = read_transactions(request.FILES['ofx_file'].file, session_id)
         save_transactions(transactions, session_id)
-#     transactions = Transaction.objects.filter(user=session_id).order_by('-date')
+    transactions = Transaction.objects.filter(user=session_id).order_by('-date')
     
     chart_data = get_chart(Category.objects.all(), Transaction.objects.all())
     chart_labels = list(list(zip(*chart_data))[0])
