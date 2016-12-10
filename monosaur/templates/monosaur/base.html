@@ -10,7 +10,7 @@
       <link rel="stylesheet" href="{% static 'css/monosaur.css' %}">
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
-      
+
     </head>
 
     <body>
@@ -20,6 +20,11 @@
           <h1>Monosaur</h1>
           <p>We make subscriptions fucking easy to manage!</p>
         </div>
+
+        <ul class="nav nav-pills">
+          <li role="presentation" class="{% if navbar == 'subscriptions' %}active{% endif %}"><a href="/">Subscription Directory</a></li>
+          <li role="presentation" class="{% if navbar == 'spend_analyser' %}active{% endif %}"><a href="/analyse">Spend Analyser</a></li>
+        </ul>
       </div>
 
       {% block content %}

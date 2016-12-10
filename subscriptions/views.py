@@ -15,4 +15,4 @@ def subscriptions(request):
                 'subscription__company__category__name', 'subscription__description', 'subscription__monthly_price')\
         .distinct()
     print("Result: " + str(transactions))
-    return render(request, 'subscriptions/subscriptions.html', {'subscriptions': transactions})
+    return render(request, 'subscriptions/subscriptions.html', {'navbar':'subscriptions', 'subscriptions': transactions})

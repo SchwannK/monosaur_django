@@ -25,11 +25,11 @@ def spend_analyser(request):
         chart_labels = list(list(zip(*chart_data))[0])
         chart_values = list(list(zip(*chart_data))[1])
     # print("Result: " + str(len(transactions)))
-        return render(request, 'spend_analyser/transaction_list.html', {'transactions': transactions, 'chart_values': chart_values, 'chart_labels': chart_labels, })
+        return render(request, 'spend_analyser/transaction_list.html', {'navbar':'spend_analyser', 'transactions': transactions, 'chart_values': chart_values, 'chart_labels': chart_labels, })
 
     # If no transactions exist, don't show anything
     else:
-        return render(request, 'spend_analyser/transaction_list.html', {'transactions': transactions,})
+        return render(request, 'spend_analyser/transaction_list.html', {'navbar':'spend_analyser', 'transactions': transactions,})
 
 def get_chart(categories, transactions):
     category_totals = {}  # Initialise dictionary which will store totals for each category
@@ -38,9 +38,6 @@ def get_chart(categories, transactions):
     for transaction in transactions:
         category_totals[transaction.category.name] = category_totals.get(transaction.category.name, 0) - transaction.amount  # minus to invert sign
         overall_total -= transaction.amount
-
-    for key in category_totals:
-        print("%s: %d" % (key, category_totals[key]))
 
     # Remove Other category to find top 4 non-Other categories
     other_total = category_totals.pop(DEFAULT_TRANSACTION_CATEGORY)
