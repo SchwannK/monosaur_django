@@ -4,7 +4,7 @@ REM delete database and migration files
 del db.sqlite3
 del monosaur\migrations\*
 del spend_analyser\migrations\*
-del transactions\migrations\*
+del subscriptions\migrations\*
 
 REM regenerate migration files and database based on current models
 python manage.py makemigrations monosaur
