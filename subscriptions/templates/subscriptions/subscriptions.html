@@ -4,21 +4,16 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-
-			<h1>Your Subscriptions</h1>
+			<h1>Subscription Directory</h1>
 			<a href="/analyse">Scan bank statements</a>
 
 			{% for subscription in subscriptions %}
-			<h2>
-				<a href="{{ subscription.subscription_url }}">{{ subscription.subscription__name }}</a>
-			</h2>
-			<b>{{ subscription.subscription__company__name }}</b>
-			 ({{ subscription.subscription__company__category__name }})
-			<p>{{ subscription.subscription__description }}</p>
-			<p>£{{ subscription.subscription__monthly_price }} per month</p>
-			<hr>
-			{% endfor %}
-
+          		<h2><a href="{{ subscription.subscription_url }}">{{ subscription.name }}</a></h2>
+          		<b>{{ subscription.company }}</b>
+          		<p>{{ subscription.description }}</p>
+          		<p>&pound;{{ subscription.monthly_price }} per month</p>
+          		<hr>
+        	{% endfor %}
 		</div>
 	</div>
 </div>

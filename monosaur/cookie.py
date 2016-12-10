@@ -1,4 +1,3 @@
-import random
 import string
 
 from django.conf import settings
@@ -39,4 +38,5 @@ def get_session_id(request, generate):
     return session_id
 
 def set_session_id(request, response):
-    response.cookies[MY_COOKIE_NAME] = get_session_id(request, True)
+    if settings.SESSION_COOKIE_NAME not in request.COOKIES:
+        response.cookies[MY_COOKIE_NAME] = get_session_id(request, True)
