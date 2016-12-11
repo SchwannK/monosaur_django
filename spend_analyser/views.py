@@ -17,7 +17,10 @@ def spend_analyser(request):
     transactions = []
 
     if request.method == "POST":
-        transactions = QifHelper().read_transactions(request.FILES['file'].file, session_id)
+        try:
+            transactions = QifHelper().read_transactions(request.FILES['file'].file, session_id)
+        except:
+            transactions = OfxHelper().read_transactions(request.FILES['file'].file, session_id)
         save_transactions(transactions, session_id)
     transactions = Transaction.objects.filter(user=session_id).order_by('-date')
 
