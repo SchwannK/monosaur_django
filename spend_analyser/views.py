@@ -7,7 +7,7 @@ from monosaur.cookie import get_session
 from monosaur.models import Category
 from spend_analyser.transactions import transaction_handler
 
-from .chart_utils import get_chart
+from .chart_utils import *
 from .models import Transaction
 from .transactions.ofx_helper import OfxHelper
 from .transactions.qif_helper import QifHelper
@@ -39,11 +39,10 @@ def spend_analyser(request):
 
     # If transactions exist, perform analysis and show chart
     if len(transactions) > 0:
-        chart_data = get_chart(Category.objects.all(), Transaction.objects.all())
-        chart_labels = list(list(zip(*chart_data))[0])
-        chart_values = list(list(zip(*chart_data))[1])
-    # print("Result: " + str(len(transactions)))
-        return render(request, 'spend_analyser/transaction_list.html', {'navbar':'spend_analyser', 'transactions': transactions, 'chart_values': chart_values, 'chart_labels': chart_labels, 'subscriptions': subscriptions})
+        chartjs_data = get_chart(Category.objects.all(), Transaction.objects.all())
+        chartjs_linedata = get_chart_new(Category.objects.all(), Transaction.objects.all())
+
+        return render(request, 'spend_analyser/transaction_list.html', {'navbar':'spend_analyser', 'transactions': transactions, 'chartjs_data': chartjs_data, 'chartjs_linedata': chartjs_linedata, 'subscriptions': subscriptions})
 
     # If no transactions exist, don't show anything
     else:

@@ -18,8 +18,10 @@
           <button type="submit">Upload</button>
         </form>
 
-        {% if chart_values %}
+        {% if chartjs_data %}
         <hr>
+        {{ chartjs_data.chart_labels|safe }}
+        {{ chartjs_data.chart_values }}
 
         <h1>Personal finance analytics</h1>
 
@@ -29,10 +31,10 @@
           var myChart = new Chart(ctx, {
               type: 'bar',
               data: {
-                  labels: {{ chart_labels|safe }},
+                  labels: {{ chartjs_data.chart_labels|safe }},
                   datasets: [{
                       label: 'Average monthly spend',
-                      data: {{ chart_values }},
+                      data: {{ chartjs_data.chart_values|safe }},
                       backgroundColor: [
                           'rgba(255, 99, 132, 0.2)',
                           'rgba(54, 162, 235, 0.2)',
@@ -40,13 +42,7 @@
                           'rgba(75, 192, 192, 0.2)',
                           'rgba(153, 102, 255, 0.2)',
                       ],
-                      borderColor: [
-                          'rgba(255,99,132,1)',
-                          'rgba(54, 162, 235, 1)',
-                          'rgba(255, 206, 86, 1)',
-                          'rgba(75, 192, 192, 1)',
-                          'rgba(153, 102, 255, 1)',
-                      ],
+                      borderColor: {{ chartjs_data.colours|safe }},
                       borderWidth: 1
                   }]
               },
@@ -64,7 +60,37 @@
 
         {% endif %}
 
+        {% if chartjs_linedata %}
         <hr>
+
+        <h1>Your spend over time</h1>
+
+        <canvas id="analytics_linechart"></canvas>
+          <script>
+          var ctx = document.getElementById('analytics_linechart');
+            var myChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                labels: {{ chartjs_linedata.months|safe }},
+                datasets: [
+
+                  {% for category, values in chartjs_linedata.data.items %}
+                    {
+                      label: '{{ category|safe }}',
+                      data: {{ values.0 }},
+                      pointBackgroundColor: '{{ values.1 }}',
+                      borderColor: '{{ values.1 }}',
+                      backgroundColor: 'rgba(255,255,255,0)',
+                    },
+
+                  {% endfor %}
+                ]
+              }
+            });
+          </script>
+          {% endif %}
+
+          <hr>
 
 		<h1>My Subscriptions</h1>
 
