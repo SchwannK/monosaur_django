@@ -4,6 +4,13 @@ from monosaur.models import Category
 from subscriptions.models import Subscription
 
 
+class Session(models.Model):
+    session_id = models.CharField(max_length=40, null=True)
+    last_read = models.DateTimeField(null=True)
+    
+    def __str__(self):
+        return "Session(" + ", ".join(["session_id=" + self.session_id, "last_read=" + str(self.last_read)]) + ")"
+    
 class Transaction(models.Model):
     name = models.CharField(max_length=100)
     amount = models.FloatField()
@@ -12,10 +19,11 @@ class Transaction(models.Model):
     subscription = models.ForeignKey(
         Subscription, null=True, blank=True
     )
-    user = models.CharField(max_length=40, null=True)
+    session = models.ForeignKey(Session)
     
     class Meta:
         unique_together = (('name', 'amount', 'date'),)
     
     def __str__(self):
-        return "\n".join([self.name, str(self.amount) + "GBP", str(self.date), str(self.category), str(self.subscription)])
+        return "Transaction(" + ", ".join(["name=" + self.name, "amount=" + str(self.amount) + "GBP", "date=" + str(self.date), \
+                                           "category=" + str(self.category), "subscription=" + str(self.subscription)]) + ")"

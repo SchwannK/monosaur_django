@@ -1,26 +1,29 @@
 from builtins import int
+import datetime
 import sys
 
 from django.core.files.base import ContentFile
 
-from spend_analyser.models import Transaction
+from monosaur.string_utils import empty
+from spend_analyser.models import Transaction, Session
 
 from .parser import Parser
 from .transactions import get_category, get_subscription
-import datetime
 
 
 class QifHelper(Parser):
     
     @classmethod
-    def read_transactions(self, file, session_id):
+    def read_transactions(self, file, session):
         qif_transactions = parseQif(file)
         transactions = []
     
         for qif_transaction in qif_transactions:
             category = get_category(qif_transaction.payee)
             subscription = get_subscription(qif_transaction.payee)
-            transactions.append(Transaction(name = qif_transaction.payee + ' ' + qif_transaction.memo, amount = qif_transaction.amount, date = qif_transaction.date, category = category, subscription = subscription, user = session_id))
+            name = empty(qif_transaction.payee) + ' ' + empty(qif_transaction.memo)
+            transactions.append(Transaction(name = name.strip(),\
+                                            amount = qif_transaction.amount, date = qif_transaction.date, category = category, subscription = subscription, session = session))
         return transactions
         
 class QifItem:

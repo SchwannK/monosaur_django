@@ -23,7 +23,7 @@ def get_subscription(payee):
     else:
         return None
     
-def save_transactions(transactions, session_id):
+def save_transactions(transactions):
         for transaction in transactions:
             try:
                 transaction.save(force_insert=False, force_update=False)
@@ -33,3 +33,6 @@ def save_transactions(transactions, session_id):
                 else:
                     raise e
                 
+def clear_database():
+    print("Clearing old transactions...")
+    pass

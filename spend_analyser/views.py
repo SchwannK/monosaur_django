@@ -1,7 +1,10 @@
+
+import traceback
+
 from django.shortcuts import render
 
+from monosaur.cookie import get_session
 from monosaur.models import Category
-from monosaur.cookie import get_session_id
 
 from .models import Transaction
 from .transactions.constants import DEFAULT_TRANSACTION_CATEGORY
@@ -12,20 +15,25 @@ from .transactions.transactions import save_transactions
 
 # Create your views here.
 def spend_analyser(request):
-    print("==================== spend_analyser ======================")
-    session_id = get_session_id(request, False)
+    session = get_session(request, False)
     transactions = []
 
     if request.method == "POST":
         try:
-            transactions = QifHelper().read_transactions(request.FILES['file'].file, session_id)
-        except:
-            transactions = OfxHelper().read_transactions(request.FILES['file'].file, session_id)
-        save_transactions(transactions, session_id)
-    transactions = Transaction.objects.filter(user=session_id).order_by('-date')
+            transactions = QifHelper().read_transactions(request.FILES['file'].file, session)
+        except Exception as e:
+            print("error parsing qif file")
+            traceback.print_exc()
+            try:
+                transactions = OfxHelper().read_transactions(request.FILES['file'].file, session)
+            except Exception as e:
+                print("error parsing ofx file")
+                raise e
+        save_transactions(transactions)
+    transactions = Transaction.objects.filter(session__session_id=session.session_id).order_by('-date')
 
     subscriptions = Transaction.objects\
-        .filter(subscription__isnull=False, user=session_id)\
+        .filter(subscription__isnull=False, session__session_id=session.session_id)\
         .values('name', 'subscription__name', 'subscription__company__name', \
                 'subscription__company__category__name', 'subscription__description', 'subscription__monthly_price')\
         .distinct()
