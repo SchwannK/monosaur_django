@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-md-12">
 		{% if user.is_authenticated %}
-		</p>
+			</p>
 			<div class="well">
     			<p>Welcome {{ user.username }}
     			<a href="/analyse/cleanup" class="btn btn-success custom-width">Clean database</a></p>
@@ -14,15 +14,15 @@
         <h1>Transaction file upload</h1>
         
         {% if good_files_message %}
-        	<div class="alert alert-success alert-dismissable fade in">
-				<a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+        	<div class="alert alert-success alert-dismissable">
+				<button class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>
 				<strong>Success!</strong> {{ good_files_message|safe }}
 			</div>
         {% endif %}
         
         {% if bad_files_message %}
-        	<div class="alert alert-danger alert-dismissable fade in">
-				<a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+        	<div class="alert alert-danger alert-dismissable">
+				<button class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>	
 				<strong>Error!</strong> {{ bad_files_message|safe }}
 			</div>
         {% endif %}
@@ -44,11 +44,11 @@
 
         {% if chart_values %}
         <hr>
+		<a data-toggle="collapse" data-target="#chart"><h1>Personal finance analytics</h1></a>
 
-        <h1>Personal finance analytics</h1>
-
-        <canvas id="analytics_barchart"></canvas>
-          <script>
+		<div id="chart" class="collapse in">
+			<canvas id="analytics_barchart"></canvas>
+			<script>
           var ctx = document.getElementById("analytics_barchart");
           var myChart = new Chart(ctx, {
               type: 'bar',
@@ -84,15 +84,15 @@
                   }
               }
           });
-          </script>
+          	</script>
 
-        {% endif %}
+		{% endif %}
+		</div>
+		<hr>
 
-        <hr>
+		<a data-toggle="collapse" data-target="#subscriptions"><h1>My Subscriptions</h1></a>
 
-		<h1>My Subscriptions</h1>
-
-		<table class="table">
+		<table class="table collapse in" id="subscriptions">
             <tr>
            		<th>#</th>
            		<th>Name</th>
@@ -113,40 +113,42 @@
            		</tr>
            	{% endfor %}
 		</table>
+		<hr>
+		
+		<a data-toggle="collapse" data-target="#transactions"><h1>My Transactions</h1></a>
+		<div id="transactions" class="collapse in">
+		{% if chart_values == None %}
+			<div class="alert alert-warning">
+				<strong>Data-less Donkey!</strong> You have no transaction data at
+				the moment. Fancy uploading some above?
+			</div>
+		{% endif %}
 
-        <h1>My Transactions</h1>
+			<!-- display list of transactions here -->
 
-        {% if chart_values == None %}
-        <div class="alert alert-warning">
-          <strong>Data-less Donkey!</strong> You have no transaction data at the moment. Fancy uploading some above?
-        </div>
-        {% endif %}
+			<table class="table">
+				<tr>
+					<th>#</th>
+					<th>Date</th>
+					<th>Transaction</th>
+					<th>Type</th>
+					<th>Subscription</th>
+					<th>Amount</th>
+				</tr>
 
-          <!-- display list of transactions here -->
-
-          <table class="table">
-            <tr>
-              <th>#</th>
-              <th>Date</th>
-              <th>Transaction</th>
-              <th>Type</th>
-              <th>Subscription</th>
-              <th>Amount</th>
-            </tr>
-
-            {% for transaction in transactions %}
-            <tr>
-              <td>{{ forloop.counter }}</td>
-              <td>{{ transaction.date }}</td>
-              <td>{{ transaction.name }}</td>
-              <td>{{ transaction.category }}</td>
-              <td>{{ transaction.subscription }}</td>
-              <td>{{ transaction.amount|floatformat:2 }}</td>
-            </tr>
-            {% endfor %}
-
-          </table>
-      </div>
+			{% for transaction in transactions %}
+				<tr>
+					<td>{{ forloop.counter }}</td>
+					<td>{{ transaction.date }}</td>
+					<td>{{ transaction.name }}</td>
+					<td>{{ transaction.category }}</td>
+					<td>{{ transaction.subscription }}</td>
+					<td>{{ transaction.amount|floatformat:2 }}</td>
+				</tr>
+			{% endfor %}
+			</table>
+		  </div>
+		</div>
     </div>
   </div>
 {% endblock %}
