@@ -1,9 +1,11 @@
-import string, datetime
+from datetime import datetime
+import string
 
 from django.conf import settings
 from django.utils.crypto import (
     get_random_string,
 )
+
 from spend_analyser.models import Session
 
 
@@ -38,7 +40,7 @@ def get_session(request, generate):
         print("Generating my session id: " + session_id)
         request.COOKIES[MY_COOKIE_NAME] = session_id
     session, created = Session.objects.get_or_create(session_id = session_id)
-    session.last_read = datetime.datetime.now()
+    session.last_read = datetime.now()
     session.save()
     return session
 

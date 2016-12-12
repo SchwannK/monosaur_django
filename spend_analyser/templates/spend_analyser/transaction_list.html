@@ -4,7 +4,13 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-
+		{% if user.is_authenticated %}
+		</p>
+			<div class="well">
+    			<p>Welcome {{ user.username }}
+    			<a href="/analyse/cleanup" class="btn btn-success custom-width">Clean database</a></p>
+    		</div>
+		{% endif %}
         <h1>Transaction file upload</h1>
         <form action="/analyse/" method="post" enctype="multipart/form-data">
           {% csrf_token %}

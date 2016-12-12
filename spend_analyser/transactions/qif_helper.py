@@ -6,12 +6,10 @@ from django.core.files.base import ContentFile
 
 from monosaur.string_utils import empty
 from spend_analyser.models import Transaction, Session
-
-from .parser import Parser
-from .transactions import get_category, get_subscription
+from spend_analyser.transactions import transaction_handler
 
 
-class QifHelper(Parser):
+class QifHelper(object):
     
     @classmethod
     def read_transactions(self, file, session):
@@ -19,8 +17,8 @@ class QifHelper(Parser):
         transactions = []
     
         for qif_transaction in qif_transactions:
-            category = get_category(qif_transaction.payee)
-            subscription = get_subscription(qif_transaction.payee)
+            category = transaction_handler.get_category(qif_transaction.payee)
+            subscription = transaction_handler.get_subscription(qif_transaction.payee)
             name = empty(qif_transaction.payee) + ' ' + empty(qif_transaction.memo)
             transactions.append(Transaction(name = name.strip(),\
                                             amount = qif_transaction.amount, date = qif_transaction.date, category = category, subscription = subscription, session = session))

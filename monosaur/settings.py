@@ -137,5 +137,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 FIXTURE_DIRS = (
-   '/speed_analyser/fixtures/',
+   '/monosaur/fixtures/',
+   '/spend_analyser/fixtures/',
 )

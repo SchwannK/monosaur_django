@@ -1,5 +1,7 @@
 REM Windows only!
 
+pip install -r requirements
+
 REM delete database and migration files
 del db.sqlite3
 del monosaur\migrations\*
@@ -16,7 +18,5 @@ REM populate database
 python manage.py loaddata monosaur\fixtures\category_db.json
 python manage.py loaddata monosaur\fixtures\company_db.json
 python manage.py loaddata subscriptions\fixtures\subscriptions_db.json
-
-pip install -r requirements
 
 REM All done

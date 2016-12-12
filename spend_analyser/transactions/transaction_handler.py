@@ -1,7 +1,10 @@
+from datetime import datetime, timedelta
 import traceback
 
 from django.db.utils import IntegrityError
+
 from monosaur.models import Category, Company
+from spend_analyser.models import Transaction
 from subscriptions.models import Subscription
 
 from .constants import DEFAULT_TRANSACTION_CATEGORY
@@ -23,7 +26,7 @@ def get_subscription(payee):
     else:
         return None
     
-def save_transactions(transactions):
+def save(transactions):
         for transaction in transactions:
             try:
                 transaction.save(force_insert=False, force_update=False)
@@ -33,6 +36,8 @@ def save_transactions(transactions):
                 else:
                     raise e
                 
-def clear_database():
-    print("Clearing old transactions...")
-    pass
+def delete_old_entries():
+    delete_count, breakdown = Transaction.objects.filter(session__last_read__lt=(datetime.now() - timedelta(days=-1))).delete()
+    print("Clearing transactions older than 1 day: " + str(delete_count))
+    return delete_count
+    

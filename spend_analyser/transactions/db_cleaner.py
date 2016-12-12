@@ -1,4 +1,4 @@
 # This script deletes transactions that are older than 3 hours
-from transactions import clear_database
+from spend_analyser.transactions import transactions
 
-clear_database()
+transactions.delete_old_entries()
