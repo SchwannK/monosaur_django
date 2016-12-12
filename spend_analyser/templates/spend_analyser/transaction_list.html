@@ -12,11 +12,35 @@
     		</div>
 		{% endif %}
         <h1>Transaction file upload</h1>
-        <form action="/analyse/" method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          <input type="file" name="file">
-          <button type="submit">Upload</button>
-        </form>
+        
+        {% if good_files_message %}
+        	<div class="alert alert-success alert-dismissable fade in">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+				<strong>Success!</strong> {{ good_files_message|safe }}
+			</div>
+        {% endif %}
+        
+        {% if bad_files_message %}
+        	<div class="alert alert-danger alert-dismissable fade in">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+				<strong>Error!</strong> {{ bad_files_message|safe }}
+			</div>
+        {% endif %}
+        
+		<form action="/analyse/" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<div class="row">
+				<div class="form-group col-md-12">
+					<input type="file" name="file" multiple="multiple"
+						class="form-control input-sm">
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-actions col-md-12">
+					<input type="submit" value="Upload" class="btn btn-primary btn-sm">
+				</div>
+			</div>
+		</form>
 
         {% if chart_values %}
         <hr>
