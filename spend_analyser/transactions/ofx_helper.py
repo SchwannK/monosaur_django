@@ -4,8 +4,10 @@ from monosaur.string_utils import empty
 from spend_analyser.models import Transaction
 from spend_analyser.transactions import transaction_handler
 
+from .parser import Parser
 
-class OfxHelper(object):
+
+class OfxHelper(Parser):
 
     @classmethod
     def read_transactions(self, file, session):
