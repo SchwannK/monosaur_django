@@ -22,7 +22,7 @@ class Transaction(models.Model):
     session = models.ForeignKey(Session)
     
     class Meta:
-        unique_together = (('name', 'amount', 'date'),)
+        unique_together = (('name', 'amount', 'date', 'session'),)
     
     def __str__(self):
         return "Transaction(" + ", ".join(["name=" + self.name, "amount=" + str(self.amount) + "GBP", "date=" + str(self.date), \

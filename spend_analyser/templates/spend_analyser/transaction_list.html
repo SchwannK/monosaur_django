@@ -5,58 +5,81 @@
     <div class="row">
       <div class="col-md-12">
 		{% if user.is_authenticated %}
-		</p>
+			</p>
 			<div class="well">
     			<p>Welcome {{ user.username }}
     			<a href="/analyse/cleanup" class="btn btn-success custom-width">Clean database</a></p>
     		</div>
 		{% endif %}
         <h1>Transaction file upload</h1>
-        <form action="/analyse/" method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          <input type="file" name="file">
-          <button type="submit">Upload</button>
-        </form>
+
+        {% if good_files_message %}
+        	<div class="alert alert-success alert-dismissable">
+				<button class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>
+				<strong>Success!</strong> {{ good_files_message|safe }}
+			</div>
+        {% endif %}
+
+        {% if bad_files_message %}
+        	<div class="alert alert-danger alert-dismissable">
+				<button class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>
+				<strong>Error!</strong> {{ bad_files_message|safe }}
+			</div>
+        {% endif %}
+
+		<form action="/analyse/" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<div class="row">
+				<div class="form-group col-md-12">
+					<input type="file" name="file" multiple="multiple"
+						class="form-control input-sm">
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-actions col-md-12">
+					<input type="submit" value="Upload" class="btn btn-primary btn-sm">
+				</div>
+			</div>
+		</form>
 
         {% if chartjs_data %}
         <hr>
-        {{ chartjs_data.chart_labels|safe }}
-        {{ chartjs_data.chart_values }}
 
-        <h1>Personal finance analytics</h1>
+		      <a data-toggle="collapse" data-target="#chart"><h1>Personal finance analytics</h1></a>
 
-        <canvas id="analytics_barchart"></canvas>
-          <script>
-          var ctx = document.getElementById("analytics_barchart");
-          var myChart = new Chart(ctx, {
-              type: 'bar',
-              data: {
-                  labels: {{ chartjs_data.chart_labels|safe }},
-                  datasets: [{
-                      label: 'Average monthly spend',
-                      data: {{ chartjs_data.chart_values|safe }},
-                      backgroundColor: [
-                          'rgba(255, 99, 132, 0.2)',
-                          'rgba(54, 162, 235, 0.2)',
-                          'rgba(255, 206, 86, 0.2)',
-                          'rgba(75, 192, 192, 0.2)',
-                          'rgba(153, 102, 255, 0.2)',
-                      ],
-                      borderColor: {{ chartjs_data.colours|safe }},
-                      borderWidth: 1
-                  }]
-              },
-              options: {
-                  scales: {
-                      yAxes: [{
-                          ticks: {
-                              beginAtZero:true
-                          }
-                      }]
-                  }
-              }
-          });
-          </script>
+      		<div id="chart" class="collapse in">
+      			<canvas id="analytics_barchart"></canvas>
+      			<script>
+                var ctx = document.getElementById("analytics_barchart");
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{ chartjs_data.chart_labels|safe }},
+                        datasets: [{
+                            label: 'Average monthly spend',
+                            data: {{ chartjs_data.chart_values|safe }},
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                            ],
+                            borderColor: {{ chartjs_data.colours|safe }},
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero:true
+                                }
+                            }]
+                        }
+                    }
+                });
+          	</script>
 
         {% endif %}
 
@@ -94,7 +117,13 @@
 
 		<h1>My Subscriptions</h1>
 
-		<table class="table">
+		{% endif %}
+		</div>
+		<hr>
+
+		<a data-toggle="collapse" data-target="#subscriptions"><h1>My Subscriptions</h1></a>
+
+		<table class="table collapse in" id="subscriptions">
             <tr>
            		<th>#</th>
            		<th>Name</th>
@@ -115,40 +144,42 @@
            		</tr>
            	{% endfor %}
 		</table>
+		<hr>
 
-        <h1>My Transactions</h1>
+		<a data-toggle="collapse" data-target="#transactions"><h1>My Transactions</h1></a>
+		<div id="transactions" class="collapse in">
+		{% if chart_values == None %}
+			<div class="alert alert-warning">
+				<strong>Data-less Donkey!</strong> You have no transaction data at
+				the moment. Fancy uploading some above?
+			</div>
+		{% endif %}
 
-        {% if chart_values == None %}
-        <div class="alert alert-warning">
-          <strong>Data-less Donkey!</strong> You have no transaction data at the moment. Fancy uploading some above?
-        </div>
-        {% endif %}
+			<!-- display list of transactions here -->
 
-          <!-- display list of transactions here -->
+			<table class="table">
+				<tr>
+					<th>#</th>
+					<th>Date</th>
+					<th>Transaction</th>
+					<th>Type</th>
+					<th>Subscription</th>
+					<th>Amount</th>
+				</tr>
 
-          <table class="table">
-            <tr>
-              <th>#</th>
-              <th>Date</th>
-              <th>Transaction</th>
-              <th>Type</th>
-              <th>Subscription</th>
-              <th>Amount</th>
-            </tr>
-
-            {% for transaction in transactions %}
-            <tr>
-              <td>{{ forloop.counter }}</td>
-              <td>{{ transaction.date }}</td>
-              <td>{{ transaction.name }}</td>
-              <td>{{ transaction.category }}</td>
-              <td>{{ transaction.subscription }}</td>
-              <td>{{ transaction.amount|floatformat:2 }}</td>
-            </tr>
-            {% endfor %}
-
-          </table>
-      </div>
+			{% for transaction in transactions %}
+				<tr>
+					<td>{{ forloop.counter }}</td>
+					<td>{{ transaction.date }}</td>
+					<td>{{ transaction.name }}</td>
+					<td>{{ transaction.category }}</td>
+					<td>{{ transaction.subscription }}</td>
+					<td>{{ transaction.amount|floatformat:2 }}</td>
+				</tr>
+			{% endfor %}
+			</table>
+		  </div>
+		</div>
     </div>
   </div>
 {% endblock %}

@@ -27,14 +27,19 @@ def get_subscription(payee):
         return None
     
 def save(transactions):
-        for transaction in transactions:
-            try:
-                transaction.save(force_insert=False, force_update=False)
-            except IntegrityError as e:
-                if "UNIQUE" in str(e) :
-                    print("unique constraint failed: " + transaction.name + " " + str(transaction.amount) + " " + str(transaction.date))
-                else:
-                    raise e
+    row_count = 0;
+    for transaction in transactions:
+        try:
+            transaction.save(force_insert=False, force_update=False)
+            
+            if transaction.pk:
+                row_count = row_count + 1
+        except IntegrityError as e:
+            if "UNIQUE" in str(e) :
+                print("unique constraint failed: " + transaction.name + " " + str(transaction.amount) + " " + str(transaction.date))
+            else:
+                raise e
+    return row_count
                 
 def delete_old_entries():
     delete_count, breakdown = Transaction.objects.filter(session__last_read__lt=(datetime.now() - timedelta(days=-1))).delete()

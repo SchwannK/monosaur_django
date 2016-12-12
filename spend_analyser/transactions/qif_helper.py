@@ -26,6 +26,9 @@ class QifHelper(Parser):
                                             amount = qif_transaction.amount, date = qif_transaction.date, category = category, subscription = subscription, session = session))
         return transactions
         
+    def __str__(self):
+        return "QifHelper"
+    
 class QifItem:
     def __init__(self):
         self.order = ['date', 'amount', 'cleared', 'num', 'payee', 'memo', 'address', 'category', 'categoryInSplit', 'memoInSplit', 'amountOfSplit']

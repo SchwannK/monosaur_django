@@ -22,3 +22,5 @@ class OfxHelper(Parser):
             
         return transactions
 
+    def __str__(self):
+        return "OfxHelper"

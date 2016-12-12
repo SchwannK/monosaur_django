@@ -1,5 +1,9 @@
 div.subscription-listing {
-  background-color: #e6e6e6;
-  margin: 40px;
-  box-shadow: 10px 10px 5px #888888;
+	background-color: #e6e6e6;
+	margin: 40px;
+	box-shadow: 10px 10px 5px #888888;
+}
+
+.tab {
+	margin-left: 40px;
 }
