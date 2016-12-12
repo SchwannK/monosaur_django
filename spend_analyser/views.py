@@ -21,10 +21,11 @@ def spend_analyser(request):
     if request.method == "POST":
         successFiles = []
         errorFiles = []
-        total_row_count = 0;
+        total_read_count = 0;
+        total_save_count = 0;
         
         for file in request.FILES.getlist('file'):
-            row_count = 0
+            read_count = 0
             parsers = [QifHelper(), OfxHelper()] # add new parsers here
             transactions = []
             
@@ -33,26 +34,26 @@ def spend_analyser(request):
                     transactions = parser.read_transactions(file, session)
 
                     if transactions and len(transactions) > 0:
-                        row_count = len(transactions)
+                        read_count = len(transactions)
                 except Exception as e:
                     print("==== error parsing with " + str(parser))
 #                     traceback.print_exc()
-                if row_count > 0:
+                if read_count > 0:
                     break
             
-            if row_count > 0:
-                transaction_handler.save(transactions)
+            if read_count > 0:
+                total_save_count += transaction_handler.save(transactions)
                 successFiles.append(str(file))
-                total_row_count += row_count
+                total_read_count += read_count
             else:
                 errorFiles.append(str(file))
         
         separator = '<p class="tab">'
-        if total_row_count > 0:
-            good_files_message = '%d transactions added from:%s%s' % (total_row_count, separator, separator.join(successFiles))
+        if total_read_count > 0:
+            good_files_message = '%d transactions captured from:%s%s%s(%d new)' % (total_read_count, separator, separator.join(successFiles), '<br>', total_save_count)
         
         if len(errorFiles) > 0:
-            bad_files_message = 'No transactions added from:%s%s' % (separator, separator.join(errorFiles))
+            bad_files_message = 'No transactions captured from:%s%s' % (separator, separator.join(errorFiles))
             
         print ("Success: " + good_files_message)
         print ("Error: " + bad_files_message)
