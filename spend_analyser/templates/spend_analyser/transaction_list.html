@@ -56,7 +56,7 @@
 
 	<div id="chart" class="collapse in">
     {% if chartjs_bardata %}
-		<center><h4>Your average monthly spend</h4></center>
+		<center><h4>Your major spend categories in {{ chartjs_bardata.month }}</h4></center>
 		<canvas id="analytics_barchart"></canvas>
 		<script>
       var ctx = document.getElementById("analytics_barchart");
@@ -65,7 +65,7 @@
           data: {
               labels: {{ chartjs_bardata.chart_labels|safe }},
               datasets: [{
-                  label: 'Average monthly spend',
+                  label: 'Spend (£)',
                   data: {{ chartjs_bardata.chart_values|safe }},
                   backgroundColor: [
                       'rgba(255, 99, 132, 0.2)',

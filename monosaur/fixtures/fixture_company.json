@@ -1,136 +1,328 @@
-<<<<<<< HEAD
-==== error parsing with OfxHelper
-response sessionid: None
-response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
-
-========================================== <WSGIRequest: POST '/analyse/'> ==========================================
-
-request sessionid: None
-request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
-sessionid: None
-response mysessionid: Set-Cookie: mysessionid=my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
-
-========================================== <WSGIRequest: GET '/analyse/'> ==========================================
-
-request sessionid: None
-request mysessionid: my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
--544.6799999999996
-response sessionid: None
-response mysessionid: Set-Cookie: mysessionid=my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
-
-========================================== <WSGIRequest: GET '/'> ==========================================
-
-Generating my session id: my-or39vz4nyiiww49x13g2famyexpugd9i
-request sessionid: None
-request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
-response sessionid: None
-response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
-
-========================================== <WSGIRequest: GET '/analyse/'> ==========================================
-
-request sessionid: None
-request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
-response sessionid: None
-response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
-
-========================================== <WSGIRequest: GET '/analyse/'> ==========================================
-
-request sessionid: None
-request mysessionid: my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
--544.6799999999996
-response sessionid: None
-response mysessionid: Set-Cookie: mysessionid=my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
-
-========================================== <WSGIRequest: GET '/analyse/'> ==========================================
-
-request sessionid: None
-request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
-response sessionid: None
-response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
-
-========================================== <WSGIRequest: GET '/analyse/'> ==========================================
-
-request sessionid: None
-request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
-response sessionid: None
-response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
-
-========================================== <WSGIRequest: GET '/analyse/'> ==========================================
-
-request sessionid: None
-request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
-response sessionid: None
-response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
-
-========================================== <WSGIRequest: GET '/analyse/'> ==========================================
-
-request sessionid: None
-request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
-response sessionid: None
-response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
-
-========================================== <WSGIRequest: GET '/analyse/'> ==========================================
-
-request sessionid: None
-request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
-response sessionid: None
-response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
-
-========================================== <WSGIRequest: GET '/analyse/'> ==========================================
-
-request sessionid: None
-request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
-response sessionid: None
-response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
-
-========================================== <WSGIRequest: GET '/analyse/'> ==========================================
-
-request sessionid: None
-request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
-response sessionid: None
-response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
-
-========================================== <WSGIRequest: GET '/analyse/'> ==========================================
-
-request sessionid: None
-request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
-response sessionid: None
-response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
-
-========================================== <WSGIRequest: GET '/analyse/'> ==========================================
-
-request sessionid: None
-request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
-response sessionid: None
-response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
-
-========================================== <WSGIRequest: GET '/analyse/'> ==========================================
-
-request sessionid: None
-request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
-response sessionid: None
-response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
-
-========================================== <WSGIRequest: GET '/analyse/'> ==========================================
-
-request sessionid: None
-request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
-response sessionid: None
-response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
-
-========================================== <WSGIRequest: GET '/analyse/'> ==========================================
-
-request sessionid: None
-request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
-response sessionid: None
-response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
-
-========================================== <WSGIRequest: POST '/analyse/'> ==========================================
-
-request sessionid: None
-request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
-=======
 [
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 116,
+    "fields": {
+        "name": null,
+        "reference": "GOOGLE *Perry St S",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 115,
+    "fields": {
+        "name": null,
+        "reference": "Transferwise",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 114,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0064719961",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 113,
+    "fields": {
+        "name": null,
+        "reference": "CASH 0074142692",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 112,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0078942616",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 111,
+    "fields": {
+        "name": null,
+        "reference": "PRET A MANGER",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 110,
+    "fields": {
+        "name": null,
+        "reference": "OZZ RESTAURANT",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 109,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0088379486",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 108,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0088379487",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 107,
+    "fields": {
+        "name": null,
+        "reference": "LE PAIN QUOTIDIEN",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 106,
+    "fields": {
+        "name": null,
+        "reference": "IZ *UNDERBELLY LIM",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 105,
+    "fields": {
+        "name": null,
+        "reference": "UNIQLO (EUROPE) LT",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 104,
+    "fields": {
+        "name": null,
+        "reference": "THE LAUGHING STOCK",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 103,
+    "fields": {
+        "name": null,
+        "reference": "GOVINDASPUREVEGETA",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 102,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0093173205",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 101,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0093173206",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 100,
+    "fields": {
+        "name": null,
+        "reference": "25 DEVONSHIRE PLAC",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 99,
+    "fields": {
+        "name": null,
+        "reference": "PAYHANDYCOM SEP11",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 98,
+    "fields": {
+        "name": null,
+        "reference": "GAY",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 97,
+    "fields": {
+        "name": null,
+        "reference": "SUNRISE  &  COMPANY",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 96,
+    "fields": {
+        "name": null,
+        "reference": "VAPIANO LTD",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 95,
+    "fields": {
+        "name": null,
+        "reference": "BENITO'S HAT",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 94,
+    "fields": {
+        "name": null,
+        "reference": "PAYHANDYCOM SEP12T",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 93,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0016575298",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 92,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0016575299",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 91,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0016575300",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 90,
+    "fields": {
+        "name": null,
+        "reference": "CASH BARCLAY SEP18",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 89,
+    "fields": {
+        "name": null,
+        "reference": "SELFRIDGES LONDON",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 88,
+    "fields": {
+        "name": null,
+        "reference": "SAINSBURYS S/MKTS",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 87,
+    "fields": {
+        "name": null,
+        "reference": "THE TEMPERANCE",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 86,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0040108002",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 85,
+    "fields": {
+        "name": null,
+        "reference": "THE FRUIT GARDEN",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 84,
+    "fields": {
+        "name": null,
+        "reference": "M & S SIMPLY FOOD -",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 83,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0053712608",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 82,
+    "fields": {
+        "name": null,
+        "reference": "DENPLAN CLAIM",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 81,
+    "fields": {
+        "name": null,
+        "reference": "OVERDRAFT INTEREST",
+        "category": null
+    }
+},
 {
     "model": "monosaur.fixturecompany",
     "pk": 80,
@@ -852,4 +1044,3 @@ request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
     }
 }
 ]
->>>>>>> origin/master

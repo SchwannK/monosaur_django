@@ -4,7 +4,7 @@ from dateutil.relativedelta import relativedelta
 import collections
 
 
-def get_chart(categories, transactions):
+def get_barchart_data(categories, transactions):
     category_totals = {}  # Initialise dictionary which will store totals for each category
     overall_total = 0
 
@@ -36,6 +36,7 @@ def get_chart(categories, transactions):
     chartjs_data["chart_labels"] = chart_labels
     chartjs_data["chart_values"] = chart_values
     chartjs_data["colours"] = CHART_JS_COLORS
+    chartjs_data["month"] = create_date_array(transactions)[0]
 
     return chartjs_data
 
@@ -64,17 +65,23 @@ def create_date_array(transactions):
     date_min = transactions.aggregate(Min('date'))['date__min']
 
     date_array = []
-    current = date_min
 
-    while current < date_max + relativedelta(months=1):
-        date_array.append(current.strftime('%b %y'))
-        current += relativedelta(months=1)
+    # If all data is in the same month, then add just that month to array
+    if date_max.strftime('%b %y') == date_min.strftime('%b %y'):
+        date_array.append(date_max.strftime('%b %y'))
+
+    # Else add months from date_min to date_max inclusive into array
+    else:
+        current = date_min
+        while current < date_max + relativedelta(months=1):
+            date_array.append(current.strftime('%b %y'))
+            current += relativedelta(months=1)
 
     return date_array
 
 
-def get_chart_new(categories, transactions):
-    total_spend = {}    # Initialise top level dictionary storing totals by month by category
+def get_linechart_data(categories, transactions):
+    total_spend = collections.OrderedDict()    # Initialise top level dictionary storing totals by month by category
 
     largest_categories = get_largest_categories(categories, transactions)
     largest_categories.append(DEFAULT_TRANSACTION_CATEGORY)
