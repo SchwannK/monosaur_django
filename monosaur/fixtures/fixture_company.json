@@ -1,0 +1,29 @@
+==== error parsing with OfxHelper
+response sessionid: None
+response mysessionid: Set-Cookie: mysessionid=my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
+
+========================================== <WSGIRequest: GET '/analyse/'> ==========================================
+
+request sessionid: None
+request mysessionid: my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
+response sessionid: None
+response mysessionid: Set-Cookie: mysessionid=my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
+
+========================================== <WSGIRequest: GET '/'> ==========================================
+
+request sessionid: None
+request mysessionid: my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
+response sessionid: None
+response mysessionid: Set-Cookie: mysessionid=my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
+
+========================================== <WSGIRequest: GET '/analyse/'> ==========================================
+
+request sessionid: None
+request mysessionid: my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
+response sessionid: None
+response mysessionid: Set-Cookie: mysessionid=my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
+
+========================================== <WSGIRequest: POST '/analyse/'> ==========================================
+
+request sessionid: None
+request mysessionid: my-ckid8bk1yncr4oonlvcamtp8yquhg8kp

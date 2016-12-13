@@ -66,7 +66,7 @@ def create_date_array(transactions):
     date_array = []
     current = date_min
 
-    while current < date_max:
+    while current < date_max + relativedelta(months=1):
         date_array.append(current.strftime('%b %y'))
         current += relativedelta(months=1)
 
@@ -85,6 +85,10 @@ def get_chart_new(categories, transactions):
         total_spend[category] = collections.OrderedDict()      # Initialise dictionaries for categories
         for date in date_array:
             total_spend[category][date] = 0     # Initialise all possible values of category-date to 0
+
+    for cat in total_spend:
+        for month in total_spend[cat]:
+            print(cat, month, total_spend[cat][month])
 
     for transaction in transactions:
         if transaction.amount < 0:
