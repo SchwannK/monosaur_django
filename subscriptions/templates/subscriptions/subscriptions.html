@@ -1,18 +1,23 @@
-{% extends "monosaur/base.html" %} 
+{% extends "monosaur/base.html" %}
 
-{% block content %} 
+{% block content %}
 
 {% for subscription in subscriptions %}
-<div class="col-md-3 subscription-listing">
-	<h2>
-		<a href="{{ subscription.subscription_url }}" target="_blank">{{ subscription.name }}</a>
-	</h2>
-	<b>{{ subscription.company }}</b>
-	<p>{{ subscription.description }}</p>
-	<p>
-		<b><i>&pound;{{ subscription.monthly_price|floatformat:2 }} per month</i></b>
-	</p>
-</div>
-{% endfor %} 
+		<div class="col-md-4">
+			<div class="card">
+				<div class="card-block">
+			    <h4 class="card-title"><a class="plain" href="{{ subscription.subscription_url }}" target="_blank">{{ subscription.name }}</a></h4>
+			    <h6 class="card-subtitle text-muted">{{ subscription.company }}</h6>
+			  </div>
+				{% if }
+			  <a class="plain" href="{{ subscription.subscription_url }}" target="_blank"><div class="text-xs-center"><img src="https://logo.clearbit.com/{{ subscription.subscription_url }}" alt="Card image"></div></a>
+				<div class="card-block">
+					<h3 class="card-title"></a></h3>
+				  <p class="card-text">{{ subscription.description }}</p>
+				  <a href="{{ subscription.subscription_url }}" target="_blank" class="btn btn-primary">Find out more</a>
+				</div>
+			</div>
+		</div>
+{% endfor %}
 
 {% endblock %}

@@ -96,9 +96,9 @@ def get_linechart_data(categories, transactions):
         for date in date_array:
             total_spend[category][date] = 0     # Initialise all possible values of category-date to 0
 
-    for cat in total_spend:
-        for month in total_spend[cat]:
-            print(cat, month, total_spend[cat][month])
+    #for cat in total_spend:
+    #    for month in total_spend[cat]:
+    #        print(cat, month, total_spend[cat][month])
 
     for transaction in transactions:
         if transaction.amount < 0:
