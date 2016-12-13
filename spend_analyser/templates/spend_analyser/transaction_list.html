@@ -1,15 +1,9 @@
-{% extends "monosaur/base.html" %} {% block content %}
+{% extends "monosaur/base.html" %} 
+
+{% block content %}
 <div class="col-md-12">
 	</p>
-	{% if user.is_authenticated %}
-	<div class="well">
-		<p>
-			Welcome {{ user.username }} 
-			<a href="/analyse/cleanup" class="btn btn-success custom-width">Cleanup DB</a> 
-			<a href="/analyse/clear" class="btn btn-success custom-width">Clear	DB</a>
-		</p>
-	</div>
-	{% endif %}
+	{% include "monosaur/admin_section.html" %}  
 
 	<div class="well">
 		<h5>Upload your transaction history so we can show your spending habits and subscriptions</h5>

@@ -1,0 +1,9 @@
+{% if user.is_authenticated %}
+<div class="well">
+	<p>Welcome {{ user.username }} </p>
+	<p>
+		<a href="/analyse/cleanup" class="btn btn-default custom-width">Cleanup DB</a>
+		<a href="/analyse/clear" class="btn btn-danger custom-width">Clear DB</a>
+	</p>
+</div>
+{% endif %}
