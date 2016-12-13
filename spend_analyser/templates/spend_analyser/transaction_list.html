@@ -26,6 +26,7 @@
 		</div>
 		{% endif %}
 
+
 		<form action="/analyse/" method="post" enctype="multipart/form-data">
 			{% csrf_token %}
 			<div class="row">
@@ -41,6 +42,12 @@
 		</form>
 	</div>
 
+  {% for transaction in transactions %}
+  {% empty %}
+  <div class="alert alert-warning">
+    <strong>Data-less Donkey!</strong> You have no transaction data at the moment. Fancy uploading some above?
+  </div>
+  {% endfor %}
 
 	<hr>
 	<a data-toggle="collapse" data-target="#chart">
@@ -166,13 +173,8 @@
 				<td>{{ transaction.subscription }}</td>
 				<td>{{ transaction.amount|floatformat:2 }}</td>
 			</tr>
+      {% endfor %}
 
-      {% empty %}
-      <div class="alert alert-warning">
-  			<strong>Data-less Donkey!</strong> You have no transaction data at the moment. Fancy uploading some above?
-  		</div>
-
-			{% endfor %}
 		</table>
 	</div>
 </div>

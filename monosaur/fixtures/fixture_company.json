@@ -1,29 +1,130 @@
 ==== error parsing with OfxHelper
 response sessionid: None
+response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
+
+========================================== <WSGIRequest: POST '/analyse/'> ==========================================
+
+request sessionid: None
+request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
+sessionid: None
 response mysessionid: Set-Cookie: mysessionid=my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
 
 ========================================== <WSGIRequest: GET '/analyse/'> ==========================================
 
 request sessionid: None
 request mysessionid: my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
+-544.6799999999996
 response sessionid: None
 response mysessionid: Set-Cookie: mysessionid=my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
 
 ========================================== <WSGIRequest: GET '/'> ==========================================
 
+Generating my session id: my-or39vz4nyiiww49x13g2famyexpugd9i
+request sessionid: None
+request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
+response sessionid: None
+response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
+
+========================================== <WSGIRequest: GET '/analyse/'> ==========================================
+
+request sessionid: None
+request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
+response sessionid: None
+response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
+
+========================================== <WSGIRequest: GET '/analyse/'> ==========================================
+
 request sessionid: None
 request mysessionid: my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
+-544.6799999999996
 response sessionid: None
 response mysessionid: Set-Cookie: mysessionid=my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
 
 ========================================== <WSGIRequest: GET '/analyse/'> ==========================================
 
 request sessionid: None
-request mysessionid: my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
+request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
 response sessionid: None
-response mysessionid: Set-Cookie: mysessionid=my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
+response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
+
+========================================== <WSGIRequest: GET '/analyse/'> ==========================================
+
+request sessionid: None
+request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
+response sessionid: None
+response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
+
+========================================== <WSGIRequest: GET '/analyse/'> ==========================================
+
+request sessionid: None
+request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
+response sessionid: None
+response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
+
+========================================== <WSGIRequest: GET '/analyse/'> ==========================================
+
+request sessionid: None
+request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
+response sessionid: None
+response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
+
+========================================== <WSGIRequest: GET '/analyse/'> ==========================================
+
+request sessionid: None
+request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
+response sessionid: None
+response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
+
+========================================== <WSGIRequest: GET '/analyse/'> ==========================================
+
+request sessionid: None
+request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
+response sessionid: None
+response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
+
+========================================== <WSGIRequest: GET '/analyse/'> ==========================================
+
+request sessionid: None
+request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
+response sessionid: None
+response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
+
+========================================== <WSGIRequest: GET '/analyse/'> ==========================================
+
+request sessionid: None
+request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
+response sessionid: None
+response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
+
+========================================== <WSGIRequest: GET '/analyse/'> ==========================================
+
+request sessionid: None
+request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
+response sessionid: None
+response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
+
+========================================== <WSGIRequest: GET '/analyse/'> ==========================================
+
+request sessionid: None
+request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
+response sessionid: None
+response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
+
+========================================== <WSGIRequest: GET '/analyse/'> ==========================================
+
+request sessionid: None
+request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
+response sessionid: None
+response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
+
+========================================== <WSGIRequest: GET '/analyse/'> ==========================================
+
+request sessionid: None
+request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
+response sessionid: None
+response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
 
 ========================================== <WSGIRequest: POST '/analyse/'> ==========================================
 
 request sessionid: None
-request mysessionid: my-ckid8bk1yncr4oonlvcamtp8yquhg8kp
+request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
