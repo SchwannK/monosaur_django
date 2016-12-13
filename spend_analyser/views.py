@@ -4,7 +4,7 @@ import traceback
 from django.shortcuts import render, redirect
 
 from monosaur.cookie import get_session
-from monosaur.models import Category
+from monosaur.models import Category, FixtureCompany
 from spend_analyser.transactions import transaction_handler
 
 from .chart_utils import *
@@ -26,7 +26,7 @@ def spend_analyser(request):
 
         for file in request.FILES.getlist('file'):
             read_count = 0
-            parsers = [QifHelper(), OfxHelper()] # add new parsers here
+            parsers = [OfxHelper(), QifHelper()] # add new parsers here
             transactions = []
 
             for parser in parsers:
@@ -35,9 +35,12 @@ def spend_analyser(request):
 
                     if transactions and len(transactions) > 0:
                         read_count = len(transactions)
+                        
+                    FixtureCompany.dump()
                 except Exception as e:
                     print("==== error parsing with " + str(parser))
 #                     traceback.print_exc()
+#                     raise e
                 if read_count > 0:
                     break
 
@@ -80,4 +83,8 @@ def spend_analyser(request):
 
 def database_cleanup(request):
     transaction_handler.delete_old_entries()
+    return redirect("/analyse")
+
+def database_clear(request):
+    transaction_handler.delete_all_entries()
     return redirect("/analyse")

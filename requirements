@@ -6,3 +6,4 @@ Django
 lxml
 ofxparse
 python-dateutil
+-e git://github.com/gaborbiro/django-fixture-magic#egg=fixture-magic

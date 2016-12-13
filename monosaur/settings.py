@@ -45,6 +45,7 @@ PROJECT_APPS = [
     'subscriptions',
     'spend_analyser',
     'monosaur',
+    'fixture_magic',
 ]
 
 INSTALLED_APPS = PREREQ_APPS + PROJECT_APPS

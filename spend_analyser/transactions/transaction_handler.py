@@ -1,9 +1,8 @@
 from datetime import datetime, timedelta
-import traceback
 
 from django.db.utils import IntegrityError
 
-from monosaur.models import Category, Company
+from monosaur.models import Category, Company, FixtureCompany
 from spend_analyser.models import Transaction
 from subscriptions.models import Subscription
 
@@ -13,9 +12,13 @@ from .constants import DEFAULT_TRANSACTION_CATEGORY
 def get_category(payee):
     # Not the best solution as it's specific to SQLite. And the point of querysets is to be abstracted from the concrete db implementation. But it's ok for now
     companies = Company.objects.raw("SELECT * FROM monosaur_company where %s LIKE '%%' || reference || '%%'", [payee])[:1]
-    if companies:
+    if companies and companies[0].category:
         return companies[0].category
     else:
+        try:
+            FixtureCompany(reference=payee).save()
+        except:
+            pass
         return Category.objects.get(name=DEFAULT_TRANSACTION_CATEGORY)
 
 def get_subscription(payee):
@@ -42,7 +45,15 @@ def save(transactions):
     return row_count
                 
 def delete_old_entries():
-    delete_count, breakdown = Transaction.objects.filter(session__last_read__lt=(datetime.now() - timedelta(days=-1))).delete()
+    delete_count = delete_entries(datetime.now() - timedelta(days=1))
     print("Clearing transactions older than 1 day: " + str(delete_count))
     return delete_count
-    
+
+def delete_all_entries():
+    delete_count = delete_entries(datetime.now())
+    print("Clearing transactions: " + str(delete_count))
+    return delete_count
+
+def delete_entries(older_than):
+    delete_count, breakdown = Transaction.objects.filter(session__last_read__lt=older_than).delete()
+    return delete_count

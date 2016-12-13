@@ -15,7 +15,7 @@ class Transaction(models.Model):
     name = models.CharField(max_length=100)
     amount = models.FloatField()
     date = models.DateField()
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category, default=0)
     subscription = models.ForeignKey(
         Subscription, null=True, blank=True
     )
