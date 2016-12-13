@@ -7,3 +7,12 @@ div.subscription-listing {
 .tab {
 	margin-left: 40px;
 }
+
+h1.title {
+	font-size: 72px;
+	font-family: 'Lobster';
+}
+
+a.plain:hover {
+	text-decoration: none;
+}
