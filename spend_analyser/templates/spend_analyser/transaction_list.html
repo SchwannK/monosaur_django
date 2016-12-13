@@ -1,4 +1,4 @@
-{% extends "monosaur/base.html" %}
+{% extends "monosaur/base.html" %} 
 
 {% block content %}
 <div class="col-md-12">
@@ -6,7 +6,8 @@
 	{% include "spend_analyser/admin_section.html" %}
 
 	<div class="well">
-		<h5>Upload your transaction history so we can show your spending habits and subscriptions</h5>
+		<h5>Upload your transaction history so we can show your spending
+			habits and subscriptions</h5>
 
 		{% if good_files_message %}
 		<div class="alert alert-success alert-dismissable">
@@ -15,9 +16,7 @@
 			</button>
 			<strong>Success!</strong> {{ good_files_message|safe }}
 		</div>
-		{% endif %}
-
-		{% if bad_files_message %}
+		{% endif %} {% if bad_files_message %}
 		<div class="alert alert-danger alert-dismissable">
 			<button class="close" data-dismiss="alert" aria-label="close">
 				<span aria-hidden="true">&times;</span>
@@ -31,7 +30,8 @@
 			{% csrf_token %}
 			<div class="row">
 				<div class="form-group col-md-12">
-					<input type="file" name="file" multiple="multiple" class="form-control input-sm">
+					<input type="file" name="file" multiple="multiple"
+						class="form-control input-sm">
 				</div>
 			</div>
 			<div class="row">
@@ -42,84 +42,81 @@
 		</form>
 	</div>
 
-  {% for transaction in transactions %}
-  {% empty %}
-  <div class="alert alert-warning">
-    <strong>Data-less Donkey!</strong> You have no transaction data at the moment. Fancy uploading some above?
-  </div>
-  {% endfor %}
-
+	{% if chartjs_bardata or chartjs_linedata %}
 	<hr>
 	<a data-toggle="collapse" data-target="#chart">
 		<h3>Personal finance analytics <span class="glyphicon glyphicon-collapse-down" /></h3>
 	</a>
 
 	<div id="chart" class="collapse in">
-    {% if chartjs_bardata %}
+		{% if chartjs_bardata %}
 		<center><h4>Your major spend categories in {{ chartjs_bardata.month }}</h4></center>
-		<canvas id="analytics_barchart"></canvas>
+		<canvas id="analytics_barchart"/>
 		<script>
-      var ctx = document.getElementById("analytics_barchart");
-      var myChart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-              labels: {{ chartjs_bardata.chart_labels|safe }},
-              datasets: [{
-                  label: 'Spend (£)',
-                  data: {{ chartjs_bardata.chart_values|safe }},
-                  backgroundColor: [
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(54, 162, 235, 0.2)',
-                      'rgba(255, 206, 86, 0.2)',
-                      'rgba(75, 192, 192, 0.2)',
-                      'rgba(153, 102, 255, 0.2)',
-                  ],
-                  borderColor: {{ chartjs_bardata.colours|safe }},
-                  borderWidth: 1
-              }]
-          },
-          options: {
-              scales: {
-                  yAxes: [{
-                      ticks: {
-                          beginAtZero:true
-                      }
-                  }]
-              }
-          }
-      });
-    </script>
-    {% endif %}
-
+      		var ctx = document.getElementById("analytics_barchart");
+      		var myChart = new Chart(ctx, {
+          		type: 'bar',
+          		data: {
+              		labels: {{ chartjs_bardata.chart_labels|safe }},
+              		datasets: [{
+                  		label: 'Spend (£)',
+                  		data: {{ chartjs_bardata.chart_values|safe }},
+                  		backgroundColor: [
+                      		'rgba(255, 99, 132, 0.2)',
+                      		'rgba(54, 162, 235, 0.2)',
+                      		'rgba(255, 206, 86, 0.2)',
+                      		'rgba(75, 192, 192, 0.2)',
+                      		'rgba(153, 102, 255, 0.2)',
+                  		],
+                  		borderColor: {{ chartjs_bardata.colours|safe }},
+                  		borderWidth: 1
+              		}]
+          		},
+          		options: {
+             		scales: {
+                  		yAxes: [{
+                      		ticks: {
+                          		beginAtZero:true
+                      		}
+                  		}]
+              		}
+          		}
+      		});
+    	</script>
+		{% endif %} 
+		
 		{% if chartjs_linedata %}
 		<center><h4>Your spend over time</h4></center>
 		<canvas id="analytics_linechart"></canvas>
 		<script>
-      var ctx = document.getElementById('analytics_linechart');
-        var myChart = new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: {{ chartjs_linedata.months|safe }},
-            datasets: [
-
-              {% for category, values in chartjs_linedata.data.items %}
-                {
-                  label: '{{ category|safe }}',
-                  data: {{ values.0 }},
-                  pointBackgroundColor: '{{ values.1 }}',
-                  borderColor: '{{ values.1 }}',
-                  backgroundColor: 'rgba(255,255,255,0)',
-                },
-
-              {% endfor %}
-            ]
-          }
-        });
-    </script>
-    {% endif %}
+      		var ctx = document.getElementById('analytics_linechart');
+        	var myChart = new Chart(ctx, {
+          		type: 'line',
+          		data: {
+            		labels: {{ chartjs_linedata.months|safe }},
+            		datasets: [
+              			{% for category, values in chartjs_linedata.data.items %}
+                			{
+                  				label: '{{ category|safe }}',
+                  				data: {{ values.0 }},
+                  				pointBackgroundColor: '{{ values.1 }}',
+                  				borderColor: '{{ values.1 }}',
+                  				backgroundColor: 'rgba(255,255,255,0)',
+                			},
+              			{% endfor %}
+            		]
+          		}
+        	});
+    	</script>
+		{% endif %}
 	</div>
-
-
+	{% else %}
+	<div class="alert alert-warning">
+		<strong>Data-less Donkey!</strong> You have no transaction data at the
+		moment. Fancy uploading some above?
+	</div>
+	{% endif%}
+	
 	{% if subscriptions %}
 	<hr>
 	<a data-toggle="collapse" data-target="#subscriptions">
@@ -147,12 +144,15 @@
 		</tr>
 		{% endfor %}
 	</table>
-	{% endif %}
+	{% endif %} 
 	
 	{% if transactions %}
 	<hr>
 	<a data-toggle="collapse" data-target="#transactions">
-		<h3>Your Transaction History <span class="glyphicon glyphicon-collapse-down" /></h3>
+		<h3>
+			Your Transaction History <span
+				class="glyphicon glyphicon-collapse-down" />
+		</h3>
 	</a>
 
 	<div id="transactions" class="collapse in">
@@ -175,8 +175,7 @@
 				<td>{{ transaction.subscription }}</td>
 				<td>{{ transaction.amount|floatformat:2 }}</td>
 			</tr>
-      {% endfor %}
-
+			{% endfor %}
 		</table>
 	</div>
 	{% endif %}

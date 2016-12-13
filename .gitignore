@@ -11,3 +11,4 @@ db.sqlite3
 /media
 .DR_Store
 fixtures/fixture_company.json
+/monosaur/fixtures/fixture_company.json
