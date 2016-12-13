@@ -30,7 +30,11 @@
 				{% for company in companies %}
 				<tr>
 					<td>{{ company.pk }}</td>
-					<td>{{ company.reference }}</td>
+					<td>
+						<input type="text" class="form-control"
+							name="{{ reference_prefix }}{{ company.pk }}"
+							value="{{ company.reference }}">
+					</td>
 					<td>
 						<input type="text" class="form-control"
 							name="{{ name_prefix }}{{ company.pk }}"
@@ -47,6 +51,11 @@
 							>{{ category.name }}</option> 
 							{% endfor %}
 						</select>
+					</td>
+					<td>
+						<a href="{% url 'delete_fixture' pk=company.pk %}" class="close">
+							<span aria-hidden="true">&times;</span>
+						</a>
 					</td>
 				</tr>
 				{% endfor %}

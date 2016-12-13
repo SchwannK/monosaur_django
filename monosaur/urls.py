@@ -24,12 +24,13 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('subscriptions.urls')),
     url(r'^analyse/', include('spend_analyser.urls')),
-    url(r'^admin/cleanup/', views.db_cleanup, name='spend_analyser'),
-    url(r'^admin/clear/', views.db_clear, name='spend_analyser'),
-    url(r'^admin/save_companies/', views.save_companies, name='spend_analyser'),
-    url(r'^admin/load_companies/', views.load_companies, name='spend_analyser'),
-    url(r'^admin/categorise/', views.categorise, name='spend_analyser'),
-]
+    url(r'^admin/cleanup/', views.db_cleanup),
+    url(r'^admin/clear/', views.db_clear),
+    url(r'^admin/save_companies/', views.save_companies),
+    url(r'^admin/load_companies/', views.load_companies),
+    url(r'^admin/categorise/', views.categorise),
+    url(r'^delete_fixture/(?P<pk>\d+)/$', views.delete_fixture, name='delete_fixture'),
 
+]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -27,8 +27,9 @@ def load_companies(request):
     return redirect("/analyse")
 
 
-PREFIX_NAME = "name-"
-PREFIX_CATEGORY = "category-"
+PREFIX_NAME = "nam-"
+PREFIX_CATEGORY = "cat-"
+PREFIX_REFERENCE = "ref-"
 
 
 def categorise(request):
@@ -41,8 +42,14 @@ def categorise(request):
     content['categories'] = Category.objects.all()
     content['name_prefix'] = PREFIX_NAME
     content['category_prefix'] = PREFIX_CATEGORY
+    content['reference_prefix'] = PREFIX_REFERENCE
     
     return render(request, 'monosaur/categorise.html', content)
+
+def delete_fixture(request, pk):
+    FixtureCompany.objects.filter(pk = pk).delete()
+    FixtureCompany.save_to_fixture()
+    return redirect("/admin/categorise")
 
 def save_completed_companies(form_data):
     for key in form_data.keys():
@@ -56,8 +63,16 @@ def save_completed_companies(form_data):
             name = form_data[key]
             if not name:
                 name = None
-
+            else:
+                name = name.strip()
             FixtureCompany.objects.filter(pk=key[len(PREFIX_NAME):]).update(name = name)
+        elif key.startswith(PREFIX_REFERENCE):
+            reference = form_data[key]
+            if not reference:
+                reference = None
+            else:
+                reference = reference.strip()
+            FixtureCompany.objects.filter(pk=key[len(PREFIX_REFERENCE):]).update(reference = reference)
             
     for fixture_company in FixtureCompany.objects.exclude(Q(name=u'') | Q(name=None) | Q(category=None)):
         Company(name = fixture_company.name, reference = fixture_company.reference, category = fixture_company.category).save()

@@ -38,7 +38,7 @@ class FixtureCompany(models.Model):
     category = models.ForeignKey(Category, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.reference
     
     @staticmethod
     def save_to_fixture():
