@@ -1,7 +1,5 @@
 # Unix/Linux only!
 
-pip install -r requirements
-
 # delete database and migration files
 rm db.sqlite3
 rm -rf monosaur/migrations/*

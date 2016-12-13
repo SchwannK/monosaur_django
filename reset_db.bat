@@ -1,7 +1,5 @@
 REM Windows only!
 
-pip install -r requirements
-
 REM delete database and migration files
 del db.sqlite3
 del monosaur\migrations\*

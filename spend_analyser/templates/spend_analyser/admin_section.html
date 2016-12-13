@@ -1,10 +1,9 @@
 {% if user.is_authenticated and user.is_superuser %}
 <div class="well">
 	<p>Welcome <a href="/admin">{{ user.username }}</a></p>
-	<p>
-		<a href="/analyse/admin/cleanup" class="btn btn-default custom-width">Cleanup DB</a>
-		<a href="/analyse/admin/clear" class="btn btn-danger custom-width">Clear DB</a>
-		<a href="/analyse/admin/test" class="btn btn-primary custom-width">Test</a>
-	</p>
+	
+	{% for admin_method in admin_methods %}
+		<a href="{{ admin_method.url }}" class="btn btn-primary custom-width">{{ admin_method.name }}</a>
+	{% endfor %}
 </div>
 {% endif %}

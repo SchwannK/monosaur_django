@@ -4,14 +4,14 @@ from django.shortcuts import redirect
 from spend_analyser.transactions import transaction_handler
 
 
-def database_cleanup(request):
+def db_cleanup(request):
     transaction_handler.delete_old_entries()
     return redirect("/analyse")
 
-def database_clear(request):
+def db_clear(request):
     transaction_handler.delete_all_entries()
     return redirect("/analyse")
 
-def database_test(request):
+def test(request):
     
     return redirect("/analyse")
