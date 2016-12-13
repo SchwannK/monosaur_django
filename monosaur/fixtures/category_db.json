@@ -1,128 +1,128 @@
 [
-  {
-    "model": "monosaur.Category",
-    "pk": 0,
-    "fields": {
-      "name": "Other"
-    }
-  },
-  {
-    "model": "monosaur.Category",
-    "pk": 1,
-    "fields": {
+ {
+   "model": "monosaur.Category",
+   "pk": 0,
+   "fields": {
       "name": "Bank Payments & Transfers"
-    }
-  },
-  {
-    "model": "monosaur.Category",
-    "pk": 2,
-    "fields": {
+   }
+},
+ {
+   "model": "monosaur.Category",
+   "pk": 1,
+   "fields": {
       "name": "Business & Donations"
-    }
-  },
-  {
-    "model": "monosaur.Category",
-    "pk": 3,
-    "fields": {
+   }
+},
+ {
+   "model": "monosaur.Category",
+   "pk": 2,
+   "fields": {
       "name": "Cash Withdrawals"
-    }
-  },
-  {
-    "model": "monosaur.Category",
-    "pk": 4,
-    "fields": {
+   }
+},
+ {
+   "model": "monosaur.Category",
+   "pk": 3,
+   "fields": {
       "name": "Childcare & Education"
-    }
-  },
-  {
-    "model": "monosaur.Category",
-    "pk": 5,
-    "fields": {
+   }
+},
+ {
+   "model": "monosaur.Category",
+   "pk": 4,
+   "fields": {
       "name": "Clothing & Grooming"
-    }
-  },
-  {
-    "model": "monosaur.Category",
-    "pk": 6,
-    "fields": {
+   }
+},
+ {
+   "model": "monosaur.Category",
+   "pk": 5,
+   "fields": {
       "name": "Entertainment & Leisure"
-    }
-  },
-  {
-    "model": "monosaur.Category",
-    "pk": 7,
-    "fields": {
+   }
+},
+ {
+   "model": "monosaur.Category",
+   "pk": 6,
+   "fields": {
       "name": "Food & Drink"
-    }
-  },
-  {
-    "model": "monosaur.Category",
-    "pk": 8,
-    "fields": {
+   }
+},
+ {
+   "model": "monosaur.Category",
+   "pk": 7,
+   "fields": {
       "name": "Healthcare"
-    }
-  },
-  {
-    "model": "monosaur.Category",
-    "pk": 9,
-    "fields": {
+   }
+},
+ {
+   "model": "monosaur.Category",
+   "pk": 8,
+   "fields": {
       "name": "Holiday"
-    }
-  },
-  {
-    "model": "monosaur.Category",
-    "pk": 10,
-    "fields": {
+   }
+},
+ {
+   "model": "monosaur.Category",
+   "pk": 9,
+   "fields": {
       "name": "Home & Garden"
-    }
-  },
-  {
-    "model": "monosaur.Category",
-    "pk": 11,
-    "fields": {
+   }
+},
+ {
+   "model": "monosaur.Category",
+   "pk": 10,
+   "fields": {
       "name": "Household Bills & Utilities"
-    }
-  },
-  {
-    "model": "monosaur.Category",
-    "pk": 12,
-    "fields": {
+   }
+},
+ {
+   "model": "monosaur.Category",
+   "pk": 11,
+   "fields": {
       "name": "Income"
-    }
-  },
-  {
-    "model": "monosaur.Category",
-    "pk": 13,
-    "fields": {
+   }
+},
+ {
+   "model": "monosaur.Category",
+   "pk": 12,
+   "fields": {
       "name": "Loans & Credit Cards"
-    }
-  },
-  {
-    "model": "monosaur.Category",
-    "pk": 14,
-    "fields": {
+   }
+},
+ {
+   "model": "monosaur.Category",
+   "pk": 13,
+   "fields": {
       "name": "Motoring Expenses"
-    }
-  },
-  {
-    "model": "monosaur.Category",
-    "pk": 15,
-    "fields": {
+   }
+},
+ {
+   "model": "monosaur.Category",
+   "pk": 14,
+   "fields": {
       "name": "Public Transport"
-    }
-  },
-  {
-    "model": "monosaur.Category",
-    "pk": 16,
-    "fields": {
+   }
+},
+ {
+   "model": "monosaur.Category",
+   "pk": 15,
+   "fields": {
       "name": "Retail (Other)"
-    }
-  },
-  {
-    "model": "monosaur.Category",
-    "pk": 17,
-    "fields": {
+   }
+},
+ {
+   "model": "monosaur.Category",
+   "pk": 16,
+   "fields": {
       "name": "Savings & Financial"
-    }
-  }
+   }
+},
+ {
+   "model": "monosaur.Category",
+   "pk": 17,
+   "fields": {
+      "name": "Other"
+   }
+}
 ]
