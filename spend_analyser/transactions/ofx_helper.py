@@ -1,6 +1,6 @@
 from ofxparse import OfxParser
 
-from monosaur.string_utils import empty
+from monosaur.utils.string_utils import empty
 from spend_analyser.models import Transaction
 from spend_analyser.transactions import transaction_handler
 

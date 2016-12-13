@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('subscriptions.urls')),
     url(r'^analyse/', include('spend_analyser.urls')),
+    url(r'^analyse/admin/', include('spend_analyser.urls_admin')),
 ]
 
 if settings.DEBUG:

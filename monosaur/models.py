@@ -1,6 +1,6 @@
 from django.db import models
 
-from monosaur import fixture_utils
+from monosaur.utils import fixture_utils
 
 
 class Category(models.Model):

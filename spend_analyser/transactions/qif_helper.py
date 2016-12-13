@@ -4,7 +4,7 @@ import sys
 
 from django.core.files.base import ContentFile
 
-from monosaur.string_utils import empty
+from monosaur.utils.string_utils import empty
 from spend_analyser.models import Transaction, Session
 from spend_analyser.transactions import transaction_handler
 

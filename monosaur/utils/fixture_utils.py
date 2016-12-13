@@ -10,3 +10,6 @@ def create_fixture(model, path):
     call_command('dump_object', model, '*')
     sys.stdout = sysout
     f.flush()
+    
+def import_fixture(path):
+    call_command('loaddata', path)
