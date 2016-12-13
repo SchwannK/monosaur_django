@@ -148,6 +148,8 @@
 		{% endfor %}
 	</table>
 	{% endif %}
+	
+	{% if transactions %}
 	<hr>
 	<a data-toggle="collapse" data-target="#transactions">
 		<h3>Your Transaction History <span class="glyphicon glyphicon-collapse-down" /></h3>
@@ -177,5 +179,6 @@
 
 		</table>
 	</div>
+	{% endif %}
 </div>
 {% endblock %}

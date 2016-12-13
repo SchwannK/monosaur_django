@@ -1,3 +1,6 @@
+"""
+    This class provides the formatted data for the pretty charts at /analyse
+"""
 from spend_analyser.transactions.constants import *
 from django.db.models import Max, Min
 from dateutil.relativedelta import relativedelta

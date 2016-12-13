@@ -65,7 +65,7 @@ def handle_files(files, session, result_dict):
                 if transactions and len(transactions) > 0:
                     read_count = len(transactions)
 
-                FixtureCompany.dump()
+                FixtureCompany.save_to_fixture()
             except Exception as e:
                 print("==== error parsing with " + str(parser))
                 traceback.print_exc()

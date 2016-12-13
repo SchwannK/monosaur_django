@@ -10,7 +10,9 @@ class Session(models.Model):
     
     def __str__(self):
         return "Session(" + ", ".join(["session_id=" + self.session_id, "last_read=" + str(self.last_read)]) + ")"
-    
+
+# Table for all the transactions of all the users
+# Currently entries that are older than 1 day will be dumped daily by a schedule task on pythonanywhere
 class Transaction(models.Model):
     name = models.CharField(max_length=100)
     amount = models.FloatField()

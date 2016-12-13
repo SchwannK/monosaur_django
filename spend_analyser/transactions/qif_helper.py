@@ -1,10 +1,16 @@
+"""
+    QIF specific subclass of parser.Parser.
+    Tries to fetch transactions from a QIF file.
+    As a side effect, all payee+memo strings that are not yet in our database 
+    are saved for later categorization on an admin page.
+"""
 from builtins import int
 import datetime
 import sys
 
 from django.core.files.base import ContentFile
 
-from monosaur.utils.string_utils import empty
+from monosaur.utils import string_utils
 from spend_analyser.models import Transaction, Session
 from spend_analyser.transactions import transaction_handler
 
@@ -21,7 +27,7 @@ class QifHelper(Parser):
         for qif_transaction in qif_transactions:
             category = transaction_handler.get_category(qif_transaction.payee)
             subscription = transaction_handler.get_subscription(qif_transaction.payee)
-            name = empty(qif_transaction.payee) + ' ' + empty(qif_transaction.memo)
+            name = string_utils.to_empty(qif_transaction.payee) + ' ' + string_utils.to_empty(qif_transaction.memo)
             transactions.append(Transaction(name = name.strip(),\
                                             amount = qif_transaction.amount, date = qif_transaction.date, category = category, subscription = subscription, session = session))
         return transactions

@@ -1,3 +1,6 @@
+"""
+    Database manipulating/querying methods related to transactions
+"""
 from datetime import datetime, timedelta
 
 from django.db.utils import IntegrityError
@@ -9,6 +12,8 @@ from subscriptions.models import Subscription
 from .constants import DEFAULT_TRANSACTION_CATEGORY
 
 
+# See if the payee string (a.k.a. "reference") can be found in the Categories db and return the entry
+# If it's not found, the payee is marked for later categorization
 def get_category(payee):
     # Not the best solution as it's specific to SQLite. And the point of querysets is to be abstracted from the concrete db implementation. But it's ok for now
     companies = Company.objects.raw("SELECT * FROM monosaur_company where %s LIKE '%%' || reference || '%%'", [payee])[:1]
@@ -21,6 +26,7 @@ def get_category(payee):
             pass
         return Category.objects.get(name=DEFAULT_TRANSACTION_CATEGORY)
 
+# See if the payee string (a.k.a. "reference") can be found in the Subscription db and return the entry
 def get_subscription(payee):
     # Not the best solution as it's specific to SQLite. And the point of querysets is to be abstracted from the concrete db implementation. But it's ok for now
     subscriptions = Subscription.objects.raw("SELECT * FROM subscriptions_subscription where %s LIKE '%%' || reference || '%%'", [payee])[:1]
@@ -28,7 +34,9 @@ def get_subscription(payee):
         return subscriptions[0]
     else:
         return None
-    
+
+# Save an array of Transaction models, on uniqueness constraint violation->continue
+# Returns the number of successfully saved (unique) transactions
 def save(transactions):
     row_count = 0;
     for transaction in transactions:

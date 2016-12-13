@@ -1,3 +1,7 @@
+"""
+    These endpoints are only available for superusers
+    For every entry here a button automatically appears in the admin section of /analyse
+"""
 from django.conf.urls import url
 
 from . import views_admin

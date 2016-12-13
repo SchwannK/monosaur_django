@@ -1,4 +1,8 @@
-from django.core.urlresolvers import get_resolver
+"""
+    Views that will have a button automatically added for them in the
+    admin section of the /analyse page.
+    To add a new button, all you have to do is add a new entry in urls_admin.py
+"""
 from django.shortcuts import redirect
 
 from spend_analyser.transactions import transaction_handler
