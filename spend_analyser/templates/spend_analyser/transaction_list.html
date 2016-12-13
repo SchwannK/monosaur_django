@@ -1,9 +1,9 @@
-{% extends "monosaur/base.html" %} 
+{% extends "monosaur/base.html" %}
 
 {% block content %}
 <div class="col-md-12">
 	</p>
-	{% include "spend_analyser/admin_section.html" %}  
+	{% include "spend_analyser/admin_section.html" %}
 
 	<div class="well">
 		<h5>Upload your transaction history so we can show your spending habits and subscriptions</h5>
@@ -15,8 +15,8 @@
 			</button>
 			<strong>Success!</strong> {{ good_files_message|safe }}
 		</div>
-		{% endif %} 
-		
+		{% endif %}
+
 		{% if bad_files_message %}
 		<div class="alert alert-danger alert-dismissable">
 			<button class="close" data-dismiss="alert" aria-label="close">
@@ -24,7 +24,7 @@
 			</button>
 			<strong>Error!</strong> {{ bad_files_message|safe }}
 		</div>
-		{% endif %} 
+		{% endif %}
 
 		<form action="/analyse/" method="post" enctype="multipart/form-data">
 			{% csrf_token %}
@@ -41,79 +41,78 @@
 		</form>
 	</div>
 
-	{% if chartjs_data %}
+
 	<hr>
 	<a data-toggle="collapse" data-target="#chart">
 		<h3>Personal finance analytics <span class="glyphicon glyphicon-collapse-down" /></h3>
-	</a> 
-	
+	</a>
+
 	<div id="chart" class="collapse in">
+    {% if chartjs_bardata %}
 		<center><h4>Your average monthly spend</h4></center>
 		<canvas id="analytics_barchart"></canvas>
 		<script>
-                var ctx = document.getElementById("analytics_barchart");
-                var myChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: {{ chartjs_data.chart_labels|safe }},
-                        datasets: [{
-                            label: 'Average monthly spend',
-                            data: {{ chartjs_data.chart_values|safe }},
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                            ],
-                            borderColor: {{ chartjs_data.colours|safe }},
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero:true
-                                }
-                            }]
-                        }
-                    }
-                });
-          	</script>
+      var ctx = document.getElementById("analytics_barchart");
+      var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: {{ chartjs_bardata.chart_labels|safe }},
+              datasets: [{
+                  label: 'Average monthly spend',
+                  data: {{ chartjs_bardata.chart_values|safe }},
+                  backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                  ],
+                  borderColor: {{ chartjs_bardata.colours|safe }},
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero:true
+                      }
+                  }]
+              }
+          }
+      });
+    </script>
+    {% endif %}
 
 		{% if chartjs_linedata %}
-		<hr>
-
 		<center><h4>Your spend over time</h4></center>
-
 		<canvas id="analytics_linechart"></canvas>
 		<script>
-          var ctx = document.getElementById('analytics_linechart');
-            var myChart = new Chart(ctx, {
-              type: 'line',
-              data: {
-                labels: {{ chartjs_linedata.months|safe }},
-                datasets: [
+      var ctx = document.getElementById('analytics_linechart');
+        var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: {{ chartjs_linedata.months|safe }},
+            datasets: [
 
-                  {% for category, values in chartjs_linedata.data.items %}
-                    {
-                      label: '{{ category|safe }}',
-                      data: {{ values.0 }},
-                      pointBackgroundColor: '{{ values.1 }}',
-                      borderColor: '{{ values.1 }}',
-                      backgroundColor: 'rgba(255,255,255,0)',
-                    },
+              {% for category, values in chartjs_linedata.data.items %}
+                {
+                  label: '{{ category|safe }}',
+                  data: {{ values.0 }},
+                  pointBackgroundColor: '{{ values.1 }}',
+                  borderColor: '{{ values.1 }}',
+                  backgroundColor: 'rgba(255,255,255,0)',
+                },
 
-                  {% endfor %}
-                ]
-              }
-            });
-        </script>
-		{% endif %}
+              {% endfor %}
+            ]
+          }
+        });
+    </script>
+    {% endif %}
 	</div>
-	{% endif %} 
-	
+
+
 	{% if subscriptions %}
 	<hr>
 	<a data-toggle="collapse" data-target="#subscriptions">
@@ -148,12 +147,6 @@
 	</a>
 
 	<div id="transactions" class="collapse in">
-		{% if chart_values == None %}
-		<div class="alert alert-warning">
-			<strong>Data-less Donkey!</strong> You have no transaction data at the moment. Fancy uploading some above?
-		</div>
-		{% endif %}
-
 		<table class="table">
 			<tr>
 				<th>#</th>
@@ -173,6 +166,12 @@
 				<td>{{ transaction.subscription }}</td>
 				<td>{{ transaction.amount|floatformat:2 }}</td>
 			</tr>
+
+      {% empty %}
+      <div class="alert alert-warning">
+  			<strong>Data-less Donkey!</strong> You have no transaction data at the moment. Fancy uploading some above?
+  		</div>
+
 			{% endfor %}
 		</table>
 	</div>

@@ -57,7 +57,7 @@ def get_largest_categories(categories, transactions):
 
     return largest_categories
 
-
+# Returns array of Month-Year values from transaction values
 def create_date_array(transactions):
 
     date_max = transactions.aggregate(Max('date'))['date__max']

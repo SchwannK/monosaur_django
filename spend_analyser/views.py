@@ -30,13 +30,19 @@ def spend_analyser(request):
         .values('name', 'subscription__name', 'subscription__company__name', \
                 'subscription__company__category__name', 'subscription__description', 'subscription__monthly_price')\
         .distinct()
-        
+
     content['admin_methods'] = get_admin_methods()
+
     # If transactions exist, perform analysis and show chart
     if len(transactions) > 0:
-        content['chartjs_data'] = get_chart(Category.objects.all(), transactions)
-        content['chartjs_linedata'] = get_chart_new(Category.objects.all(), transactions)
-        
+        if len(create_date_array(transactions)) > 1:
+            # Process data for line chart if more than one month of data
+            content['chartjs_linedata'] = get_chart_new(Category.objects.all(), transactions)
+
+        else:
+            # Else process data for bar chart
+            content['chartjs_bardata'] = get_chart(Category.objects.all(), transactions)
+
     return render(request, 'spend_analyser/transaction_list.html', content)
 
 def handle_files(files, session, result_dict):
@@ -58,7 +64,7 @@ def handle_files(files, session, result_dict):
 
                 if transactions and len(transactions) > 0:
                     read_count = len(transactions)
-                        
+
                 FixtureCompany.dump()
             except Exception as e:
                 print("==== error parsing with " + str(parser))
@@ -73,7 +79,7 @@ def handle_files(files, session, result_dict):
             total_read_count += read_count
         else:
             errorFiles.append(str(file))
-        
+
     separator = '<p class="tab">'
     if total_read_count > 0:
         good_files_message = '%d transactions captured from:%s%s%s(%d new)' % (total_read_count, separator, separator.join(successFiles), '<br>', total_save_count)
@@ -83,6 +89,6 @@ def handle_files(files, session, result_dict):
 
     print ("Success: " + good_files_message)
     print ("Error: " + bad_files_message)
-    
+
     result_dict['good_files_message'] = good_files_message
     result_dict['bad_files_message'] = bad_files_message
