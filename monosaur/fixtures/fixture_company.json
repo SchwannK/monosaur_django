@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ==== error parsing with OfxHelper
 response sessionid: None
 response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9i
@@ -128,3 +129,727 @@ response mysessionid: Set-Cookie: mysessionid=my-or39vz4nyiiww49x13g2famyexpugd9
 
 request sessionid: None
 request mysessionid: my-or39vz4nyiiww49x13g2famyexpugd9i
+=======
+[
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 80,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0043778693",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 79,
+    "fields": {
+        "name": null,
+        "reference": "CASH 0043778694",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 78,
+    "fields": {
+        "name": null,
+        "reference": "BTBTRR9048534003",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 77,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0053862791",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 76,
+    "fields": {
+        "name": null,
+        "reference": "XUAN W KHAW",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 75,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0064080158",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 74,
+    "fields": {
+        "name": null,
+        "reference": "EM2T2HCT",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 73,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0084311495",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 72,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0084311499",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 71,
+    "fields": {
+        "name": null,
+        "reference": "CASH 0080036262",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 70,
+    "fields": {
+        "name": null,
+        "reference": "Non-Sterling",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 69,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0074600791",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 68,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0084311496",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 67,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0084311497",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 66,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0084311498",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 65,
+    "fields": {
+        "name": null,
+        "reference": "CANADA WATER CAFE",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 64,
+    "fields": {
+        "name": null,
+        "reference": "EBELING O",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 63,
+    "fields": {
+        "name": null,
+        "reference": "CHAI KI",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 62,
+    "fields": {
+        "name": null,
+        "reference": "SPANISH GALLEON",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 61,
+    "fields": {
+        "name": null,
+        "reference": "CAFFE NERO",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 60,
+    "fields": {
+        "name": null,
+        "reference": "THE ROSE",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 59,
+    "fields": {
+        "name": null,
+        "reference": "CASH NATWEST NOV14",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 58,
+    "fields": {
+        "name": null,
+        "reference": "GOOGLE",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 57,
+    "fields": {
+        "name": null,
+        "reference": "VODAFONE LIMITED",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 56,
+    "fields": {
+        "name": null,
+        "reference": "ROBERT DYAS HOLDNG",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 55,
+    "fields": {
+        "name": null,
+        "reference": "BOOTS,0797",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 54,
+    "fields": {
+        "name": null,
+        "reference": "ARGOS",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 53,
+    "fields": {
+        "name": null,
+        "reference": "MUSKAAN BROW BAR",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 52,
+    "fields": {
+        "name": null,
+        "reference": "PAYHANDYCOM NOV20",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 51,
+    "fields": {
+        "name": null,
+        "reference": "PBL CINEMA TKTS",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 50,
+    "fields": {
+        "name": null,
+        "reference": "BOOTS,1000",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 49,
+    "fields": {
+        "name": null,
+        "reference": "OVALHOUSE LTD T/AS",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 48,
+    "fields": {
+        "name": null,
+        "reference": "WWW.SOHOGYMS.COM",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 47,
+    "fields": {
+        "name": null,
+        "reference": "POD",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 46,
+    "fields": {
+        "name": null,
+        "reference": "SPLASH SOHO",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 45,
+    "fields": {
+        "name": null,
+        "reference": "PAYHANDYCOM NOV20T",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 44,
+    "fields": {
+        "name": null,
+        "reference": "PRINCI",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 43,
+    "fields": {
+        "name": null,
+        "reference": "VODAFONE LTD",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 42,
+    "fields": {
+        "name": null,
+        "reference": "400629 92140527",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 41,
+    "fields": {
+        "name": null,
+        "reference": "MARRIOTT",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 40,
+    "fields": {
+        "name": null,
+        "reference": "MW EAT LTD (FS)",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 39,
+    "fields": {
+        "name": null,
+        "reference": "MARKS&SPENCER PLC",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 38,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0083346168",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 37,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0083346169",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 36,
+    "fields": {
+        "name": null,
+        "reference": "RYANAIR     224000",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 35,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0093974820",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 34,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0093974821",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 33,
+    "fields": {
+        "name": null,
+        "reference": "HAILO NETWORK LTD",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 32,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0099445682",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 31,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0099445683",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 30,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0099445684",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 29,
+    "fields": {
+        "name": null,
+        "reference": "OVALHOUSE T/A SOHO",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 28,
+    "fields": {
+        "name": null,
+        "reference": "FITNESS FIRST CLUB",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 27,
+    "fields": {
+        "name": null,
+        "reference": "BIRO G      *LYA",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 26,
+    "fields": {
+        "name": null,
+        "reference": "BIRO G      *RSB",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 25,
+    "fields": {
+        "name": null,
+        "reference": "WWW.VODAFONE.CO.UK",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 24,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0011103099",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 23,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0011103100",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 22,
+    "fields": {
+        "name": null,
+        "reference": "THE BIG EASY COVEN",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 21,
+    "fields": {
+        "name": null,
+        "reference": "REVOLUT*3220*",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 20,
+    "fields": {
+        "name": null,
+        "reference": "TRANSFERWISE",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 19,
+    "fields": {
+        "name": null,
+        "reference": "PAYHANDYCOM DEC03",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 18,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0017118207",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 17,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0023324964",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 16,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0028234380",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 15,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0028234381",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 14,
+    "fields": {
+        "name": null,
+        "reference": "CUCUMBA",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 13,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0034018070",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 12,
+    "fields": {
+        "name": null,
+        "reference": "PAYPAL PAYMENT",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 11,
+    "fields": {
+        "name": null,
+        "reference": "VANESSA AYIKU",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 10,
+    "fields": {
+        "name": null,
+        "reference": "CASH NATWEST DEC07",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 9,
+    "fields": {
+        "name": null,
+        "reference": "LIQUOR VALUE",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 8,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0039479849",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 7,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0039479850",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 6,
+    "fields": {
+        "name": null,
+        "reference": "MEAT MARKET",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 5,
+    "fields": {
+        "name": null,
+        "reference": "BT GROUP PLC",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 4,
+    "fields": {
+        "name": null,
+        "reference": "DELIVEROOCOUK",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 3,
+    "fields": {
+        "name": null,
+        "reference": "DOZO OLD COMPTON R",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 2,
+    "fields": {
+        "name": null,
+        "reference": "MUJI",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 1,
+    "fields": {
+        "name": null,
+        "reference": "W & G FOYLE LTD",
+        "category": null
+    }
+}
+]
+>>>>>>> origin/master

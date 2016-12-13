@@ -7,11 +7,11 @@ from monosaur.cookie import get_session
 from monosaur.models import Category, FixtureCompany
 from spend_analyser.transactions import transaction_handler
 
-from .utils.chart_utils import *
 from .models import Transaction
 from .transactions.ofx_helper import OfxHelper
 from .transactions.qif_helper import QifHelper
 from .utils.admin_utils import get_admin_methods
+from .utils.chart_utils import *
 
 
 def spend_analyser(request):
@@ -65,7 +65,7 @@ def handle_files(files, session, result_dict):
                 if transactions and len(transactions) > 0:
                     read_count = len(transactions)
 
-                #FixtureCompany.dump()
+                FixtureCompany.dump()
             except Exception as e:
                 print("==== error parsing with " + str(parser))
                 traceback.print_exc()
