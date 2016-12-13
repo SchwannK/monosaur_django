@@ -1,36 +1,47 @@
 {% load staticfiles %}
 
 <html>
-    <head>
-      <title>Monosaur</title>
-	  <meta charset="utf-8">
-      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lobster&amp;subset=latin,latin-ext" type="text/css">
-      <link rel="stylesheet" href="{% static 'css/monosaur.css' %}">
-	  
-	  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
-	  
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	  <script src="{% static 'js/bootstrap.min.js' %}"></script>
-	  
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>	  
-    </head>
+<head>
+<title>Monosaur</title>
+<meta charset="utf-8">
+<link rel="stylesheet"
+	href="//fonts.googleapis.com/css?family=Lobster&amp;subset=latin,latin-ext"
+	type="text/css">
+<link rel="stylesheet" href="{% static 'css/monosaur.css' %}">
 
-    <body>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
 
-      <div class="container">
-        <div class="jumbotron">
-          <h1>Monosaur</h1>
-          <p>We make subscriptions fucking easy to manage!</p>
-        </div>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
 
-        <ul class="nav nav-pills">
-          <li role="presentation" class="{% if navbar == 'subscriptions' %}active{% endif %}"><a href="/">Subscription Directory</a></li>
-          <li role="presentation" class="{% if navbar == 'spend_analyser' %}active{% endif %}"><a href="/analyse">Spend Analyser</a></li>
-        </ul>
-      </div>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+</head>
 
-      {% block content %}
-      {% endblock %}
+<body>
 
-    </body>
+	<div class="container">
+		<div class="jumbotron">
+			<h1>Monosaur</h1>
+			<p>We make subscriptions fucking easy to manage!</p>
+		</div>
+
+		<ul class="nav nav-pills">
+			<li role="presentation"
+				class="{% if navbar == 'subscriptions' %}active{% endif %}"><a
+				href="/">Subscription Directory</a></li>
+			<li role="presentation"
+				class="{% if navbar == 'spend_analyser' %}active{% endif %}"><a
+				href="/analyse">Spend Analyser</a></li>
+		</ul>
+	</div>
+
+	<div class="container">
+		<div class="row">
+		{% block content %}
+		{% endblock %}
+		</div>
+	</div>
+</body>
 </html>
