@@ -1,21 +1,18 @@
-{% extends "monosaur/base.html" %} 
-{% block content %}
+{% extends "monosaur/base.html" %} {% block content %}
 <div class="col-md-12">
 	</p>
 	{% if user.is_authenticated %}
 	<div class="well">
 		<p>
-			Welcome {{ user.username }} <a href="/analyse/cleanup"
-				class="btn btn-success custom-width">Cleanup DB</a> <a
-				href="/analyse/clear" class="btn btn-success custom-width">Clear
-				DB</a>
+			Welcome {{ user.username }} 
+			<a href="/analyse/cleanup" class="btn btn-success custom-width">Cleanup DB</a> 
+			<a href="/analyse/clear" class="btn btn-success custom-width">Clear	DB</a>
 		</p>
 	</div>
 	{% endif %}
 
 	<div class="well">
-		<h5>Upload your transaction history so we can show your spending
-			habits and subscriptions</h5>
+		<h5>Upload your transaction history so we can show your spending habits and subscriptions</h5>
 
 		{% if good_files_message %}
 		<div class="alert alert-success alert-dismissable">
@@ -24,59 +21,42 @@
 			</button>
 			<strong>Success!</strong> {{ good_files_message|safe }}
 		</div>
-		{% endif %} {% if bad_files_message %}
+		{% endif %} 
+		
+		{% if bad_files_message %}
 		<div class="alert alert-danger alert-dismissable">
 			<button class="close" data-dismiss="alert" aria-label="close">
 				<span aria-hidden="true">&times;</span>
 			</button>
 			<strong>Error!</strong> {{ bad_files_message|safe }}
 		</div>
-		{% endif %}
-
-			{% if good_files_message %}
-			<div class="alert alert-success alert-dismissable">
-				<button class="close" data-dismiss="alert" aria-label="close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<strong>Success!</strong> {{ good_files_message|safe }}
-			</div>
-			{% endif %} 
-			
-			{% if bad_files_message %}
-			<div class="alert alert-danger alert-dismissable">
-				<button class="close" data-dismiss="alert" aria-label="close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<strong>Error!</strong> {{ bad_files_message|safe }}
-			</div>
-        {% endif %}
+		{% endif %} 
 
 		<form action="/analyse/" method="post" enctype="multipart/form-data">
 			{% csrf_token %}
 			<div class="row">
 				<div class="form-group col-md-12">
-					<input type="file" name="file" multiple="multiple"
-						class="form-control input-sm">
+					<input type="file" name="file" multiple="multiple" class="form-control input-sm">
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-actions col-md-12">
 					<input type="submit" value="Upload" class="btn btn-primary btn-sm">
 				</div>
-			</form>
-		</div>
-		
-        {% if chartjs_data %}
-        <hr>
-		<a data-toggle="collapse" data-target="#chart">
-			<h3>Personal finance analytics <span class="glyphicon glyphicon-collapse-down"/></h3>
-		</a>
+			</div>
+		</form>
+	</div>
 
-		      <a data-toggle="collapse" data-target="#chart"><h1>Personal finance analytics</h1></a>
-
-      		<div id="chart" class="collapse in">
-      			<canvas id="analytics_barchart"></canvas>
-      			<script>
+	{% if chartjs_data %}
+	<hr>
+	<a data-toggle="collapse" data-target="#chart">
+		<h3>Personal finance analytics <span class="glyphicon glyphicon-collapse-down" /></h3>
+	</a> 
+	
+	<div id="chart" class="collapse in">
+		<center><h4>Your average monthly spend</h4></center>
+		<canvas id="analytics_barchart"></canvas>
+		<script>
                 var ctx = document.getElementById("analytics_barchart");
                 var myChart = new Chart(ctx, {
                     type: 'bar',
@@ -108,15 +88,13 @@
                 });
           	</script>
 
-        {% endif %}
+		{% if chartjs_linedata %}
+		<hr>
 
-        {% if chartjs_linedata %}
-        <hr>
+		<center><h4>Your spend over time</h4></center>
 
-        <h1>Your spend over time</h1>
-
-        <canvas id="analytics_linechart"></canvas>
-          <script>
+		<canvas id="analytics_linechart"></canvas>
+		<script>
           var ctx = document.getElementById('analytics_linechart');
             var myChart = new Chart(ctx, {
               type: 'line',
@@ -137,15 +115,15 @@
                 ]
               }
             });
-          </script>
-          {% endif %}
+        </script>
+		{% endif %}
 	</div>
-	{% endif %} {% if subscriptions %}
+	{% endif %} 
+	
+	{% if subscriptions %}
 	<hr>
 	<a data-toggle="collapse" data-target="#subscriptions">
-		<h3>
-			Your Subscriptions <span class="glyphicon glyphicon-collapse-down" />
-		</h3>
+		<h3>Your Subscriptions <span class="glyphicon glyphicon-collapse-down" /></h3>
 	</a>
 
 	<table class="table collapse in" id="subscriptions">
@@ -172,21 +150,15 @@
 	{% endif %}
 	<hr>
 	<a data-toggle="collapse" data-target="#transactions">
-		<h3>
-			Your Transaction History <span
-				class="glyphicon glyphicon-collapse-down" />
-		</h3>
+		<h3>Your Transaction History <span class="glyphicon glyphicon-collapse-down" /></h3>
 	</a>
 
 	<div id="transactions" class="collapse in">
 		{% if chart_values == None %}
 		<div class="alert alert-warning">
-			<strong>Data-less Donkey!</strong> You have no transaction data at
-			the moment. Fancy uploading some above?
+			<strong>Data-less Donkey!</strong> You have no transaction data at the moment. Fancy uploading some above?
 		</div>
 		{% endif %}
-
-		<!-- display list of transactions here -->
 
 		<table class="table">
 			<tr>
