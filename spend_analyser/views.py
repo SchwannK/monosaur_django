@@ -68,8 +68,8 @@ def handle_files(files, session, result_dict):
                 FixtureCompany.save_to_fixture()
             except Exception as e:
                 print("==== error parsing with " + str(parser))
-                traceback.print_exc()
-                raise e
+#                 traceback.print_exc()
+#                 raise e
             if read_count > 0:
                 break
 
