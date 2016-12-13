@@ -16,5 +16,6 @@ REM populate database
 python manage.py loaddata monosaur\fixtures\category_db.json
 python manage.py loaddata monosaur\fixtures\company_db.json
 python manage.py loaddata subscriptions\fixtures\subscriptions_db.json
+python manage.py loaddata monosaur\fixtures\fixture_companies.json
 
 REM All done

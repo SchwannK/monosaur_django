@@ -1,21 +1,17 @@
-
-import traceback
-
 from django.shortcuts import render
 
-from monosaur.cookie import get_session
+from monosaur import cookie
 from monosaur.models import Category, FixtureCompany
+from monosaur.utils import admin_utils
+from spend_analyser.models import Transaction
 from spend_analyser.transactions import transaction_handler
-
-from .models import Transaction
-from .transactions.ofx_helper import OfxHelper
-from .transactions.qif_helper import QifHelper
-from .utils.admin_utils import get_admin_methods
-from .utils.chart_utils import *
+from spend_analyser.transactions.ofx_helper import OfxHelper
+from spend_analyser.transactions.qif_helper import QifHelper
+from spend_analyser.utils import chart_utils
 
 
 def spend_analyser(request):
-    session = get_session(request, False)
+    session = cookie.get_session(request, False)
 
     content = {'navbar':'spend_analyser', }
 
@@ -31,17 +27,17 @@ def spend_analyser(request):
                 'subscription__company__category__name', 'subscription__description', 'subscription__monthly_price')\
         .distinct()
 
-    content['admin_methods'] = get_admin_methods()
+    content['admin_methods'] = admin_utils.get_admin_methods()
 
     # If transactions exist, perform analysis and show chart
     if len(transactions) > 0:
-        if len(create_date_array(transactions)) > 1:
+        if len(chart_utils.create_date_array(transactions)) > 1:
             # Process data for line chart if more than one month of data
-            content['chartjs_linedata'] = get_linechart_data(Category.objects.all(), transactions)
+            content['chartjs_linedata'] = chart_utils.get_linechart_data(Category.objects.all(), transactions)
 
         else:
             # Else process data for bar chart
-            content['chartjs_bardata'] = get_barchart_data(Category.objects.all(), transactions)
+            content['chartjs_bardata'] = chart_utils.get_barchart_data(Category.objects.all(), transactions)
 
     return render(request, 'spend_analyser/transaction_list.html', content)
 
@@ -50,8 +46,8 @@ def handle_files(files, session, result_dict):
     bad_files_message = ''
     successFiles = []
     errorFiles = []
-    total_read_count = 0;
-    total_save_count = 0;
+    total_read_count = 0
+    total_save_count = 0
 
     for file in files:
         read_count = 0
@@ -64,10 +60,12 @@ def handle_files(files, session, result_dict):
 
                 if transactions and len(transactions) > 0:
                     read_count = len(transactions)
-
+                
+                # in the above read_transactions method, all new companies were inserted to FixtureCompany
+                # let's export it so we don't lose them on the next db reset
                 FixtureCompany.save_to_fixture()
             except Exception as e:
-                print("==== error parsing with " + str(parser))
+                print("==== error parsing with " + str(parser) + ": " + str(e))
 #                 traceback.print_exc()
 #                 raise e
             if read_count > 0:

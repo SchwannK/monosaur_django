@@ -3,7 +3,7 @@
 	<p>Welcome <a href="/admin">{{ user.username }}</a></p>
 	
 	{% for admin_method in admin_methods %}
-		<a href="{{ admin_method.url }}" class="btn btn-primary custom-width">{{ admin_method.name }}</a>
+		<a href="{{ admin_method.url }}" target="_blank" class="btn btn-primary custom-width">{{ admin_method.name }}</a>
 	{% endfor %}
 </div>
 {% endif %}

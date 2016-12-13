@@ -19,6 +19,15 @@ class Company(models.Model):
 
     def __str__(self):
         return self.name
+    
+    @staticmethod
+    def save_to_fixture():
+        fixture_utils.create_fixture('monosaur.Company', 'monosaur/fixtures/company_db.json')    
+    
+    @staticmethod
+    def load_from_fixture():
+        Company.objects.all().delete()
+        fixture_utils.import_fixture('monosaur/fixtures/company_db.json')
 
 # Previously unseen bank transaction references are dumped into this table for later categorization.
 # After you finished with parsing a file (or files in case of multi-upload), don't forget to call save_to_fixture().
@@ -34,3 +43,8 @@ class FixtureCompany(models.Model):
     @staticmethod
     def save_to_fixture():
         fixture_utils.create_fixture('monosaur.FixtureCompany', 'monosaur/fixtures/fixture_company.json')
+        
+    @staticmethod
+    def load_from_fixture():
+        FixtureCompany.objects.all().delete()
+        fixture_utils.import_fixture('monosaur/fixtures/fixture_company.json')

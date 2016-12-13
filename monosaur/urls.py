@@ -17,13 +17,18 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
+from monosaur import views
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('subscriptions.urls')),
     url(r'^analyse/', include('spend_analyser.urls')),
-    url(r'^analyse/admin/', include('spend_analyser.urls_admin')),
+    url(r'^admin/cleanup/', views.db_cleanup, name='spend_analyser'),
+    url(r'^admin/clear/', views.db_clear, name='spend_analyser'),
+    url(r'^admin/save_companies/', views.save_companies, name='spend_analyser'),
+    url(r'^admin/load_companies/', views.load_companies, name='spend_analyser'),
+    url(r'^admin/categorise/', views.categorise, name='spend_analyser'),
 ]
 
 if settings.DEBUG:

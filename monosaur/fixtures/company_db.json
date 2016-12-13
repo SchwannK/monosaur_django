@@ -1,407 +1,456 @@
 [
- {
-   "model": "monosaur.Company",
-   "pk": 0,
-   "fields": {
-      "name": "Hello Fresh",
-      "reference": "TBD",
-      "category_id": 7
-   }
+{
+    "model": "monosaur.category",
+    "pk": 15,
+    "fields": {
+        "name": "Public Transport"
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 1,
-   "fields": {
-      "name": "Cure and Simple",
-      "reference": "TBD",
-      "category_id": 7
-   }
+{
+    "model": "monosaur.category",
+    "pk": 8,
+    "fields": {
+        "name": "Healthcare"
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 2,
-   "fields": {
-      "name": "Pact",
-      "reference": "TBD",
-      "category_id": 7
-   }
+{
+    "model": "monosaur.category",
+    "pk": 16,
+    "fields": {
+        "name": "Retail (Other)"
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 3,
-   "fields": {
-      "name": "Graze",
-      "reference": "TBD",
-      "category_id": 7
-   }
+{
+    "model": "monosaur.category",
+    "pk": 6,
+    "fields": {
+        "name": "Entertainment & Leisure"
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 4,
-   "fields": {
-      "name": "Paleo Box",
-      "reference": "TBD",
-      "category_id": 7
-   }
+{
+    "model": "monosaur.category",
+    "pk": 5,
+    "fields": {
+        "name": "Clothing & Grooming"
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 5,
-   "fields": {
-      "name": "NutriBox",
-      "reference": "TBD",
-      "category_id": 7
-   }
+{
+    "model": "monosaur.category",
+    "pk": 10,
+    "fields": {
+        "name": "Home & Garden"
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 6,
-   "fields": {
-      "name": "London Tea Club",
-      "reference": "TBD",
-      "category_id": 7
-   }
+{
+    "model": "monosaur.category",
+    "pk": 7,
+    "fields": {
+        "name": "Food & Drink"
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 7,
-   "fields": {
-      "name": "Eteaket",
-      "reference": "TBD",
-      "category_id": 7
-   }
+{
+    "model": "monosaur.company",
+    "pk": 44,
+    "fields": {
+        "name": "Songkick",
+        "reference": "SONGKICK",
+        "category": 6
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 8,
-   "fields": {
-      "name": "Vinoa",
-      "reference": "TBD",
-      "category_id": 7
-   }
+{
+    "model": "monosaur.company",
+    "pk": 43,
+    "fields": {
+        "name": "Kings College Food",
+        "reference": "KCL KINGS FOOD",
+        "category": 7
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 9,
-   "fields": {
-      "name": "Beer52",
-      "reference": "TBD",
-      "category_id": 7
-   }
+{
+    "model": "monosaur.company",
+    "pk": 42,
+    "fields": {
+        "name": "Tesco",
+        "reference": "TESCO",
+        "category": 16
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 10,
-   "fields": {
-      "name": "Allotinabox",
-      "reference": "TBD",
-      "category_id": 10
-   }
+{
+    "model": "monosaur.company",
+    "pk": 41,
+    "fields": {
+        "name": "Transport for London",
+        "reference": "TFL.GOV.UK",
+        "category": 15
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 11,
-   "fields": {
-      "name": "Bloom & Wild",
-      "reference": "TBD",
-      "category_id": 10
-   }
+{
+    "model": "monosaur.company",
+    "pk": 40,
+    "fields": {
+        "name": "Whole Foods",
+        "reference": "WHOLE FOODS",
+        "category": 7
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 12,
-   "fields": {
-      "name": "The Naked Marshmallow Company",
-      "reference": "TBD",
-      "category_id": 7
-   }
+{
+    "model": "monosaur.company",
+    "pk": 39,
+    "fields": {
+        "name": "Monocle",
+        "reference": "TBD",
+        "category": 6
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 13,
-   "fields": {
-      "name": "Close Shave Society",
-      "reference": "TBD",
-      "category_id": 5
-   }
+{
+    "model": "monosaur.company",
+    "pk": 38,
+    "fields": {
+        "name": "Economist",
+        "reference": "TBD",
+        "category": 6
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 14,
-   "fields": {
-      "name": "The Pink Parcel",
-      "reference": "TBD",
-      "category_id": 5
-   }
+{
+    "model": "monosaur.company",
+    "pk": 37,
+    "fields": {
+        "name": "Financial Times",
+        "reference": "TBD",
+        "category": 6
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 15,
-   "fields": {
-      "name": "Glossybox",
-      "reference": "TBD",
-      "category_id": 5
-   }
+{
+    "model": "monosaur.company",
+    "pk": 36,
+    "fields": {
+        "name": "Anytime Fitness",
+        "reference": "TBD",
+        "category": 8
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 16,
-   "fields": {
-      "name": "Feelunique",
-      "reference": "TBD",
-      "category_id": 5
-   }
+{
+    "model": "monosaur.company",
+    "pk": 35,
+    "fields": {
+        "name": "Fitness First",
+        "reference": "TBD",
+        "category": 8
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 17,
-   "fields": {
-      "name": "Love Lula",
-      "reference": "TBD",
-      "category_id": 5
-   }
+{
+    "model": "monosaur.company",
+    "pk": 34,
+    "fields": {
+        "name": "Virgin Active",
+        "reference": "TBD",
+        "category": 8
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 18,
-   "fields": {
-      "name": "The Willoughby Book Club",
-      "reference": "TBD",
-      "category_id": 6
-   }
+{
+    "model": "monosaur.company",
+    "pk": 33,
+    "fields": {
+        "name": "Hulu Plus",
+        "reference": "TBD",
+        "category": 6
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 19,
-   "fields": {
-      "name": "Polyvinyl Single Series",
-      "reference": "TBD",
-      "category_id": 6
-   }
+{
+    "model": "monosaur.company",
+    "pk": 32,
+    "fields": {
+        "name": "Kindle Unlimited",
+        "reference": "TBD",
+        "category": 6
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 20,
-   "fields": {
-      "name": "London Sock Company Sock Club",
-      "reference": "TBD",
-      "category_id": 5
-   }
+{
+    "model": "monosaur.company",
+    "pk": 31,
+    "fields": {
+        "name": "Audible",
+        "reference": "TBD",
+        "category": 6
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 21,
-   "fields": {
-      "name": "Socked",
-      "reference": "TBD",
-      "category_id": 5
-   }
+{
+    "model": "monosaur.company",
+    "pk": 30,
+    "fields": {
+        "name": "Crunchyroll",
+        "reference": "TBD",
+        "category": 6
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 22,
-   "fields": {
-      "name": "Not Another Bill",
-      "reference": "TBD",
-      "category_id": 6
-   }
+{
+    "model": "monosaur.company",
+    "pk": 29,
+    "fields": {
+        "name": "Marvel Unlimited",
+        "reference": "TBD",
+        "category": 6
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 23,
-   "fields": {
-      "name": "Netflix",
-      "reference": "TBD",
-      "category_id": 6
-   }
+{
+    "model": "monosaur.company",
+    "pk": 28,
+    "fields": {
+        "name": "Birchbox",
+        "reference": "TBD",
+        "category": 6
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 24,
-   "fields": {
-      "name": "Spotify",
-      "reference": "TBD",
-      "category_id": 6
-   }
+{
+    "model": "monosaur.company",
+    "pk": 27,
+    "fields": {
+        "name": "Google Play",
+        "reference": "TBD",
+        "category": 6
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 25,
-   "fields": {
-      "name": "Amazon Prime",
-      "reference": "TBD",
-      "category_id": 16
-   }
+{
+    "model": "monosaur.company",
+    "pk": 26,
+    "fields": {
+        "name": "Oyster",
+        "reference": "TBD",
+        "category": 6
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 26,
-   "fields": {
-      "name": "Oyster",
-      "reference": "TBD",
-      "category_id": 6
-   }
+{
+    "model": "monosaur.company",
+    "pk": 25,
+    "fields": {
+        "name": "Amazon Prime",
+        "reference": "TBD",
+        "category": 16
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 27,
-   "fields": {
-      "name": "Google Play",
-      "reference": "TBD",
-      "category_id": 6
-   }
+{
+    "model": "monosaur.company",
+    "pk": 24,
+    "fields": {
+        "name": "Spotify",
+        "reference": "TBD",
+        "category": 6
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 28,
-   "fields": {
-      "name": "Birchbox",
-      "reference": "TBD",
-      "category_id": 6
-   }
+{
+    "model": "monosaur.company",
+    "pk": 23,
+    "fields": {
+        "name": "Netflix",
+        "reference": "TBD",
+        "category": 6
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 29,
-   "fields": {
-      "name": "Marvel Unlimited",
-      "reference": "TBD",
-      "category_id": 6
-   }
+{
+    "model": "monosaur.company",
+    "pk": 22,
+    "fields": {
+        "name": "Not Another Bill",
+        "reference": "TBD",
+        "category": 6
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 30,
-   "fields": {
-      "name": "Crunchyroll",
-      "reference": "TBD",
-      "category_id": 6
-   }
+{
+    "model": "monosaur.company",
+    "pk": 21,
+    "fields": {
+        "name": "Socked",
+        "reference": "TBD",
+        "category": 5
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 31,
-   "fields": {
-      "name": "Audible",
-      "reference": "TBD",
-      "category_id": 6
-   }
+{
+    "model": "monosaur.company",
+    "pk": 20,
+    "fields": {
+        "name": "London Sock Company Sock Club",
+        "reference": "TBD",
+        "category": 5
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 32,
-   "fields": {
-      "name": "Kindle Unlimited",
-      "reference": "TBD",
-      "category_id": 6
-   }
+{
+    "model": "monosaur.company",
+    "pk": 19,
+    "fields": {
+        "name": "Polyvinyl Single Series",
+        "reference": "TBD",
+        "category": 6
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 33,
-   "fields": {
-      "name": "Hulu Plus",
-      "reference": "TBD",
-      "category_id": 6
-   }
+{
+    "model": "monosaur.company",
+    "pk": 18,
+    "fields": {
+        "name": "The Willoughby Book Club",
+        "reference": "TBD",
+        "category": 6
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 34,
-   "fields": {
-      "name": "Virgin Active",
-      "reference": "TBD",
-      "category_id": 8
-   }
+{
+    "model": "monosaur.company",
+    "pk": 17,
+    "fields": {
+        "name": "Love Lula",
+        "reference": "TBD",
+        "category": 5
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 35,
-   "fields": {
-      "name": "Fitness First",
-      "reference": "TBD",
-      "category_id": 8
-   }
+{
+    "model": "monosaur.company",
+    "pk": 16,
+    "fields": {
+        "name": "Feelunique",
+        "reference": "TBD",
+        "category": 5
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 36,
-   "fields": {
-      "name": "Anytime Fitness",
-      "reference": "TBD",
-      "category_id": 8
-   }
+{
+    "model": "monosaur.company",
+    "pk": 15,
+    "fields": {
+        "name": "Glossybox",
+        "reference": "TBD",
+        "category": 5
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 37,
-   "fields": {
-      "name": "Financial Times",
-      "reference": "TBD",
-      "category_id": 6
-   }
+{
+    "model": "monosaur.company",
+    "pk": 14,
+    "fields": {
+        "name": "The Pink Parcel",
+        "reference": "TBD",
+        "category": 5
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 38,
-   "fields": {
-      "name": "Economist",
-      "reference": "TBD",
-      "category_id": 6
-   }
+{
+    "model": "monosaur.company",
+    "pk": 13,
+    "fields": {
+        "name": "Close Shave Society",
+        "reference": "TBD",
+        "category": 5
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 39,
-   "fields": {
-      "name": "Monocle",
-      "reference": "TBD",
-      "category_id": 6
-   }
+{
+    "model": "monosaur.company",
+    "pk": 12,
+    "fields": {
+        "name": "The Naked Marshmallow Company",
+        "reference": "TBD",
+        "category": 7
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 40,
-   "fields": {
-      "name": "Whole Foods",
-      "reference": "WHOLE FOODS",
-      "category_id": 7
-   }
+{
+    "model": "monosaur.company",
+    "pk": 11,
+    "fields": {
+        "name": "Bloom & Wild",
+        "reference": "TBD",
+        "category": 10
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 41,
-   "fields": {
-      "name": "Transport for London",
-      "reference": "TFL.GOV.UK",
-      "category_id": 15
-   }
+{
+    "model": "monosaur.company",
+    "pk": 10,
+    "fields": {
+        "name": "Allotinabox",
+        "reference": "TBD",
+        "category": 10
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 42,
-   "fields": {
-      "name": "Tesco",
-      "reference": "TESCO",
-      "category_id": 16
-   }
+{
+    "model": "monosaur.company",
+    "pk": 9,
+    "fields": {
+        "name": "Beer52",
+        "reference": "TBD",
+        "category": 7
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 43,
-   "fields": {
-      "name": "Kings College Food",
-      "reference": "KCL KINGS FOOD",
-      "category_id": 7
-   }
+{
+    "model": "monosaur.company",
+    "pk": 8,
+    "fields": {
+        "name": "Vinoa",
+        "reference": "TBD",
+        "category": 7
+    }
 },
- {
-   "model": "monosaur.Company",
-   "pk": 44,
-   "fields": {
-      "name": "Songkick",
-      "reference": "SONGKICK",
-      "category_id": 6
-   }
+{
+    "model": "monosaur.company",
+    "pk": 7,
+    "fields": {
+        "name": "Eteaket",
+        "reference": "TBD",
+        "category": 7
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 6,
+    "fields": {
+        "name": "London Tea Club",
+        "reference": "TBD",
+        "category": 7
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 5,
+    "fields": {
+        "name": "NutriBox",
+        "reference": "TBD",
+        "category": 7
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 4,
+    "fields": {
+        "name": "Paleo Box",
+        "reference": "TBD",
+        "category": 7
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 3,
+    "fields": {
+        "name": "Graze",
+        "reference": "TBD",
+        "category": 7
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 2,
+    "fields": {
+        "name": "Pact",
+        "reference": "TBD",
+        "category": 7
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 1,
+    "fields": {
+        "name": "Cure and Simple",
+        "reference": "TBD",
+        "category": 7
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 0,
+    "fields": {
+        "name": "Hello Fresh",
+        "reference": "TBD",
+        "category": 7
+    }
 }
 ]
