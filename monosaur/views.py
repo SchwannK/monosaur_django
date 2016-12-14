@@ -3,13 +3,55 @@
     admin section of the /analyse page.
     To add a new button, all you have to do is add a new entry in urls_admin.py
 """
-from django.db.models import Q
+from django.forms import modelformset_factory
 from django.shortcuts import redirect, render
 
-from monosaur.models import FixtureCompany, Category, Company
+from monosaur.models import FixtureCompany, Company
 from monosaur.utils import string_utils
 from spend_analyser.transactions import transaction_handler
 
+
+def companies(request):
+    FixtureCompaniesFormSet = modelformset_factory(FixtureCompany, fields='__all__', extra=3)
+    save_count = 0
+    no_error = True
+    
+    if request.method == "POST":
+        formset = FixtureCompaniesFormSet(request.POST or None)
+        
+#         if formset.is_valid():
+        for form in formset:
+            if form.is_valid():
+                if form.instance.pk is not None:
+                    instance = form.instance
+                else:
+                    instance = form.save(commit=False)
+                instance.name = string_utils.to_none(instance.name)
+                instance.reference = string_utils.to_none(instance.reference)
+                try:
+                    instance.save()
+                except Exception as e:
+                    pass
+
+                if not string_utils.is_empty(instance.name) and not string_utils.is_empty(instance.reference) and instance.category:
+                    try:
+                        Company(name=instance.name, reference=instance.reference, category=instance.category).save()
+                        save_count += 1
+                    except Exception as e:
+                        no_error = False
+                    instance.delete()
+            else:
+                no_error = False
+
+    if no_error:
+        formset = FixtureCompaniesFormSet(queryset=FixtureCompany.objects.order_by('-pk'))
+
+    content = {'formset': formset}
+    
+    if save_count > 0:
+        content['success_message'] = str(save_count) + " companies saved and moved to <a href='http://localhost:8000/admin/monosaur/company/'>monosaur.Company</a>"
+    
+    return render(request, 'monosaur/companies.html', content)
 
 def db_cleanup(request):
     transaction_handler.delete_old_entries()
@@ -27,57 +69,7 @@ def load_companies(request):
     FixtureCompany.load_from_fixture()
     return redirect("/analyse")
 
-
-PREFIX_NAME = "nam-"
-PREFIX_CATEGORY = "cat-"
-PREFIX_REFERENCE = "ref-"
-
-
-def categorise(request):
-    content = {}
-    
-    if request.method == "POST":
-        save_completed_companies(request.POST)
-    
-    content['companies'] = FixtureCompany.objects.all()
-    content['categories'] = Category.objects.all()
-    content['name_prefix'] = PREFIX_NAME
-    content['category_prefix'] = PREFIX_CATEGORY
-    content['reference_prefix'] = PREFIX_REFERENCE
-    
-    return render(request, 'monosaur/categorise.html', content)
-
 def delete_fixture(request, pk):
     FixtureCompany.objects.filter(pk=pk).delete()
     FixtureCompany.save_to_fixture()
-    return redirect("/admin/categorise")
-
-def save_completed_companies(form_data):
-    for key in form_data.keys():
-        if key.startswith(PREFIX_CATEGORY):
-            if form_data[key] != "-1":
-                category = form_data[key]
-            else:
-                category = None
-            FixtureCompany.objects.filter(pk=key[len(PREFIX_CATEGORY):]).update(category_id=category)
-        elif key.startswith(PREFIX_NAME):
-            name = form_data[key]
-            if not name:
-                name = None
-            else:
-                name = name.strip()
-            FixtureCompany.objects.filter(pk=key[len(PREFIX_NAME):]).update(name=name)
-        elif key.startswith(PREFIX_REFERENCE):
-            reference = form_data[key]
-            if not reference:
-                reference = None
-            else:
-                reference = reference.strip()
-            FixtureCompany.objects.filter(pk=key[len(PREFIX_REFERENCE):]).update(reference=reference)
-            
-    for fixture_company in FixtureCompany.objects.exclude(Q(name=u'') | Q(name=None) | Q(category=None)):
-        Company(name=fixture_company.name, reference=fixture_company.reference, category=fixture_company.category).save()
-        fixture_company.delete()
-        
-    FixtureCompany.save_to_fixture()
-    Company.save_to_fixture()
+    return redirect("/admin/companies")

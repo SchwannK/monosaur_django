@@ -14,7 +14,7 @@ class Category(models.Model):
 # A company can have many subscriptions (see subscriptions.Subscription)
 class Company(models.Model):
     name = models.CharField(max_length=50)
-    reference = models.CharField(max_length=100)
+    reference = models.CharField(max_length=100, unique = True)
     category = models.ForeignKey(Category)
 
     def __str__(self):

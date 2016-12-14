@@ -1,6 +1,13 @@
 [
 {
     "model": "monosaur.category",
+    "pk": 16,
+    "fields": {
+        "name": "Savings & Financial"
+    }
+},
+{
+    "model": "monosaur.category",
     "pk": 9,
     "fields": {
         "name": "Home & Garden"
@@ -39,6 +46,33 @@
     "pk": 5,
     "fields": {
         "name": "Entertainment & Leisure"
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 20,
+    "fields": {
+        "name": "PayPal",
+        "reference": "PAYPAL PAYMENT",
+        "category": 16
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 16,
+    "fields": {
+        "name": "Deliveroo",
+        "reference": "DELIVEROOCOUK",
+        "category": 6
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 15,
+    "fields": {
+        "name": "Foyles",
+        "reference": "W & G FOYLE LTD",
+        "category": 5
     }
 },
 {

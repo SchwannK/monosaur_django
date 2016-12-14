@@ -29,8 +29,8 @@ urlpatterns = [
     url(r'^admin/clear/', views.db_clear),
     url(r'^admin/save_companies/', views.save_companies),
     url(r'^admin/load_companies/', views.load_companies),
-    url(r'^admin/categorise/', views.categorise),
-    url(r'^delete_fixture/(?P<pk>\d+)/$', views.delete_fixture, name='delete_fixture'),
+    url(r'^admin/companies/', views.companies),
+    url(r'delete_fixture/(?P<pk>\d+)/$', views.delete_fixture, name='delete_fixture'),
 
 ]
 if settings.DEBUG:
