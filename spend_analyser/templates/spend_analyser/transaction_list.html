@@ -138,7 +138,7 @@
 		{% for subscription in subscriptions %}
 		<tr>
 			<td>{{ forloop.counter }}</td>
-			<td><a href="{{ subscription.subscription_url }}">{{ subscription.subscription__name }}</a></td>
+			<td><a target="blank_" href="{{ subscription.subscription__subscription_url }}">{{ subscription.subscription__name }}</a></td>
 			<td>{{ subscription.subscription__company__name }}</td>
 			<td>{{ subscription.subscription__company__category__name }}</td>
 			<td>{{ subscription.subscription__description }}</td>
