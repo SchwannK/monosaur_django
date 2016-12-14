@@ -9,5 +9,4 @@ def get_admin_methods():
         url = str(get_resolver(None).reverse_dict[key][1])
         if url.startswith('admin/'):
             admin_methods.append({'name' : key.__name__, 'url' : '/' + url})
-    print(str(admin_methods))
     return admin_methods

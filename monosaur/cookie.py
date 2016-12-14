@@ -1,4 +1,4 @@
-from datetime import datetime
+from django.utils import timezone
 import string
 
 from django.conf import settings
@@ -40,7 +40,7 @@ def get_session(request, generate):
         print("Generating my session id: " + session_id)
         request.COOKIES[MY_COOKIE_NAME] = session_id
     session, created = Session.objects.get_or_create(session_id = session_id)
-    session.last_read = datetime.now()
+    session.last_read = timezone.now()
     session.save()
     return session
 

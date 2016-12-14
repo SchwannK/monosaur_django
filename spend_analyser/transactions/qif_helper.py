@@ -5,7 +5,7 @@
     are saved for later categorization on an admin page.
 """
 from builtins import int
-import datetime
+from datetime import datetime
 import sys
 
 from django.core.files.base import ContentFile
@@ -91,7 +91,7 @@ def parseQif(infile):
             items.append(curItem)
             curItem = QifItem()
         elif line[0] == 'D':
-            curItem.date = datetime.datetime.strptime(line[1:], "%d/%m/%Y").date()
+            curItem.date = datetime.strptime(line[1:], "%d/%m/%Y").date()
         elif line[0] == 'T':
             curItem.amount = line[1:]
 #         elif line[0] == 'C':
