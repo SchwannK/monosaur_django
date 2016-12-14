@@ -8,9 +8,9 @@ from django.utils import timezone
 
 from monosaur.models import Category, Company, FixtureCompany
 from spend_analyser.models import Transaction
-from transactions.ofx_helper import OfxHelper
 from spend_analyser.transactions.qif_helper import QifHelper
 from subscriptions.models import Subscription
+from .ofx_helper import OfxHelper
 
 from .constants import DEFAULT_TRANSACTION_CATEGORY
 

@@ -1,10 +1,12 @@
 """
     This class provides the formatted data for the pretty charts at /analyse
 """
-from spend_analyser.transactions.constants import *
-from django.db.models import Max, Min
-from dateutil.relativedelta import relativedelta
 import collections
+
+from dateutil.relativedelta import relativedelta
+from django.db.models import Max, Min
+
+from spend_analyser.transactions.constants import *
 
 
 def get_barchart_data(categories, transactions):
@@ -19,7 +21,7 @@ def get_barchart_data(categories, transactions):
     if DEFAULT_TRANSACTION_CATEGORY in category_totals:
         other_total = category_totals.pop(DEFAULT_TRANSACTION_CATEGORY)
 
-    sorted_categories = sorted(category_totals, key=category_totals.get, reverse=True)[:4] # get top 4 non-Other categories in sorted list
+    sorted_categories = sorted(category_totals, key=category_totals.get, reverse=True)[:4]  # get top 4 non-Other categories in sorted list
 
     # Calculate total spend in top 4 non-Other categories
     top_total = 0
@@ -57,7 +59,7 @@ def get_largest_categories(categories, transactions):
         other_total = category_totals.pop(DEFAULT_TRANSACTION_CATEGORY)
         print(other_total)
 
-    largest_categories = sorted(category_totals, key=category_totals.get, reverse=True)[:4] # get top 4 non-Other categories in sorted list
+    largest_categories = sorted(category_totals, key=category_totals.get, reverse=True)[:4]  # get top 4 non-Other categories in sorted list
 
     return largest_categories
 
@@ -84,7 +86,7 @@ def create_date_array(transactions):
 
 
 def get_linechart_data(categories, transactions):
-    total_spend = collections.OrderedDict()    # Initialise top level dictionary storing totals by month by category
+    total_spend = collections.OrderedDict()  # Initialise top level dictionary storing totals by month by category
 
     largest_categories = get_largest_categories(categories, transactions)
     largest_categories.append(DEFAULT_TRANSACTION_CATEGORY)
@@ -92,11 +94,11 @@ def get_linechart_data(categories, transactions):
     date_array = create_date_array(transactions)
 
     for category in largest_categories:
-        total_spend[category] = collections.OrderedDict()      # Initialise dictionaries for categories
+        total_spend[category] = collections.OrderedDict()  # Initialise dictionaries for categories
         for date in date_array:
-            total_spend[category][date] = 0     # Initialise all possible values of category-date to 0
+            total_spend[category][date] = 0  # Initialise all possible values of category-date to 0
 
-    #for cat in total_spend:
+    # for cat in total_spend:
     #    for month in total_spend[cat]:
     #        print(cat, month, total_spend[cat][month])
 
@@ -107,14 +109,14 @@ def get_linechart_data(categories, transactions):
             else:
                 total_spend[DEFAULT_TRANSACTION_CATEGORY][transaction.date.strftime('%b %y')] = total_spend.get(DEFAULT_TRANSACTION_CATEGORY).get(transaction.date.strftime('%b %y')) - transaction.amount
 
-    #for cat in total_spend:
+    # for cat in total_spend:
     #    for month in total_spend[cat]:
     #        print(cat, month, total_spend[cat][month])
 
     chartjs_data = {}
-    chartjs_data['months'] = date_array     # Months for Chartjs
+    chartjs_data['months'] = date_array  # Months for Chartjs
     chartjs_data['data'] = {}
-    colour_index = 0 # initialise index for chart colours
+    colour_index = 0  # initialise index for chart colours
     for category in largest_categories:
         # Assign list of total spend values (rounded to 2 d.p.) to each category and chart colour by tuple (spend_values, chart_colours)
         chartjs_data['data'][category] = (list(round(value, 2) for value in total_spend[category].values()), CHART_JS_COLORS[colour_index])

@@ -4,4 +4,5 @@
 """
 from spend_analyser.transactions import transactions
 
+
 transactions.delete_old_entries()

@@ -7,8 +7,9 @@ from django.db.models import Q
 from django.shortcuts import redirect, render
 
 from monosaur.models import FixtureCompany, Category, Company
-from spend_analyser.transactions import transaction_handler
 from monosaur.utils import string_utils
+from spend_analyser.transactions import transaction_handler
+
 
 def db_cleanup(request):
     transaction_handler.delete_old_entries()
@@ -47,7 +48,7 @@ def categorise(request):
     return render(request, 'monosaur/categorise.html', content)
 
 def delete_fixture(request, pk):
-    FixtureCompany.objects.filter(pk = pk).delete()
+    FixtureCompany.objects.filter(pk=pk).delete()
     FixtureCompany.save_to_fixture()
     return redirect("/admin/categorise")
 
@@ -58,24 +59,24 @@ def save_completed_companies(form_data):
                 category = form_data[key]
             else:
                 category = None
-            FixtureCompany.objects.filter(pk=key[len(PREFIX_CATEGORY):]).update(category_id = category)
+            FixtureCompany.objects.filter(pk=key[len(PREFIX_CATEGORY):]).update(category_id=category)
         elif key.startswith(PREFIX_NAME):
             name = form_data[key]
             if not name:
                 name = None
             else:
                 name = name.strip()
-            FixtureCompany.objects.filter(pk=key[len(PREFIX_NAME):]).update(name = name)
+            FixtureCompany.objects.filter(pk=key[len(PREFIX_NAME):]).update(name=name)
         elif key.startswith(PREFIX_REFERENCE):
             reference = form_data[key]
             if not reference:
                 reference = None
             else:
                 reference = reference.strip()
-            FixtureCompany.objects.filter(pk=key[len(PREFIX_REFERENCE):]).update(reference = reference)
+            FixtureCompany.objects.filter(pk=key[len(PREFIX_REFERENCE):]).update(reference=reference)
             
     for fixture_company in FixtureCompany.objects.exclude(Q(name=u'') | Q(name=None) | Q(category=None)):
-        Company(name = fixture_company.name, reference = fixture_company.reference, category = fixture_company.category).save()
+        Company(name=fixture_company.name, reference=fixture_company.reference, category=fixture_company.category).save()
         fixture_company.delete()
         
     FixtureCompany.save_to_fixture()

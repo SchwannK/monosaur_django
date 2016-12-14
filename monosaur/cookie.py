@@ -1,7 +1,7 @@
-from django.utils import timezone
 import string
 
 from django.conf import settings
+from django.utils import timezone
 from django.utils.crypto import (
     get_random_string,
 )
@@ -39,7 +39,7 @@ def get_session(request, generate):
         session_id = "my-" + get_random_string(32, VALID_KEY_CHARS)
         print("Generating my session id: " + session_id)
         request.COOKIES[MY_COOKIE_NAME] = session_id
-    session, created = Session.objects.get_or_create(session_id = session_id)
+    session, created = Session.objects.get_or_create(session_id=session_id)
     session.last_read = timezone.now()
     session.save()
     return session

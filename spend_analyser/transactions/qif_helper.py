@@ -28,8 +28,8 @@ class QifHelper(Parser):
             category = transaction_handler.get_category(qif_transaction.payee)
             subscription = transaction_handler.get_subscription(qif_transaction.payee)
             name = string_utils.to_empty(qif_transaction.payee) + ' ' + string_utils.to_empty(qif_transaction.memo)
-            transactions.append(Transaction(name = name.strip(),\
-                                            amount = qif_transaction.amount, date = qif_transaction.date, category = category, subscription = subscription, session = session))
+            transactions.append(Transaction(name=name.strip(), \
+                                            amount=qif_transaction.amount, date=qif_transaction.date, category=category, subscription=subscription, session=session))
         return transactions
         
     def __str__(self):
@@ -55,7 +55,7 @@ class QifItem:
     
     def __repr__(self):
         titles = ','.join(self.order)
-        tmpstring = ','.join( [str(self.__dict__[field]) for field in self.order] )
+        tmpstring = ','.join([str(self.__dict__[field]) for field in self.order])
         tmpstring = tmpstring.replace('None', '')
         return titles + "," + tmpstring
 
@@ -63,7 +63,7 @@ class QifItem:
         """
         Returns the data of this QIF without a header row
         """
-        tmpstring = ','.join( [str(self.__dict__[field]) for field in self.order] )
+        tmpstring = ','.join([str(self.__dict__[field]) for field in self.order])
         tmpstring = tmpstring.replace('None', '')
         return tmpstring
     
@@ -79,14 +79,14 @@ def parseQif(infile):
     curItem = QifItem()
     
     while True:
-        line = str(infile.readline(),'utf-8').strip()
+        line = str(infile.readline(), 'utf-8').strip()
 
         if line == '':
             break
         
-        if line[0] == '\n': # blank line
+        if line[0] == '\n':  # blank line
             pass
-        elif line[0] == '^': # end of item
+        elif line[0] == '^':  # end of item
             # save the item
             items.append(curItem)
             curItem = QifItem()
