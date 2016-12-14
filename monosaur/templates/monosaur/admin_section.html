@@ -1,9 +1,14 @@
 {% if user.is_authenticated and user.is_superuser %}
-<div class="well">
-	<p>Welcome <a href="/admin">{{ user.username }}</a></p>
-	
-	{% for admin_method in admin_methods %}
-		<a href="{{ admin_method.url }}" target="_blank" class="btn btn-primary custom-width">{{ admin_method.name }}</a>
-	{% endfor %}
+<div class="card">
+	<div class="card-block">
+		<p>
+			Welcome <a href="/admin">{{ user.username }}</a>
+		</p>
+
+		{% for admin_method in admin_methods %} 
+		<a href="{{ admin_method.url }}" target="_blank"
+			class="btn btn-primary custom-width">{{ admin_method.name }}</a> 
+		{% endfor %}
+	</div>
 </div>
 {% endif %}
