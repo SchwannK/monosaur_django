@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from monosaur import cookie
-from monosaur.models import Category, FixtureCompany
+from monosaur.models import Category
 from monosaur.utils import admin_utils
 from spend_analyser.models import Transaction, Session
 from spend_analyser.transactions import transaction_handler

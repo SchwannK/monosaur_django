@@ -4,14 +4,10 @@
     As a side effect, all payee+memo strings that are not yet in our database 
     are saved for later categorization on an admin page.
 """
-from builtins import int
 from datetime import datetime
-import sys
-
-from django.core.files.base import ContentFile
 
 from monosaur.utils import string_utils
-from spend_analyser.models import Transaction, Session
+from spend_analyser.models import Transaction
 from spend_analyser.transactions import transaction_handler
 
 from .parser import Parser

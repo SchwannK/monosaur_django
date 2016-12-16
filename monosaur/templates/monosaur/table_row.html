@@ -1,4 +1,4 @@
-{% if forloop.first %}
+{% if forloop.first and print_header %}
 <thead>
 	<tr>
 		<th>pk</th>
@@ -25,7 +25,7 @@
 	{% endfor %}
 	<td>
 		{% if form.instance.id %}
-		<a href="{% url 'delete_fixture' pk=form.instance.id %}" class="close">
+		<a href="/delete/{{ table }}/{{ form.instance.id }}/?next={{ request.path }}" data-method="delete" class="close">
 			<span aria-hidden="true">&times;</span>
 		</a>
 		{% endif %}

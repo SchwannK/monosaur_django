@@ -6,7 +6,7 @@ from datetime import datetime
 from django.db.utils import IntegrityError
 from django.utils import timezone
 
-from monosaur.models import Category, Company, FixtureCompany
+from monosaur.models import Category, Company
 from spend_analyser.models import Transaction
 from spend_analyser.transactions.qif_helper import QifHelper
 from subscriptions.models import Subscription
@@ -49,9 +49,9 @@ def read_transactions(parser, file, session):
     try:
         transactions = parser.read_transactions(file, session)
                 
-        # in the above read_transactions method, all new companies were inserted to FixtureCompany
+        # in the above read_transactions method, all new companies were inserted to Company
         # let's export it so we don't lose them on the next db reset
-        FixtureCompany.save_to_fixture()
+        Company.save_to_fixture()
     except Exception as e:
         print("==== error parsing with " + str(parser) + ": " + str(e))
 #       traceback.print_exc()
@@ -71,12 +71,9 @@ def get_category(reference):
         
     if category is None:
         try:
-            if companies:
-                name = companies[0].name
-            else:
-                name = None
-            # mark the reference for later categorisation
-            FixtureCompany(reference=reference, name=name).save()
+            if not companies:
+                # mark the reference for later categorisation
+                Company(reference=reference).save()
         except:
             pass
         return Category.objects.get(name=DEFAULT_TRANSACTION_CATEGORY)
@@ -110,15 +107,12 @@ def save(transactions):
     return row_count
                 
 def delete_old_entries():
-    delete_count = delete_entries(timezone.now() - datetime.timedelta(days=1))
+    older_than = timezone.now() - datetime.timedelta(days=1)
+    delete_count, breakdown = Transaction.objects.filter(session__last_read__lt=older_than).delete()
     print("Clearing transactions older than 1 day: " + str(delete_count))
     return delete_count
 
 def delete_all_entries():
-    delete_count = delete_entries(timezone.now())
+    delete_count, breakdown = Transaction.objects.all().delete()
     print("Clearing transactions: " + str(delete_count))
-    return delete_count
-
-def delete_entries(older_than):
-    delete_count, breakdown = Transaction.objects.filter(session__last_read__lt=older_than).delete()
     return delete_count
