@@ -1,62 +1,213 @@
 [
- {
-   "model": "subscriptions.Subscription",
-   "pk": 0,
-   "fields": {
-      "name": "Netflix Basic",
-      "company": 0,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "monthly_price": 5.99,
-      "subscription_url": "https://www.netflix.com",
-      "reference": "Netflix Basic"
-   }
+{
+    "model": "monosaur.category",
+    "pk": 16,
+    "fields": {
+        "name": "Savings & Financial"
+    }
 },
- {
-   "model": "subscriptions.Subscription",
-   "pk": 1,
-   "fields": {
-      "name": "Netflix Standard",
-      "company": 0,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "monthly_price": 7.49,
-      "subscription_url": "https://www.netflix.com",
-      "reference": "Netflix Standard"
-   }
+{
+    "model": "monosaur.category",
+    "pk": 9,
+    "fields": {
+        "name": "Home & Garden"
+    }
 },
- {
-   "model": "subscriptions.Subscription",
-   "pk": 2,
-   "fields": {
-      "name": "Netflix Premium",
-      "company": 0,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "monthly_price": 8.99,
-      "subscription_url": "https://www.netflix.com",
-      "reference": "Netflix Premium"
-   }
+{
+    "model": "monosaur.category",
+    "pk": 10,
+    "fields": {
+        "name": "Household Bills & Utilities"
+    }
 },
- {
-   "model": "subscriptions.Subscription",
-   "pk": 3,
-   "fields": {
-      "name": "Spotify Premium",
-      "company": 1,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "monthly_price": 9.99,
-      "subscription_url": "https://www.spotify.com",
-      "reference": "Spotify"
-   }
+{
+    "model": "monosaur.category",
+    "pk": 14,
+    "fields": {
+        "name": "Public Transport"
+    }
 },
- {
-   "model": "subscriptions.Subscription",
-   "pk": 4,
-   "fields": {
-      "name": "Amazon Prime",
-      "company": 2,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "monthly_price": 7.99,
-      "subscription_url": "https://www.amazon.com",
-      "reference": "Amazon Prime"
-   }
+{
+    "model": "monosaur.category",
+    "pk": 6,
+    "fields": {
+        "name": "Food & Drink"
+    }
+},
+{
+    "model": "monosaur.category",
+    "pk": 15,
+    "fields": {
+        "name": "Retail (Other)"
+    }
+},
+{
+    "model": "monosaur.category",
+    "pk": 5,
+    "fields": {
+        "name": "Entertainment & Leisure"
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 20,
+    "fields": {
+        "name": "PayPal",
+        "reference": "PAYPAL PAYMENT",
+        "category": 16
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 16,
+    "fields": {
+        "name": "Deliveroo",
+        "reference": "DELIVEROOCOUK",
+        "category": 6
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 15,
+    "fields": {
+        "name": "Foyles",
+        "reference": "W & G FOYLE LTD",
+        "category": 5
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 14,
+    "fields": {
+        "name": "Vapiano",
+        "reference": "VAPIANO LTD",
+        "category": 6
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 13,
+    "fields": {
+        "name": "Benito's Hat",
+        "reference": "BENITO'S HAT",
+        "category": 6
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 12,
+    "fields": {
+        "name": "Handy",
+        "reference": "PAYHANDYCOM",
+        "category": 9
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 11,
+    "fields": {
+        "name": "BT Group",
+        "reference": "BT GROUP PLC",
+        "category": 10
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 10,
+    "fields": {
+        "name": "Selfridges",
+        "reference": "SELFRIDGES LONDON",
+        "category": 15
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 9,
+    "fields": {
+        "name": "Sainsburys",
+        "reference": "SAINSBURYS S/MKTS",
+        "category": 15
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 8,
+    "fields": {
+        "name": "Marks & Spencer",
+        "reference": "M & S SIMPLY FOOD",
+        "category": 15
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 7,
+    "fields": {
+        "name": "Songkick",
+        "reference": "SONGKICK",
+        "category": 5
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 6,
+    "fields": {
+        "name": "Kings College Food",
+        "reference": "KCL KINGS FOOD",
+        "category": 6
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 5,
+    "fields": {
+        "name": "Tesco",
+        "reference": "TESCO",
+        "category": 15
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 4,
+    "fields": {
+        "name": "Transport for London",
+        "reference": "TFL.GOV.UK",
+        "category": 14
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 3,
+    "fields": {
+        "name": "Whole Foods",
+        "reference": "WHOLE FOODS",
+        "category": 6
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 2,
+    "fields": {
+        "name": "Amazon",
+        "reference": "Amazon",
+        "category": 15
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 1,
+    "fields": {
+        "name": "Spotify",
+        "reference": "Spotify",
+        "category": 5
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 0,
+    "fields": {
+        "name": "Netflix",
+        "reference": "Netflix",
+        "category": 5
+    }
 }
 ]

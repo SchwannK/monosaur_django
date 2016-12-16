@@ -1,0 +1,9 @@
+{% extends "monosaur/table_row.html" %} 
+
+{% block content %}
+{% if form.instance.id >= 0 %}
+<a href="/delete/companies/{{ form.instance.id }}/?next={{ request.path }}" data-method="delete" class="close">
+	<span aria-hidden="true">&times;</span>
+</a>
+{% endif %}
+{% endblock %}

@@ -24,10 +24,7 @@
 	</td>
 	{% endfor %}
 	<td>
-		{% if form.instance.id >= 0 %}
-		<a href="/delete/{{ table }}/{{ form.instance.id }}/?next={{ request.path }}" data-method="delete" class="close">
-			<span aria-hidden="true">&times;</span>
-		</a>
-		{% endif %}
+		{% block content %} 
+		{% endblock %}
 	</td>
 </tr>
