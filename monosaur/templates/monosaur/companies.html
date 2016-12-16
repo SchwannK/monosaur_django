@@ -33,25 +33,37 @@
 			<strong>Success!</strong> {{ success_message|safe }}
 		</div>
 	</div>
-	{% endif %} 
+	{% endif %}
 	
 	<form action="/admin/companies/" method="post"
 		style="padding-left: 20px; padding-right: 20px;">
 		{% csrf_token %} 
 		
 		{{ formset.management_form }}
+		{% if formset.non_form_errors %}
+		<div class="container">
+			<div class="alert alert-danger alert-dismissable">
+				<button class="close" data-dismiss="alert" aria-label="close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<strong>Error!</strong> {{ formset.non_form_errors|safe }}
+			</div>
+		</div>
+		{% endif %} 
 		<table class="table">
 		{% for form in formset.extra_forms %}
-			{% include "monosaur/fixture_company_entry.html" with form=form %}  
+			{% include "monosaur/fixture_company_table_row.html" with form=form %}  
 		{% endfor %}
 		{% for form in formset.initial_forms %}
-			{% include "monosaur/fixture_company_entry.html" with form=form %}  
+			{% include "monosaur/fixture_company_table_row.html" with form=form %}  
 		{% endfor %}
 		</table>
 		
 		<div style="position: fixed; top: .085in; right: 50; z-index: 2000;">
 			<input class="btn btn-primary custom-width" type="submit"
-				value="Save & Continue">
+				value="Save & Migrate" name="save_migrate">
+			<input class="btn btn-primary custom-width" type="submit"
+				value="Save & Continue" name="save_continue">
 		</div>
 	</form>
 </body>

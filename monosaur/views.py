@@ -3,47 +3,26 @@
     admin section of the /analyse page.
     To add a new button, all you have to do is add a new entry in urls_admin.py
 """
+from django.db import transaction
 from django.forms import modelformset_factory
 from django.shortcuts import redirect, render
 
 from monosaur.models import FixtureCompany, Company
-from monosaur.utils import string_utils
 from spend_analyser.transactions import transaction_handler
 
 
 def companies(request):
-    FixtureCompaniesFormSet = modelformset_factory(FixtureCompany, fields='__all__', extra=3)
+    FixtureCompaniesFormSet = modelformset_factory(FixtureCompany, fields=['reference', 'name', 'category'], extra=3)
     save_count = 0
-    no_error = True
     
     if request.method == "POST":
         formset = FixtureCompaniesFormSet(request.POST or None)
-        
-#         if formset.is_valid():
-        for form in formset:
-            if form.is_valid():
-                if form.instance.pk is not None:
-                    instance = form.instance
-                else:
-                    instance = form.save(commit=False)
-                instance.name = string_utils.to_none(instance.name)
-                instance.reference = string_utils.to_none(instance.reference)
-                try:
-                    instance.save()
-                except Exception as e:
-                    pass
-
-                if not string_utils.is_empty(instance.name) and not string_utils.is_empty(instance.reference) and instance.category:
-                    try:
-                        Company(name=instance.name, reference=instance.reference, category=instance.category).save()
-                        save_count += 1
-                    except Exception as e:
-                        no_error = False
-                    instance.delete()
-            else:
-                no_error = False
-
-    if no_error:
+        if formset.is_valid():
+            formset.save()
+            if "save_migrate" in request.POST:
+                save_count = migrate_complete_companies()
+            formset = FixtureCompaniesFormSet(queryset=FixtureCompany.objects.order_by('-pk'))
+    else:
         formset = FixtureCompaniesFormSet(queryset=FixtureCompany.objects.order_by('-pk'))
 
     content = {'formset': formset}
@@ -73,3 +52,20 @@ def delete_fixture(request, pk):
     FixtureCompany.objects.filter(pk=pk).delete()
     FixtureCompany.save_to_fixture()
     return redirect("/admin/companies")
+
+## Non API methods #######################################################################
+
+# take all fixture companies that are fully specified and move them in the Company table
+def migrate_complete_companies():
+    save_count = 0
+    complete_companies = FixtureCompany.objects.exclude(name__isnull=True).exclude(category_id__isnull=True)
+
+    for c in complete_companies:
+        try:
+            with transaction.atomic():
+                Company(name = c.name, reference = c.reference, category = c.category).save()
+                c.delete()
+                save_count += 1
+        except:
+            pass
+    return save_count

@@ -3,6 +3,12 @@ from django.db import models
 from monosaur.utils import fixture_utils
 
 
+class EmptyStringToNoneField(models.CharField):
+    def get_prep_value(self, value):
+        if value == '':
+            return None  
+        return value
+
 # Spending categories. Income categories are included too.
 class Category(models.Model):
     name = models.CharField(max_length=50)
@@ -33,7 +39,7 @@ class Company(models.Model):
 # After you finished with parsing a file (or files in case of multi-upload), don't forget to call save_to_fixture().
 # Otherwise you may loose you carefully collected companies and payees at the next db reset.
 class FixtureCompany(models.Model):
-    name = models.CharField(max_length=50, null=True, blank=True)
+    name = EmptyStringToNoneField(max_length=50, null=True, blank=True)
     reference = models.CharField(max_length=100, unique=True)
     category = models.ForeignKey(Category, null=True, blank=True)
 
