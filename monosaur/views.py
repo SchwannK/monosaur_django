@@ -3,12 +3,14 @@
     admin section of the /analyse page.
     To add a new button, all you have to do is add a new entry in urls_admin.py
 """
+from django.contrib import auth
 from django.db import transaction
 from django.forms import modelformset_factory
 from django.shortcuts import redirect, render
 
 from monosaur.models import FixtureCompany, Company
 from spend_analyser.transactions import transaction_handler
+from django.http.response import HttpResponseRedirect
 
 
 def companies(request):
@@ -52,6 +54,10 @@ def delete_fixture(request, pk):
     FixtureCompany.objects.filter(pk=pk).delete()
     FixtureCompany.save_to_fixture()
     return redirect("/admin/companies")
+
+def logout(request):
+    auth.logout(request)
+    return redirect(request.GET.get('next', '/analyse'))
 
 ## Non API methods #######################################################################
 

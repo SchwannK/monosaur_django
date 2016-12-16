@@ -4,11 +4,34 @@
 		<p>
 			Welcome <a href="/admin">{{ user.username }}</a>
 		</p>
+		<p>
+			<a href="{% url 'logout' %}?next={{ request.path }}">Log out</a>
+		</p>
 
 		{% for admin_method in admin_methods %} 
 		<a href="{{ admin_method.url }}" target="_blank"
 			class="btn btn-primary custom-width">{{ admin_method.name }}</a> 
 		{% endfor %}
+		
+		{% if sessions %}
+		<p>
+			<form action="/analyse/" method="post">
+				{% csrf_token %}
+				<select name="selected_session"> 
+					<option value="-1">Select...</option> 
+					{% for session in sessions %}
+					<option value="{{ session.session_id }}"
+						{% if request.session.session_key == session.session_id %}
+						selected
+						{% endif %}			
+					>{{ session.transaction_count }} transactions, {{ session.last_read }}</option> 
+					{% endfor %}
+				</select>
+				<input class="btn btn-primary custom-width" type="submit" value="Go" name="session_select">
+				<input class="btn btn-default custom-width" type="submit" value="Delete" name="session_delete">
+			</form>
+		</p>		
+		{% endif %}
 	</div>
 </div>
 {% endif %}

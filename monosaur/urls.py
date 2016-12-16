@@ -16,13 +16,14 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
-from django.contrib import admin
+from django.contrib import admin, auth
 
 from monosaur import views
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^logout/$', views.logout, name='logout'),
     url(r'', include('subscriptions.urls')),
     url(r'^analyse/', include('spend_analyser.urls')),
     url(r'^admin/cleanup/', views.db_cleanup),
@@ -31,7 +32,6 @@ urlpatterns = [
     url(r'^admin/load_companies/', views.load_companies),
     url(r'^admin/companies/', views.companies),
     url(r'delete_fixture/(?P<pk>\d+)/$', views.delete_fixture, name='delete_fixture'),
-
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

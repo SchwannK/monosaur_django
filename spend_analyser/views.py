@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from monosaur import cookie
 from monosaur.models import Category, FixtureCompany
 from monosaur.utils import admin_utils
-from spend_analyser.models import Transaction
+from spend_analyser.models import Transaction, Session
 from spend_analyser.transactions import transaction_handler
 from spend_analyser.utils import chart_utils
 
@@ -14,6 +14,13 @@ def spend_analyser(request):
     content = {'navbar':'spend_analyser', }
 
     if request.method == "POST":
+        print(str(type(request.user)))
+        if 'selected_session' in request.POST and request.user.is_superuser:
+            if "session_select" in request.POST:
+                session = Session.objects.get(session_id=request.POST['selected_session'])
+            elif "session_delete" in request.POST:
+                Session.objects.get(session_id=request.POST['selected_session']).delete()
+                return redirect("/analyse")
         positive_message, negative_message = process_transactions(request.FILES.getlist('file'), session)
         content['positive_message'] = positive_message
         content['negative_message'] = negative_message
@@ -29,6 +36,7 @@ def spend_analyser(request):
         .distinct()
 
     content['admin_methods'] = admin_utils.get_admin_methods()
+    content['sessions'] = admin_utils.get_sessions()
 
     # If transactions exist, perform analysis and show chart
     if len(transactions) > 0:
