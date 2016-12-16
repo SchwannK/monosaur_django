@@ -6,7 +6,7 @@ from monosaur.models import Company
 
 class Subscription(models.Model):
     name = models.CharField(max_length=200)
-    company = models.ForeignKey(Company)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
     description = models.TextField()
     monthly_price = models.FloatField()
     subscription_url = models.CharField(max_length=200)

@@ -17,11 +17,11 @@ class Transaction(models.Model):
     name = models.CharField(max_length=100)
     amount = models.FloatField()
     date = models.DateField()
-    category = models.ForeignKey(Category, default=0)
+    category = models.ForeignKey(Category, default=0, on_delete=models.DO_NOTHING)
     subscription = models.ForeignKey(
-        Subscription, null=True, blank=True
+        Subscription, null=True, blank=True, on_delete=models.DO_NOTHING
     )
-    session = models.ForeignKey(Session)
+    session = models.ForeignKey(Session, on_delete=models.DO_NOTHING)
     
     class Meta:
         unique_together = (('name', 'amount', 'date', 'session'),)
