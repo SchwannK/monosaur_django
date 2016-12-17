@@ -1,0 +1,50 @@
+{% load staticfiles %}
+{% load sameastags %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>{% block title %}TITLE{% endblock %}</title>
+<meta charset="utf-8">
+<link rel="stylesheet"
+	href="//fonts.googleapis.com/css?family=Lobster&amp;subset=latin,latin-ext"
+	type="text/css">
+<link rel="stylesheet" href="{% static 'css/monosaur.css' %}"
+	type="text/css">
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"
+	type="text/css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+
+<body style="padding-top: 70px">
+	<nav style="background-color: #f5f5f5;"
+		class="navbar navbar-default navbar-fixed-top">
+		<div>
+			<a class="navbar-brand" href="#">Manage {% sameas title %}</a>
+		</div>
+	</nav>
+	
+	{% if success_message %}
+	<div class="container">
+		<div class="alert alert-success alert-dismissable">
+			<button class="close" data-dismiss="alert" aria-label="close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<strong>Success!</strong> {{ success_message|safe }}
+		</div>
+	</div>
+	{% endif %}
+	
+	<form action="/admin/{{ table }}/" method="post"
+		style="padding-left: 20px; padding-right: 20px;">
+		{% csrf_token %} 
+		{% block content %}
+			{% include 'monosaur/table.html' with formset=formset row_html=row_html %}
+		{% endblock %}
+		<div style="position: fixed; top: .085in; right: 20px; z-index: 2000;">
+			<input class="btn btn-primary custom-width" type="submit" value="Save & Continue">
+		</div>
+	</form>
+</body>
+</html>

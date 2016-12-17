@@ -6,7 +6,7 @@ from datetime import datetime
 from django.db.utils import IntegrityError
 from django.utils import timezone
 
-from monosaur.models import Category, Company
+from monosaur.models import Category, Company, Uncategorised
 from spend_analyser.models import Transaction
 from spend_analyser.transactions.qif_helper import QifHelper
 from subscriptions.models import Subscription
@@ -51,7 +51,7 @@ def read_transactions(parser, file, session):
                 
         # in the above read_transactions method, all new companies were inserted to Company
         # let's export it so we don't lose them on the next db reset
-        Company.save_to_fixture()
+        Uncategorised.save_to_fixture()
     except Exception as e:
         print("==== error parsing with " + str(parser) + ": " + str(e))
 #       traceback.print_exc()
@@ -73,7 +73,7 @@ def get_category(reference):
         try:
             if not companies:
                 # mark the reference for later categorisation
-                Company(reference=reference).save()
+                Uncategorised(reference=reference).save()
         except:
             pass
         return Category.objects.get(name=DEFAULT_TRANSACTION_CATEGORY)

@@ -1,8 +1,8 @@
 {% extends "monosaur/table_row.html" %} 
-
+{% load sameastags %}
 {% block content %}
 {% if form.instance.id >= 0 %}
-<a href="/delete/subscription/{{ form.instance.id }}/?next={{ request.path }}" data-method="delete" class="close">
+<a href="/delete/{{ table }}/{{ form.instance.id }}/?next={{ request.path }}" data-method="delete" class="close">
 	<span aria-hidden="true">&times;</span>
 </a>
 {% endif %}

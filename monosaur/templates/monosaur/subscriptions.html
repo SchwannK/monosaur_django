@@ -1,4 +1,3 @@
-{% extends "monosaur/table.html" %} 
+{% extends "monosaur/form.html" %} 
 {% block title %}Subscriptions{% endblock %}
-{% block table %}subscription{% endblock %}
-{% block row %}{% with row_html='monosaur/subscriptions_row.html' %}{{block.super}}{% endwith %}{% endblock %}
+{% block content %}{% with formset=formset row_html='monosaur/subscriptions_row.html' table='subscription' %}{{block.super}}{% endwith %}{% endblock %}

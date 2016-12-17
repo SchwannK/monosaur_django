@@ -14,6 +14,7 @@ python manage.py migrate
 
 REM populate database
 python manage.py loaddata monosaur\fixtures\category_db.json
+python manage.py loaddata monosaur\fixtures\uncategorised_db.json
 python manage.py loaddata monosaur\fixtures\company_db.json
 python manage.py loaddata subscriptions\fixtures\subscriptions_db.json
 

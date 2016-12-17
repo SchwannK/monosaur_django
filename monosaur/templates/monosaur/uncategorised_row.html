@@ -2,11 +2,6 @@
 {% load sameastags %}
 {% block content %} 
 {% if form.instance.id >= 0 %}
-<a hint="Add subscirptions for this company"
-	href="/promote_to_subscription/{{ form.instance.id }}/?next=/admin/subscription"
-	class="btn btn-primary custom-width">Subs.</a>
-</td>
-<td>
 <a
 	href="/delete/{{ table }}/{{ form.instance.id }}/?next={{ request.path }}"
 	data-method="delete" class="close"> <span aria-hidden="true">&times;</span>

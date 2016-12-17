@@ -7,7 +7,7 @@ from django.contrib import auth
 from django.forms import modelformset_factory
 from django.shortcuts import redirect, render
 
-from monosaur.models import Company
+from monosaur.models import Company, Uncategorised
 from subscriptions.models import Subscription
 from spend_analyser.transactions import transaction_handler
 
@@ -16,16 +16,23 @@ def company(request):
     if not request.user.is_superuser:
         return redirect("/admin")
     CompaniesFormSet = modelformset_factory(Company, fields=['reference', 'name', 'category'], extra = 3)
+    UncategorisedFormSet = modelformset_factory(Uncategorised, fields=['reference', 'name', 'category'], extra = 3)
 
     if request.method == "POST":
-        formset = CompaniesFormSet(request.POST or None)
-        if formset.is_valid():
-            formset.save()
-            formset = CompaniesFormSet(queryset=Company.objects.order_by('-pk'))
+        companies_formset = CompaniesFormSet(request.POST or None)
+        if companies_formset.is_valid():
+            companies_formset.save()
+            companies_formset = CompaniesFormSet(queryset=Company.objects.order_by('-pk'))
+            
+        uncategorised_formset = UncategorisedFormSet(request.POST or None)
+        if uncategorised_formset.is_valid():
+            uncategorised_formset.save()
+            uncategorised_formset = UncategorisedFormSet(queryset=Uncategorised.objects.order_by('-pk'))
     else:
-        formset = CompaniesFormSet(queryset=Company.objects.order_by('-pk'))
+        companies_formset = CompaniesFormSet(queryset=Company.objects.order_by('-pk'))
+        uncategorised_formset = UncategorisedFormSet(queryset=Uncategorised.objects.order_by('-pk'))
 
-    content = {'formset': formset}
+    content = {'formset_companies': companies_formset, 'formset_uncategorised': uncategorised_formset}
     
     return render(request, 'monosaur/companies.html', content)
 
@@ -68,6 +75,11 @@ def delete(request, table, pk):
         elif table=='subscription':
             deleted, row_count = Subscription.objects.filter(pk=pk).delete()
             Subscription.save_to_fixture()
+        elif table=='uncategorised':
+            deleted, row_count = Uncategorised.objects.filter(pk=pk).delete()
+            Uncategorised.save_to_fixture()
+        else:
+            print('Unknown table: ' + table)
     return redirect(request.GET.get('next', '/analyse'))
 
 def logout(request):
