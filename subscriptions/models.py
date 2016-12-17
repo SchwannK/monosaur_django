@@ -5,15 +5,15 @@ from monosaur.utils import fixture_utils
 
 
 class Subscription(models.Model):
-    name = models.CharField(max_length=200)
-    company = models.ForeignKey(Company, null=True)
-    description = models.TextField()
-    monthly_price = models.FloatField()
-    subscription_url = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, null=True, blank=True)
+    company = models.ForeignKey(Company)
+    description = models.TextField(null=True, blank=True)
+    monthly_price = models.FloatField(null=True, blank=True)
+    subscription_url = models.CharField(max_length=200, null=True, blank=True)
     reference = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.reference
+        return self.name or self.reference
 
     @staticmethod
     def save_to_fixture():

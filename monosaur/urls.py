@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^admin/company/', views.company),
     url(r'^admin/subscription/', views.subscription),
     url(r'^delete/(?P<table>[\w]+)/(?P<pk>\d+)/', views.delete, name='delete'),
+    url(r'^promote_to_subscription/(?P<pk>\d+)/', views.promote_to_subscription),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,9 +1,12 @@
 {% extends "monosaur/table_row.html" %} 
-
-{% block content %}
+{% block content %} 
 {% if form.instance.id >= 0 %}
-<a href="/delete/companies/{{ form.instance.id }}/?next={{ request.path }}" data-method="delete" class="close">
-	<span aria-hidden="true">&times;</span>
+<a
+	href="/delete/companies/{{ form.instance.id }}/?next={{ request.path }}"
+	data-method="delete" class="close"> <span aria-hidden="true">&times;</span>
 </a>
+<a hint="Add subscirptions for this company"
+	href="/promote_to_subscription/{{ form.instance.id }}/?next=/admin/subscription"
+	class="btn btn-primary custom-width">Subs.</a>
 {% endif %}
 {% endblock %}
