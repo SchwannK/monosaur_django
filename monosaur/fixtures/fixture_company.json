@@ -1,0 +1,290 @@
+[
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 40,
+    "fields": {
+        "name": null,
+        "reference": "GOOGLE *Perry St S",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 39,
+    "fields": {
+        "name": null,
+        "reference": "Transferwise",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 38,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0064719961",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 37,
+    "fields": {
+        "name": null,
+        "reference": "CASH 0074142692",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 36,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0078942616",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 35,
+    "fields": {
+        "name": null,
+        "reference": "PRET A MANGER",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 34,
+    "fields": {
+        "name": null,
+        "reference": "OZZ RESTAURANT",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 33,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0088379486",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 32,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0088379487",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 31,
+    "fields": {
+        "name": null,
+        "reference": "LE PAIN QUOTIDIEN",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 30,
+    "fields": {
+        "name": null,
+        "reference": "IZ *UNDERBELLY LIM",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 29,
+    "fields": {
+        "name": null,
+        "reference": "UNIQLO (EUROPE) LT",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 28,
+    "fields": {
+        "name": null,
+        "reference": "THE LAUGHING STOCK",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 27,
+    "fields": {
+        "name": null,
+        "reference": "GOVINDASPUREVEGETA",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 26,
+    "fields": {
+        "name": null,
+        "reference": "400629 92140527",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 25,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0093173205",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 24,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0093173206",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 23,
+    "fields": {
+        "name": null,
+        "reference": "25 DEVONSHIRE PLAC",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 21,
+    "fields": {
+        "name": null,
+        "reference": "GAY",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 20,
+    "fields": {
+        "name": null,
+        "reference": "SUNRISE  &  COMPANY",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 16,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0016575298",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 15,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0016575299",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 14,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0016575300",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 13,
+    "fields": {
+        "name": null,
+        "reference": "PAYPAL PAYMENT",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 12,
+    "fields": {
+        "name": null,
+        "reference": "CASH BARCLAY SEP18",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 8,
+    "fields": {
+        "name": null,
+        "reference": "THE TEMPERANCE",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 7,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0040108002",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 6,
+    "fields": {
+        "name": null,
+        "reference": "Non-Sterling",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 5,
+    "fields": {
+        "name": null,
+        "reference": "THE FRUIT GARDEN",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 3,
+    "fields": {
+        "name": null,
+        "reference": "INT'L 0053712608",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 2,
+    "fields": {
+        "name": null,
+        "reference": "DENPLAN CLAIM",
+        "category": null
+    }
+},
+{
+    "model": "monosaur.fixturecompany",
+    "pk": 1,
+    "fields": {
+        "name": null,
+        "reference": "OVERDRAFT INTEREST",
+        "category": null
+    }
+}
+]

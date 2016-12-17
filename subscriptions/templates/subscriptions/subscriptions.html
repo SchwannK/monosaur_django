@@ -2,21 +2,35 @@
 
 {% block content %}
 
-{% for subscription in subscriptions %}
-		<div class="col-md-4">
-			<div class="card">
-				<div class="card-block">
-			    <h4 class="card-title"><a class="plain" href="{{ subscription.subscription_url }}" target="_blank">{{ subscription.name }}</a></h4>
-			    <h6 class="card-subtitle text-muted">{{ subscription.company }}</h6>
-			  </div>
-			  <a class="plain" href="{{ subscription.subscription_url }}" target="_blank"><div class="text-xs-center"><img src="https://logo.clearbit.com/{{ subscription.subscription_url }}" alt="Card image"></div></a>
-				<div class="card-block">
-					<h3 class="card-title"></a></h3>
-				  <p class="card-text">{{ subscription.description }}</p>
-				  <a href="{{ subscription.subscription_url }}" target="_blank" class="btn btn-primary">Find out more</a>
+<div class="col-md-2">
+
+	<button class="btn btn-primary filter-button btn-block" data-filter="all">All</button>
+	{% for category in categories %}
+	<button class="btn btn-default filter-button btn-block" data-filter="{{ category|cut:" "|cut:"("|cut:")"|cut:"&" }}" style="white-space: normal">{{ category }}</button>
+	{% endfor %}
+</div>
+
+<div class="col-md-10">
+	{% for subscription in subscriptions %}
+			<div class="col-md-4 filter {{ subscription.company.category.name|cut:" "|cut:"("|cut:")"|cut:"&" }}">
+				<div class="card">
+					<div class="card-block">
+				    <h4 class="card-title"><a class="plain" href="{{ subscription.subscription_url }}" target="_blank">{{ subscription.name }}</a></h4>
+				    <h6 class="card-subtitle text-muted">{{ subscription.company }}</h6>
+				  </div>
+					<div class="text-xs-center">
+					  <a class="plain" href="{{ subscription.subscription_url }}" target="_blank"><img src="https://logo.clearbit.com/{{ subscription.subscription_url }}" alt="Card image"></a>
+					</div>
+					<div class="card-block">
+						<h3 class="card-title"></a></h3>
+					  <p class="card-text">{{ subscription.description }}</p>
+					  <div class="text-xs-center">
+							<a href="{{ subscription.subscription_url }}" target="_blank" class="btn btn-primary">Find out more</a>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-{% endfor %}
+	{% endfor %}
+</div>
 
 {% endblock %}
