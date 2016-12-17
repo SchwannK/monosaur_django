@@ -16,7 +16,7 @@ def company(request):
     if not request.user.is_superuser:
         return redirect("/admin")
     CompaniesFormSet = modelformset_factory(Company, fields=['reference', 'name', 'category'], extra = 3)
-    UncategorisedFormSet = modelformset_factory(Uncategorised, fields=['reference', 'name', 'category'], extra = 3)
+    UncategorisedFormSet = modelformset_factory(Uncategorised, fields=['reference', 'name', 'category'], extra = 0)
 
     if request.method == "POST":
         companies_formset = CompaniesFormSet(request.POST or None)
