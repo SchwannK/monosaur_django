@@ -33,7 +33,8 @@ def company(request):
         uncategorised_formset = UncategorisedFormSet(queryset=Uncategorised.objects.order_by('-pk'))
 
     content = {'formset_companies': companies_formset, 'formset_uncategorised': uncategorised_formset}
-    
+    Company.save_to_fixture()
+    Uncategorised.save_to_fixture()
     return render(request, 'monosaur/companies.html', content)
 
 def subscription(request):
@@ -49,7 +50,7 @@ def subscription(request):
     else:
         formset = SubscriptionsFormSet(queryset=Subscription.objects.order_by('-pk'))
     content = {'formset': formset}
-    
+    Subscription.save_to_fixture()
     return render(request, 'monosaur/subscriptions.html', content)
     
 
