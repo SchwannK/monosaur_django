@@ -16,26 +16,40 @@ def company(request):
     if not request.user.is_superuser:
         return redirect("/admin")
     CompaniesFormSet = modelformset_factory(Company, fields=['reference', 'name', 'category'], extra = 3)
-    UncategorisedFormSet = modelformset_factory(Uncategorised, fields=['reference', 'name', 'category'], extra = 0)
 
     if request.method == "POST":
+        print(request.POST)
         companies_formset = CompaniesFormSet(request.POST or None)
+
         if companies_formset.is_valid():
             companies_formset.save()
             companies_formset = CompaniesFormSet(queryset=Company.objects.order_by('-pk'))
-            
+    else:
+        companies_formset = CompaniesFormSet(queryset=Company.objects.order_by('-pk'))
+
+    content = {'formset_companies': companies_formset}
+    Company.save_to_fixture()
+    Uncategorised.save_to_fixture()
+    return render(request, 'monosaur/companies.html', content)
+
+def uncategorised(request):
+    if not request.user.is_superuser:
+        return redirect("/admin")
+    UncategorisedFormSet = modelformset_factory(Uncategorised, fields=['reference', 'name', 'category'], extra = 0)
+
+    if request.method == "POST":
+        print(request.POST)
         uncategorised_formset = UncategorisedFormSet(request.POST or None)
+
         if uncategorised_formset.is_valid():
             uncategorised_formset.save()
             uncategorised_formset = UncategorisedFormSet(queryset=Uncategorised.objects.order_by('-pk'))
     else:
-        companies_formset = CompaniesFormSet(queryset=Company.objects.order_by('-pk'))
         uncategorised_formset = UncategorisedFormSet(queryset=Uncategorised.objects.order_by('-pk'))
 
-    content = {'formset_companies': companies_formset, 'formset_uncategorised': uncategorised_formset}
-    Company.save_to_fixture()
+    content = {'formset_uncategorised': uncategorised_formset}
     Uncategorised.save_to_fixture()
-    return render(request, 'monosaur/companies.html', content)
+    return render(request, 'monosaur/uncategorised.html', content)
 
 def subscription(request):
     if not request.user.is_superuser:
@@ -81,6 +95,43 @@ def delete(request, table, pk):
             Uncategorised.save_to_fixture()
         else:
             print('Unknown table: ' + table)
+    return redirect(request.GET.get('next', '/analyse'))
+
+def promote(request, from_table, pk, to_table):
+    print('Promoting ' + from_table + "/" + pk + " to " + to_table)
+    if not request.user.is_superuser:
+        return redirect("/admin")
+    if request.user.is_superuser:
+        if from_table==to_table:
+            print('Promote into the same table??')
+        else:
+            if from_table=='company':
+                if to_table=='subscription':
+                    print('Not yet implemented')
+                elif to_table=='uncategorised':
+                    print('Not yet implemented')
+                else:
+                    print('Unknown table: ' + to_table)
+            elif from_table=='subscription':
+                if to_table=='company':
+                    print('Not yet implemented')
+                elif to_table=='uncategorised':
+                    print('Not yet implemented')
+                else:
+                    print('Unknown table: ' + to_table)
+            elif from_table=='uncategorised':
+                if to_table=='company':
+                    uncategorised = Uncategorised.objects.get(pk=pk)
+                    Company(name=uncategorised.name, reference=uncategorised.reference, category=uncategorised.category).save()
+                    uncategorised.delete()
+                elif to_table=='subscription':
+                    print('Not yet implemented')
+                else:
+                    print('Unknown table: ' + to_table)
+            else:
+                print('Unknown table: ' + from_table)
+    else:
+        print('No superuser')
     return redirect(request.GET.get('next', '/analyse'))
 
 def logout(request):

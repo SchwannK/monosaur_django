@@ -247,7 +247,7 @@
     "pk": 229,
     "fields": {
         "name": null,
-        "reference": "DENPLAN CLAIM ",
+        "reference": "DENPLAN CLAIM",
         "category": null
     }
 },
@@ -283,7 +283,7 @@
     "pk": 225,
     "fields": {
         "name": null,
-        "reference": "BTBTRR9048534003 ",
+        "reference": "BTBTRR9048534003",
         "category": null
     }
 },
@@ -472,7 +472,7 @@
     "pk": 204,
     "fields": {
         "name": null,
-        "reference": "GOOGLE ",
+        "reference": "GOOGLE",
         "category": null
     }
 },
@@ -589,7 +589,7 @@
     "pk": 191,
     "fields": {
         "name": null,
-        "reference": "VODAFONE LTD ",
+        "reference": "VODAFONE LTD",
         "category": null
     }
 },
@@ -724,7 +724,7 @@
     "pk": 176,
     "fields": {
         "name": null,
-        "reference": "FITNESS FIRST CLUB ",
+        "reference": "FITNESS FIRST CLUB",
         "category": null
     }
 },
@@ -859,7 +859,7 @@
     "pk": 161,
     "fields": {
         "name": null,
-        "reference": "PAYPAL PAYMENT ",
+        "reference": "PAYPAL PAYMENT",
         "category": null
     }
 },

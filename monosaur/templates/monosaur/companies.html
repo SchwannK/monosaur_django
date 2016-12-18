@@ -1,5 +1,3 @@
-{% extends "monosaur/split_form.html" %} 
-{% block title %}Uncategorised Companies and Companies{% endblock %}
-{% block action %}/admin/company/{% endblock %}
-{% block content1 %}{% with formset=formset_uncategorised row_html='monosaur/uncategorised_row.html' table='uncategorised' %}{{block.super}}{% endwith %}{% endblock %}
-{% block content2 %}{% with formset=formset_companies     row_html='monosaur/companies_row.html'     table='company'       %}{{block.super}}{% endwith %}{% endblock %}
+{% extends "monosaur/form.html" %} 
+{% block title %}Companies{% endblock %}
+{% block content %}{% with formset=formset_companies row_html='monosaur/companies_row.html' table='company' %}{{block.super}}{% endwith %}{% endblock %}
