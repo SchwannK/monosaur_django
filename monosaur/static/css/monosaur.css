@@ -8,27 +8,27 @@ div.subscription-listing {
 	margin-left: 40px;
 }
 
-a.plain:hover {
-	text-decoration: none;
-}
-
 .hero-unit {
     background-image:url("../img/hero_image.jpg");
     background-size:cover;
     background-color: #EEEEEE;
-    height:600px;
+    height:500px;
 
   }
 .hero-unit h1 {
     color: #FFFFFF;
-    font-size: 60px;
+    font-size: 80px;
     letter-spacing: -1px;
     line-height: 1;
-    margin-bottom: 0;
+		font-family: Lobster;
+		top: 180px;
+		position: absolute;
 }
 .hero-unit h2 {
-    font-size: 25px;
+    font-size: 32px;
     color: #FFFFFF;
+		top: 280px;
+		position: absolute;
 
 }
 .fill{width:100%;height:350px;background-position:center;background-size:cover;

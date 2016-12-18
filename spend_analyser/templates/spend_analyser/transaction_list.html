@@ -160,7 +160,7 @@
 	</div>
 	{% endif%}
 
-	{% if subscriptions %}
+	{% if transactions %}
 	<div class="card">
 		<div class="card-block">
 			<a data-toggle="collapse" data-target="#subscriptions">
@@ -188,18 +188,23 @@
 				</tr>
 				{% endfor %}
 			</table>
+			{% if not subscriptions %}
+			<div class="alert alert-warning">
+			  <strong>No subscriptions found!</strong> Why don't you browse for some <a href="/">here</a>?
+			</div>
+			{% endif %}
 		</div>
 	</div>
-	{% endif %}
 
-	{% if transactions %}
+
+
 	<div class="card">
 		<div class="card-block">
 			<a data-toggle="collapse" data-target="#transactions">
 				<h4>Your Transaction History</h4>
 			</a>
 
-			<div id="transactions" class="collapse in">
+			<div id="transactions" class="collapse">
 				<table class="table">
 					<tr>
 						<th>#</th>
@@ -209,7 +214,7 @@
 						<th>Subscription</th>
 						<th>Amount</th>
 					</tr>
-		
+
 					{% for transaction in transactions %}
 					<tr>
 						<td>{{ forloop.counter }}</td>

@@ -21,20 +21,27 @@
 </head>
 
 <body>
-	<div class="hero-unit">
-		<h1 class="title">Monosaur</h1>
-		<h2>We make subscriptions fucking easy to manage!</h2>
-	</div>
-	<div class="container">
-		<ul class="nav nav-tabs">
-			<li class="nav-item"><a
-				class="nav-link {% if navbar == 'subscriptions' %}active{% endif %}"
-				href="/">Subscription Directory</a></li>
-			<li class="nav-item"><a
-				class="nav-link {% if navbar == 'spend_analyser' %}active{% endif %}"
-				href="/analyse">Spend Analyser</a></li>
+	<nav class="navbar navbar-dark bg-inverse navbar-fixed-top">
+		<div class="container">
+		<a class="navbar-brand" href="/">Monosaur</a>
+		<ul class="nav navbar-nav float-sm-right">
+			<li class="nav-item">
+				<a class="nav-link {% if navbar == 'subscriptions' %}active{% endif %}"	href="/">Subscriptions</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link {% if navbar == 'spend_analyser' %}active{% endif %}" href="/analyse">Analyser</a>
+			</li>
 		</ul>
 	</div>
+	</nav>
+
+	<div class="hero-unit">
+		<div class="container">
+			<h1>Monosaur</h1>
+			<h2>Discover <i>fancy</i> subscriptions with us!</h2>
+		</div>
+	</div>
+
 	<br>
 	<div class="container">
 		<div class="row">
