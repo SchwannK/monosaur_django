@@ -6,10 +6,6 @@
 """
 from datetime import datetime
 
-from monosaur.utils import string_utils
-from spend_analyser.models import Transaction
-from spend_analyser.transactions import transaction_handler
-
 from .parser import Parser
 
 
@@ -21,11 +17,7 @@ class QifHelper(Parser):
         transactions = []
     
         for qif_transaction in qif_transactions:
-            name = string_utils.to_empty(qif_transaction.payee) + ' ' + string_utils.to_empty(qif_transaction.memo)
-            company = transaction_handler.get_company(name)
-            subscription = transaction_handler.get_subscription(qif_transaction.payee)
-            transactions.append(Transaction(name=name.strip(), \
-                                            amount=qif_transaction.amount, date=qif_transaction.date, company=company, subscription=subscription, session=session))
+            transactions.append(self.get_transaction(self, qif_transaction.payee, qif_transaction.memo, qif_transaction.amount, qif_transaction.date, session))
         return transactions
         
     def __str__(self):

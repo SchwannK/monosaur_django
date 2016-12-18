@@ -209,25 +209,25 @@
 						<th>Subscription</th>
 						<th>Amount</th>
 					</tr>
-
+		
 					{% for transaction in transactions %}
 					<tr>
 						<td>{{ forloop.counter }}</td>
 						<td>{{ transaction.date }}</td>
-						<td>{{ transaction.name }}</td>
-						{% if transaction.company or not user.is_authenticated or not user.is_superuser %}
+						<td>{{ transaction.reference }}</td>
+						{% if transaction.uncategorised and user.is_authenticated and user.is_superuser %}
+							<td><a href="http://localhost:8000/admin/uncategorised/#{{ transaction.uncategorised.pk }}">{{ transaction.category }}</a></td>
+						{% else %}
 							<td>{{ transaction.category }}</td>
-						{% else %}
-							<td><a href="http://localhost:8000/admin/company/#{{ transaction.uncategorised.pk }}">{{ transaction.category }}</a></td>
 						{% endif %}
-						{% if transaction.subscription or not user.is_authenticated or not user.is_superuser %}
-							<td>{{ transaction.subscription }}</td>
-						{% else %}
+						{% if transaction.subscription and user.is_authenticated and user.is_superuser %}
 							{% if transaction.company %}
 								<td><a href="/promote_to_subscription/{{ transaction.company.pk }}/?next=/admin/subscription">No</a></td>
 							{% else %}
 								<td>No</td>
 							{% endif %}
+						{% else %}
+							<td>{{ transaction.subscription }}</td>
 						{% endif %}
 						<td>{{ transaction.amount|floatformat:2 }}</td>
 					</tr>

@@ -30,7 +30,7 @@ def spend_analyser(request):
 
     content['subscriptions'] = Transaction.objects\
         .filter(subscription__isnull=False, session__session_id=session.session_id)\
-        .values('name', 'subscription__name', 'subscription__company__name', \
+        .values('reference', 'subscription__name', 'subscription__company__name', \
                 'subscription__company__category__name', 'subscription__description', \
                 'subscription__monthly_price', 'subscription__subscription_url')\
         .distinct()

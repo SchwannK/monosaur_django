@@ -15,29 +15,22 @@ class Session(models.Model):
 # Table for all the transactions of all the users
 # Currently entries that are older than 1 day will be dumped daily by a schedule task on pythonanywhere
 class Transaction(models.Model):
-    name = models.CharField(max_length=100)
+    reference = models.CharField(max_length=100)
     amount = models.FloatField()
     date = models.DateField()
-    company = models.ForeignKey(Company, on_delete=models.DO_NOTHING, null=True, blank=True)
+    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
     subscription = models.ForeignKey(
         Subscription, null=True, blank=True, on_delete=models.DO_NOTHING
     )
     session = models.ForeignKey(Session, on_delete=models.DO_NOTHING)
 
     @property
-    def category(self):
-        if self.company:
-            return self.company.category
-        else:
-            return Category.objects.get(name=DEFAULT_TRANSACTION_CATEGORY)
-    
-    @property
     def uncategorised(self):
-        return Uncategorised.objects.get(reference=self.name)
+        return Uncategorised.objects.get(reference=self.reference)
     
     class Meta:
-        unique_together = (('name', 'amount', 'date', 'session'),)
+        unique_together = (('reference', 'amount', 'date', 'session'),)
     
     def __str__(self):
-        return "Transaction(" + ", ".join(["name=" + self.name, "amount=" + str(self.amount) + "GBP", "date=" + str(self.date), \
+        return "Transaction(" + ", ".join(["reference=" + self.reference, "amount=" + str(self.amount) + "GBP", "date=" + str(self.date), \
                                            "company=" + str(self.company), "subscription=" + str(self.subscription)]) + ")"

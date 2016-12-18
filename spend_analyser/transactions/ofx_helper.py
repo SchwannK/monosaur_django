@@ -6,10 +6,6 @@
 """
 from ofxparse import OfxParser
 
-from monosaur.utils import string_utils
-from spend_analyser.models import Transaction
-from spend_analyser.transactions import transaction_handler
-
 from .parser import Parser
 
 
@@ -21,10 +17,7 @@ class OfxHelper(Parser):
         transactions = []
     
         for ofx_transaction in ofx_transactions:
-            name = string_utils.to_empty(ofx_transaction.payee) + ' ' + string_utils.to_empty(ofx_transaction.memo)
-            company = transaction_handler.get_company(name)
-            subscription = transaction_handler.get_subscription(name)
-            transactions.append(Transaction(name=name.strip(), amount=ofx_transaction.amount, date=ofx_transaction.date, company=company, subscription=subscription, session=session))
+            transactions.append(self.get_transaction(self, ofx_transaction.payee, ofx_transaction.memo, ofx_transaction.amount, ofx_transaction.date, session))
             
         return transactions
 
