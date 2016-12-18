@@ -1,6 +1,6 @@
 from django.db import models
 
-from monosaur.models import Category, Company
+from monosaur.models import Category, Company, Uncategorised
 from subscriptions.models import Subscription
 from .transactions.constants import DEFAULT_TRANSACTION_CATEGORY
 
@@ -30,6 +30,10 @@ class Transaction(models.Model):
             return self.company.category
         else:
             return Category.objects.get(name=DEFAULT_TRANSACTION_CATEGORY)
+    
+    @property
+    def uncategorised(self):
+        return Uncategorised.objects.get(reference=self.name)
     
     class Meta:
         unique_together = (('name', 'amount', 'date', 'session'),)
