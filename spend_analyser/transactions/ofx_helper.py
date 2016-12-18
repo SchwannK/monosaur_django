@@ -21,10 +21,10 @@ class OfxHelper(Parser):
         transactions = []
     
         for ofx_transaction in ofx_transactions:
-            category = transaction_handler.get_category(ofx_transaction.payee)
-            subscription = transaction_handler.get_subscription(ofx_transaction.payee)
             name = string_utils.to_empty(ofx_transaction.payee) + ' ' + string_utils.to_empty(ofx_transaction.memo)
-            transactions.append(Transaction(name=name.strip(), amount=ofx_transaction.amount, date=ofx_transaction.date, category=category, subscription=subscription, session=session))
+            company = transaction_handler.get_company(name)
+            subscription = transaction_handler.get_subscription(name)
+            transactions.append(Transaction(name=name.strip(), amount=ofx_transaction.amount, date=ofx_transaction.date, company=company, subscription=subscription, session=session))
             
         return transactions
 

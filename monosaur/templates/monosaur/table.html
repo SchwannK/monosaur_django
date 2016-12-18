@@ -11,11 +11,17 @@
 	</div>
 	{% endif %} 
 	<table class="table">
-	{% for form in formset.extra_forms %}
-		{% include row_html with form=form print_header=True %}
-	{% endfor %}
-	{% for form in formset.initial_forms %}
-		{% include row_html with form=form %}  
-	{% endfor %}
+	{% if formset.extra_forms %}
+		{% for form in formset.extra_forms %}
+			{% include row_html with form=form print_header=True %}
+		{% endfor %}
+		{% for form in formset.initial_forms %}
+			{% include row_html with form=form print_header=False %}  
+		{% endfor %}
+	{% else %}
+		{% for form in formset.initial_forms %}
+			{% include row_html with form=form print_header=True %}  
+		{% endfor %}
+	{% endif %}
 	</table>
 {% endif %}

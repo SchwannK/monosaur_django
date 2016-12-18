@@ -21,11 +21,11 @@ class QifHelper(Parser):
         transactions = []
     
         for qif_transaction in qif_transactions:
-            category = transaction_handler.get_category(qif_transaction.payee)
-            subscription = transaction_handler.get_subscription(qif_transaction.payee)
             name = string_utils.to_empty(qif_transaction.payee) + ' ' + string_utils.to_empty(qif_transaction.memo)
+            company = transaction_handler.get_company(name)
+            subscription = transaction_handler.get_subscription(qif_transaction.payee)
             transactions.append(Transaction(name=name.strip(), \
-                                            amount=qif_transaction.amount, date=qif_transaction.date, category=category, subscription=subscription, session=session))
+                                            amount=qif_transaction.amount, date=qif_transaction.date, company=company, subscription=subscription, session=session))
         return transactions
         
     def __str__(self):

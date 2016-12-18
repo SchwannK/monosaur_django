@@ -1,7 +1,8 @@
 from django.db import models
 
-from monosaur.models import Category
+from monosaur.models import Category, Company
 from subscriptions.models import Subscription
+from .transactions.constants import DEFAULT_TRANSACTION_CATEGORY
 
 
 class Session(models.Model):
@@ -17,15 +18,22 @@ class Transaction(models.Model):
     name = models.CharField(max_length=100)
     amount = models.FloatField()
     date = models.DateField()
-    category = models.ForeignKey(Category, default=0, on_delete=models.DO_NOTHING)
+    company = models.ForeignKey(Company, on_delete=models.DO_NOTHING, null=True, blank=True)
     subscription = models.ForeignKey(
         Subscription, null=True, blank=True, on_delete=models.DO_NOTHING
     )
     session = models.ForeignKey(Session, on_delete=models.DO_NOTHING)
+
+    @property
+    def category(self):
+        if self.company:
+            return self.company.category
+        else:
+            return Category.objects.get(name=DEFAULT_TRANSACTION_CATEGORY)
     
     class Meta:
         unique_together = (('name', 'amount', 'date', 'session'),)
     
     def __str__(self):
         return "Transaction(" + ", ".join(["name=" + self.name, "amount=" + str(self.amount) + "GBP", "date=" + str(self.date), \
-                                           "category=" + str(self.category), "subscription=" + str(self.subscription)]) + ")"
+                                           "company=" + str(self.company), "subscription=" + str(self.subscription)]) + ")"

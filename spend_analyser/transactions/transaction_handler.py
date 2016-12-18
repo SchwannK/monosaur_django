@@ -61,24 +61,21 @@ def read_transactions(parser, file, session):
 
 # See if the reference can be found in the Categories db and return the entry
 # If it's not found, the reference is marked for later categorisation
-def get_category(reference):
+def get_company(reference):
     # Not the best solution as it's specific to SQLite. And the point of querysets is to be abstracted from the concrete db implementation. But it's ok for now
     companies = Company.objects.raw("SELECT * FROM monosaur_company where %s LIKE '%%' || reference || '%%'", [reference])[:1]
-    category = None
     
     if companies and companies[0].category:
-        category = companies[0].category
-        
-    if category is None:
+        company = companies[0]
+    else:
         try:
-            if not companies:
-                # mark the reference for later categorisation
-                Uncategorised(reference=reference).save()
+            # mark the reference for later categorisation
+            Uncategorised(reference=reference).save()
         except:
             pass
-        return Category.objects.get(name=DEFAULT_TRANSACTION_CATEGORY)
-    else:
-        return category
+        company = None
+        
+    return company
 
 # See if the reference can be found in the Subscription db and return the entry
 def get_subscription(reference):

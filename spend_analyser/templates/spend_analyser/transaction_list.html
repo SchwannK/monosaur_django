@@ -179,7 +179,15 @@
 						<td>{{ transaction.date }}</td>
 						<td>{{ transaction.name }}</td>
 						<td>{{ transaction.category }}</td>
-						<td>{{ transaction.subscription }}</td>
+						{% if transaction.subscription %}
+							<td>{{ transaction.subscription }}</td>
+						{% else %}
+							{% if transaction.company %}
+								<td><a href="/promote_to_subscription/{{ transaction.company.pk }}/?next=/admin/subscription">No</a></td>
+							{% else %}
+								<td>No</td>
+							{% endif %}
+						{% endif %}
 						<td>{{ transaction.amount|floatformat:2 }}</td>
 					</tr>
 					{% endfor %}

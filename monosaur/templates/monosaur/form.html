@@ -36,15 +36,15 @@
 	</div>
 	{% endif %}
 	
+	{% block content %}
 	<form action="/admin/{{ table }}/" method="post"
 		style="padding-left: 20px; padding-right: 20px;">
 		{% csrf_token %} 
-		{% block content %}
-			{% include 'monosaur/table.html' with formset=formset row_html=row_html %}
-		{% endblock %}
+		{% include 'monosaur/table.html' with formset=formset row_html=row_html %}
 		<div style="position: fixed; top: .085in; right: 20px; z-index: 2000;">
 			<input class="btn btn-primary custom-width" type="submit" value="Save & Continue">
 		</div>
 	</form>
+	{% endblock %}
 </body>
 </html>

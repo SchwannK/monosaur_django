@@ -33,12 +33,12 @@ class Company(models.Model):
     
     @staticmethod
     def save_to_fixture():
-        fixture_utils.create_fixture('monosaur.Company', 'monosaur/fixtures/company_db.json')    
+        fixture_utils.create_fixture('monosaur.Company', 'monosaur\\fixtures\\company_db.json')    
     
     @staticmethod
     def load_from_fixture():
         Company.objects.all().delete()
-        fixture_utils.import_fixture('monosaur/fixtures/company_db.json')
+        fixture_utils.import_fixture('monosaur\\fixtures\\company_db.json')
 
 # This table is used to categorise uploaded transactions.
 class Uncategorised(models.Model):
@@ -51,9 +51,9 @@ class Uncategorised(models.Model):
     
     @staticmethod
     def save_to_fixture():
-        fixture_utils.create_fixture('monosaur.Uncategorised', 'monosaur/fixtures/uncategorised_db.json')    
+        fixture_utils.create_fixture('monosaur.Uncategorised', 'monosaur\\fixtures\\uncategorised_db.json')    
     
     @staticmethod
     def load_from_fixture():
         Uncategorised.objects.all().delete()
-        fixture_utils.import_fixture('monosaur/fixtures/uncategorised_db.json')
+        fixture_utils.import_fixture('monosaur\\fixtures\\uncategorised_db.json')

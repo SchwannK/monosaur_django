@@ -36,13 +36,6 @@
 },
 {
     "model": "monosaur.category",
-    "pk": 2,
-    "fields": {
-        "name": "Cash Withdrawals"
-    }
-},
-{
-    "model": "monosaur.category",
     "pk": 5,
     "fields": {
         "name": "Entertainment & Leisure"
@@ -172,15 +165,6 @@
         "name": "Whole Foods",
         "reference": "WHOLE FOODS",
         "category": 6
-    }
-},
-{
-    "model": "monosaur.company",
-    "pk": 2,
-    "fields": {
-        "name": "sdfdf",
-        "reference": "sdfdff",
-        "category": 2
     }
 },
 {
