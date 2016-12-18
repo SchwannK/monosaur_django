@@ -17,9 +17,9 @@ class Subscription(models.Model):
 
     @staticmethod
     def save_to_fixture():
-        fixture_utils.create_fixture('subscriptions.Subscription', 'subscriptions\\fixtures\\subscriptions_db.json')
+        fixture_utils.create_fixture('subscriptions.Subscription', 'subscriptions/fixtures/subscriptions_db.json')
 
     @staticmethod
     def load_from_fixture():
         Subscription.objects.all().delete()
-        fixture_utils.import_fixture('subscriptions\\fixtures\\subscriptions_db.json')
+        fixture_utils.import_fixture('subscriptions/fixtures/subscriptions_db.json')

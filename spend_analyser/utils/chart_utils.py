@@ -8,29 +8,23 @@ from django.db.models import Max, Min
 
 from spend_analyser.transactions.constants import *
 
-
+"""
+This method provides bar chart data for the 5 largest non-'Other' transaction categories (for recognised transactions)
+"""
 def get_barchart_data(categories, transactions):
     category_totals = {}  # Initialise dictionary which will store totals for each category
     overall_total = 0
 
     for transaction in transactions:
-        category_totals[transaction.category.name] = category_totals.get(transaction.category.name, 0) - transaction.amount  # minus to invert sign
-        overall_total -= transaction.amount
+        if transaction.category.name is not DEFAULT_TRANSACTION_CATEGORY:
+            category_totals[transaction.category.name] = category_totals.get(transaction.category.name, 0) - transaction.amount  # minus to invert sign
+            overall_total -= transaction.amount
 
-    # Remove Other category to find top 4 non-Other categories
+    # Remove Other category to find top 5 non-Other categories
     if DEFAULT_TRANSACTION_CATEGORY in category_totals:
         other_total = category_totals.pop(DEFAULT_TRANSACTION_CATEGORY)
 
-    sorted_categories = sorted(category_totals, key=category_totals.get, reverse=True)[:4]  # get top 4 non-Other categories in sorted list
-
-    # Calculate total spend in top 4 non-Other categories
-    top_total = 0
-    for top_cat in sorted_categories:
-        top_total += category_totals[top_cat]
-
-    # Add back Other category and recalculate to include all categories not within top 4
-    sorted_categories.append(DEFAULT_TRANSACTION_CATEGORY)
-    category_totals[DEFAULT_TRANSACTION_CATEGORY] = overall_total - top_total
+    sorted_categories = sorted(category_totals, key=category_totals.get, reverse=True)[:5]  # get top 5 non-Other categories in sorted list
 
     chart_data = [(cat, round(category_totals.get(cat, 0), 2)) for cat in sorted_categories]
 
@@ -59,7 +53,7 @@ def get_largest_categories(categories, transactions):
         other_total = category_totals.pop(DEFAULT_TRANSACTION_CATEGORY)
         print(other_total)
 
-    largest_categories = sorted(category_totals, key=category_totals.get, reverse=True)[:4]  # get top 4 non-Other categories in sorted list
+    largest_categories = sorted(category_totals, key=category_totals.get, reverse=True)[:5]  # get top 5 non-Other categories in sorted list
 
     return largest_categories
 
@@ -78,18 +72,20 @@ def create_date_array(transactions):
     # Else add months from date_min to date_max inclusive into array
     else:
         current = date_min
-        while current < date_max + relativedelta(months=1):
+        while not current.strftime('%b %y') in date_max.strftime('%b %y'):
             date_array.append(current.strftime('%b %y'))
             current += relativedelta(months=1)
+        date_array.append(current.strftime('%b %y'))
 
     return date_array
 
-
+"""
+This method provides line chart data for the 5 largest non-'Other' transaction categories (for recognised transactions)
+"""
 def get_linechart_data(categories, transactions):
     total_spend = collections.OrderedDict()  # Initialise top level dictionary storing totals by month by category
 
     largest_categories = get_largest_categories(categories, transactions)
-    largest_categories.append(DEFAULT_TRANSACTION_CATEGORY)
 
     date_array = create_date_array(transactions)
 
@@ -98,20 +94,10 @@ def get_linechart_data(categories, transactions):
         for date in date_array:
             total_spend[category][date] = 0  # Initialise all possible values of category-date to 0
 
-    # for cat in total_spend:
-    #    for month in total_spend[cat]:
-    #        print(cat, month, total_spend[cat][month])
-
     for transaction in transactions:
         if transaction.amount < 0:
             if transaction.category.name in largest_categories:
                 total_spend[transaction.category.name][transaction.date.strftime('%b %y')] = total_spend.get(transaction.category.name).get(transaction.date.strftime('%b %y')) - transaction.amount
-            else:
-                total_spend[DEFAULT_TRANSACTION_CATEGORY][transaction.date.strftime('%b %y')] = total_spend.get(DEFAULT_TRANSACTION_CATEGORY).get(transaction.date.strftime('%b %y')) - transaction.amount
-
-    # for cat in total_spend:
-    #    for month in total_spend[cat]:
-    #        print(cat, month, total_spend[cat][month])
 
     chartjs_data = {}
     chartjs_data['months'] = date_array  # Months for Chartjs

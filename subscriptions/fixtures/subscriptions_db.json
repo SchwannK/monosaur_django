@@ -30,7 +30,7 @@
     "fields": {
         "name": "Spotify Premium",
         "company": 1,
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "description": "Download music from Spotify and listen offline, ad-free, with better sound quality.",
         "monthly_price": 9.99,
         "subscription_url": "https://www.spotify.com",
         "reference": "Spotify"
@@ -42,7 +42,7 @@
     "fields": {
         "name": "Netflix Premium",
         "company": 0,
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "description": "Watch unlimited Netflix films and TV programmes on your laptop, TV, phone and tablet, up to 4 screens at the same time and  in Ultra HD.",
         "monthly_price": 8.99,
         "subscription_url": "https://www.netflix.com",
         "reference": "Netflix Premium"
@@ -54,7 +54,7 @@
     "fields": {
         "name": "Netflix Standard",
         "company": 0,
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "description": "Watch unlimited Netflix films and TV programmes on your laptop, TV, phone and tablet, up to 2 screens at the same time and  in HD.",
         "monthly_price": 7.49,
         "subscription_url": "https://www.netflix.com",
         "reference": "Netflix Standard"
@@ -66,7 +66,7 @@
     "fields": {
         "name": "Netflix Basic",
         "company": 0,
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "description": "Watch unlimited Netflix films and TV programmes on your laptop, TV, phone and tablet.",
         "monthly_price": 5.99,
         "subscription_url": "https://www.netflix.com",
         "reference": "Netflix Basic"

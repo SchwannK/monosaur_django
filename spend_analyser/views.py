@@ -41,8 +41,9 @@ def spend_analyser(request):
     # If transactions exist, perform analysis and show chart
     if len(transactions) > 0:
         if len(chart_utils.create_date_array(transactions)) > 1:
-            # Process data for line chart if more than one month of data
+            # Process data for line chart and overall bar chart if more than one month of data
             content['chartjs_linedata'] = chart_utils.get_linechart_data(Category.objects.all(), transactions)
+            content['chartjs_bardata'] = chart_utils.get_barchart_data(Category.objects.all(), transactions)
 
         else:
             # Else process data for bar chart
