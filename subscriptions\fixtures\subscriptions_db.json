@@ -1,0 +1,75 @@
+[
+{
+    "model": "monosaur.category",
+    "pk": 5,
+    "fields": {
+        "name": "Entertainment & Leisure"
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 1,
+    "fields": {
+        "name": "Spotify",
+        "reference": "Spotify",
+        "category": 5
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 0,
+    "fields": {
+        "name": "Netflix",
+        "reference": "Netflix",
+        "category": 5
+    }
+},
+{
+    "model": "subscriptions.subscription",
+    "pk": 3,
+    "fields": {
+        "name": "Spotify Premium",
+        "company": 1,
+        "description": "Download music from Spotify and listen offline, ad-free, with better sound quality.",
+        "monthly_price": 9.99,
+        "subscription_url": "https://www.spotify.com",
+        "reference": "Spotify"
+    }
+},
+{
+    "model": "subscriptions.subscription",
+    "pk": 2,
+    "fields": {
+        "name": "Netflix Premium",
+        "company": 0,
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "monthly_price": 8.99,
+        "subscription_url": "https://www.netflix.com",
+        "reference": "Netflix Premium"
+    }
+},
+{
+    "model": "subscriptions.subscription",
+    "pk": 1,
+    "fields": {
+        "name": "Netflix Standard",
+        "company": 0,
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "monthly_price": 7.49,
+        "subscription_url": "https://www.netflix.com",
+        "reference": "Netflix Standard"
+    }
+},
+{
+    "model": "subscriptions.subscription",
+    "pk": 0,
+    "fields": {
+        "name": "Netflix Basic",
+        "company": 0,
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "monthly_price": 5.99,
+        "subscription_url": "https://www.netflix.com",
+        "reference": "Netflix Basic"
+    }
+}
+]
