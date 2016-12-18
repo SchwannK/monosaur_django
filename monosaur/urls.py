@@ -29,8 +29,10 @@ urlpatterns = [
     url(r'^admin/cleanup/', views.db_cleanup),
     url(r'^admin/clear/', views.db_clear),
     url(r'^admin/company/', views.company),
+    url(r'^admin/uncategorised/', views.uncategorised),
     url(r'^admin/subscription/', views.subscription),
     url(r'^delete/(?P<table>[\w]+)/(?P<pk>\d+)/', views.delete, name='delete'),
+    url(r'^promote/(?P<from_table>[\w]+)/(?P<pk>\d+)/(?P<to_table>[\w]+)/', views.promote, name='promote'),
     url(r'^promote_to_subscription/(?P<pk>\d+)/', views.promote_to_subscription),
 ]
 if settings.DEBUG:

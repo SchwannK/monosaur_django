@@ -20,15 +20,15 @@
 	</td>
 	{% for field in form.visible_fields %}
 	<td>
-	{% if field.errors %}
-	<div class="alert alert-danger alert-dismissable">
-		<button class="close" data-dismiss="alert" aria-label="close" title="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<strong>Error!</strong> {{ field.errors|safe }}
-	</div>
-	{% endif %}
-	{{ field }}
+		{% if field.errors %}
+		<div class="alert alert-danger alert-dismissable">
+			<button class="close" data-dismiss="alert" aria-label="close" title="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<strong>Error!</strong> {{ field.errors|safe }}
+		</div>
+		{% endif %}
+		{{ field }}
 	</td>
 	{% endfor %}
 	<td>

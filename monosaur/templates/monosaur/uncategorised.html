@@ -1,0 +1,3 @@
+{% extends "monosaur/form.html" %} 
+{% block title %}Uncategorised{% endblock %}
+{% block content %}{% with formset=formset_uncategorised row_html='monosaur/uncategorised_row.html' table='uncategorised' %}{{block.super}}{% endwith %}{% endblock %}
