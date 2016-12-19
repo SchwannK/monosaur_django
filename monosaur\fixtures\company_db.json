@@ -1,6 +1,13 @@
 [
 {
     "model": "monosaur.category",
+    "pk": 8,
+    "fields": {
+        "name": "Holiday"
+    }
+},
+{
+    "model": "monosaur.category",
     "pk": 9,
     "fields": {
         "name": "Home & Garden"
@@ -43,10 +50,73 @@
 },
 {
     "model": "monosaur.company",
+    "pk": 24,
+    "fields": {
+        "name": "Ryanair",
+        "reference": "RYANAIR",
+        "category": 8
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 23,
+    "fields": {
+        "name": "Cafe East",
+        "reference": "CAFE EAST",
+        "category": 6
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 22,
+    "fields": {
+        "name": "Tokyo Diner",
+        "reference": "TOKYO DINER",
+        "category": 6
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 21,
+    "fields": {
+        "name": "Chatime UK",
+        "reference": "CHATIME",
+        "category": 6
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 20,
+    "fields": {
+        "name": "Com Viet Garrick St",
+        "reference": "COM VIET",
+        "category": 6
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 19,
+    "fields": {
+        "name": "easyJet",
+        "reference": "EASYJET",
+        "category": 8
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 18,
+    "fields": {
+        "name": "seethelight ISP",
+        "reference": "IFR TA SEETHELIGHT",
+        "category": 10
+    }
+},
+{
+    "model": "monosaur.company",
     "pk": 17,
     "fields": {
         "name": "Lemonia Restaurant",
-        "reference": "LEMONIA RESTAURANT CD 1414",
+        "reference": "LEMONIA RESTAURANT",
         "category": 6
     }
 },
