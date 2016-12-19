@@ -65,9 +65,6 @@ def get_response(request, target_url, model, form=None, extra=3, fields='__all__
     formset, valid = save_formset(request, model, FormSet)
     content = {'formset': formset}
     
-    for form in formset[:1]:
-        print(form.visible_fields())
-    
     if not valid:
         content['error_message'] = 'See errors below!'
 

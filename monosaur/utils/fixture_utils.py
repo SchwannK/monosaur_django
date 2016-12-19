@@ -1,4 +1,4 @@
-import sys
+import os, sys
 
 from django.core.management import call_command
 
@@ -6,7 +6,8 @@ from django.core.management import call_command
 # dump the specified database table into a json file
 def create_fixture(model, path):
     sysout = sys.stdout
-    f = open(path, 'w+')
+    my_dir = os.path.abspath(os.path.dirname(__name__))
+    f = open(os.path.join(my_dir, path).replace('\\', '/'), 'w+')
     sys.stdout = f
     call_command('dump_object', model, '*')
     sys.stdout = sysout
