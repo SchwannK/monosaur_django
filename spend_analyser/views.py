@@ -1,8 +1,9 @@
+from django.db import connection
 from django.shortcuts import render, redirect
 
 from monosaur import cookie
 from monosaur.models import Category
-from monosaur.utils import admin_utils
+from monosaur.utils import admin_utils, cursor_utils
 from spend_analyser.models import Transaction, Session
 from spend_analyser.transactions import transaction_handler
 from spend_analyser.utils import chart_utils
@@ -34,6 +35,68 @@ def spend_analyser(request):
                 'subscription__company__category__name', 'subscription__description', \
                 'subscription__monthly_price', 'subscription__subscription_url')\
         .distinct()
+
+    # update all transactions the category id of which is incorrect
+    cursor = connection.cursor()
+    query = "SELECT reference as ref, id FROM spend_analyser_transaction WHERE session_id = '%s' AND \
+        COALESCE(category_id, -1) <> (SELECT category_id FROM monosaur_company WHERE ref LIKE '%%' || monosaur_company.reference || '%%' LIMIT 1)" % session.pk
+    cursor.execute(query)
+    for row in cursor_utils.dictfetchall(cursor):
+        transaction = Transaction.objects.get(pk=row['id'])
+        transaction.category = transaction_handler.get_category(transaction.reference)
+        
+        if transaction.category:
+            print('Updating transaction ' + transaction.reference + ' to category ' + transaction.category.name)
+        else:
+            print('Updating transaction ' + transaction.reference + ' to category None')
+        transaction.save()
+
+    # update all transactions the subscription id of which is incorrect
+    cursor = connection.cursor()
+    query = "SELECT reference as ref, id FROM spend_analyser_transaction WHERE session_id = '%s' AND COALESCE(subscription_id, -1) <> (SELECT COALESCE((SELECT id FROM subscriptions_subscription WHERE ref LIKE '%%' || subscriptions_subscription.reference || '%%' LIMIT 1), -1))" % session.pk
+    cursor.execute(query)
+    for row in cursor_utils.dictfetchall(cursor):
+        transaction = Transaction.objects.get(pk=row['id'])
+        transaction.subscription = transaction_handler.get_subscription(transaction.reference)
+        
+        if transaction.subscription:
+            print('Updating transaction ' + transaction.reference + ' to subscription ' + transaction.subscription.name)
+        else:
+            print('Updating transaction ' + transaction.reference + ' to subscription None')
+        transaction.save()
+
+    # This is just for debugging.
+    flag = True
+    for t in Transaction.objects.filter(session = session):
+        sub = transaction_handler.get_subscription(t.reference)
+        if sub:
+            if t.subscription_id != sub.pk:
+                if flag:
+                    print('Failed to update these subscriptions: ')
+                    flag = False
+                print(str(t.subscription_id) + "\t" + str(t.pk) + ":\t"+ str(sub.pk) + "\t\t" + t.reference)
+        else:
+            if t.subscription_id:
+                if flag:
+                    print('Failed to update these subscriptions: ')
+                    flag = False
+                print(str(t.subscription_id) + "\t" + str(t.pk) + ":\tNone\t\t" + t.reference)
+
+    flag = True
+    for t in Transaction.objects.filter(session = session):
+        cat = transaction_handler.get_category(t.reference)
+        if cat:
+            if t.category_id != cat.pk:
+                if flag:
+                    print('Failed to update these categories: ')
+                    flag = False 
+                print(str(t.category_id) + "\t" + str(t.pk) + ":\t"+ str(cat.pk) + "\t\t" + t.reference)
+        else:
+            if t.category_id:
+                if flag:
+                    print('Failed to update these categories: ')
+                    flag = False 
+                print(str(t.category_id) + "\t" + str(t.pk) + ":\tNone\t\t" + t.reference)
 
     content['admin_methods'] = admin_utils.get_admin_methods()
     content['sessions'] = admin_utils.get_sessions()

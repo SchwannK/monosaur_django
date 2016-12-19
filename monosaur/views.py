@@ -133,7 +133,8 @@ def migrate(request, from_table, what_pk, to_table):
         else:
             if from_table == 'company':
                 if to_table == 'subscription':
-                    print('Not yet implemented')
+                    company = Company.objects.get(pk=what_pk)
+                    Subscription(company=company, reference=company.reference, name=company.name).save()
                 elif to_table == 'uncategorised':
                     print('Not yet implemented')
                 else:
@@ -156,7 +157,8 @@ def migrate(request, from_table, what_pk, to_table):
                     print('Unknown table: ' + to_table)
             elif from_table == 'transaction':
                 if to_table == 'company':
-                    print('Not yet implemented')
+                    transaction = Transaction.objects.get(pk=what_pk)
+                    Company(reference=transaction.reference).save()
                 elif to_table == 'subscription':
                     transaction = Transaction.objects.get(pk=what_pk)
                     company = Company.search_by_reference(transaction.reference)

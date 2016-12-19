@@ -24,7 +24,7 @@
 						{% if request.session.session_key == session.session_id %}
 						selected
 						{% endif %}			
-					>{{ session.transaction_count }} transactions, {{ session.last_read }}</option> 
+					>#{{ session.id }}, {{ session.transaction_count }} transactions, {{ session.last_read }}</option> 
 					{% endfor %}
 				</select>
 				<input class="btn btn-primary custom-width" type="submit" value="Go" name="session_select">

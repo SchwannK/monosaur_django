@@ -220,16 +220,24 @@
 						<td>{{ forloop.counter }}</td>
 						<td>{{ transaction.date }}</td>
 						<td>{{ transaction.reference }}</td>
-						{% if transaction.uncategorised and user.is_authenticated and user.is_superuser %}
-							<td><a href="http://localhost:8000/admin/uncategorised/#{{ transaction.uncategorised.pk }}">{{ transaction.category }}</a></td>
+						{% if user.is_authenticated and user.is_superuser %}
+							{% if transaction.company %}
+								<td><a href="http://localhost:8000/admin/company/#{{ transaction.company.pk }}" target="_blank">{{ transaction.category }}</a></td>
+							{% else %}
+								<td><a href="/migrate/transaction/{{ transaction.pk }}/company/?next=/admin/company">Add</a></td>
+							{% endif %}
 						{% else %}
 							<td>{{ transaction.category }}</td>
 						{% endif %}
-						{% if not transaction.subscription and user.is_authenticated and user.is_superuser %}
+						{% if user.is_authenticated and user.is_superuser %}
 							{% if transaction.company %}
-								<td><a href="/migrate/transaction/{{ transaction.pk }}/subscription/?next=/admin/subscription">No</a></td>
+								{% if transaction.subscription %} 
+									<td><a href="http://localhost:8000/admin/subscription/#{{ transaction.subscription.pk }}" target="_blank">{{ transaction.subscription }}</a></td>
+								{% else %}
+									<td><a href="/migrate/transaction/{{ transaction.pk }}/subscription/?next=/admin/subscription">Add</a></td>
+								{% endif %}
 							{% else %}
-								<td>No</td>
+								<td>{{ transaction.subscription }}</td>
 							{% endif %}
 						{% else %}
 							<td>{{ transaction.subscription }}</td>
