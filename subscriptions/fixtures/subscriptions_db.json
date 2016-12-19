@@ -1,9 +1,75 @@
 [
 {
     "model": "monosaur.category",
+    "pk": 9,
+    "fields": {
+        "name": "Home & Garden"
+    }
+},
+{
+    "model": "monosaur.category",
+    "pk": 7,
+    "fields": {
+        "name": "Healthcare"
+    }
+},
+{
+    "model": "monosaur.category",
+    "pk": 6,
+    "fields": {
+        "name": "Food & Drink"
+    }
+},
+{
+    "model": "monosaur.category",
     "pk": 5,
     "fields": {
         "name": "Entertainment & Leisure"
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 31,
+    "fields": {
+        "name": "Bloom & Wild",
+        "reference": "BLOOM AND WILD",
+        "category": 9
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 32,
+    "fields": {
+        "name": "Fitness First",
+        "reference": "FITNESS FIRST",
+        "category": 7
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 28,
+    "fields": {
+        "name": "Hello Fresh",
+        "reference": "HELLO FRESH",
+        "category": 6
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 29,
+    "fields": {
+        "name": "Pact Coffee",
+        "reference": "PACT COFFEE",
+        "category": 6
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 30,
+    "fields": {
+        "name": "Graze",
+        "reference": "GRAZE",
+        "category": 6
     }
 },
 {
@@ -22,6 +88,66 @@
         "name": "Netflix",
         "reference": "Netflix",
         "category": 5
+    }
+},
+{
+    "model": "subscriptions.subscription",
+    "pk": 9,
+    "fields": {
+        "name": "Bloom & Wild",
+        "company": 31,
+        "description": "Make them smile every month, with different flowers delivered through their door. Send weekly, fortnightly or monthly flowers from \u00a350.",
+        "monthly_price": 17.0,
+        "subscription_url": "https://www.bloomandwild.com/",
+        "reference": "BLOOM AND WILD"
+    }
+},
+{
+    "model": "subscriptions.subscription",
+    "pk": 8,
+    "fields": {
+        "name": "Fitness First",
+        "company": 32,
+        "description": "Choose a membership that fits around your life with Fitness First. With multiple options and price packages, we cater to all of your needs - join us today!",
+        "monthly_price": 52.0,
+        "subscription_url": "http://www.fitnessfirst.co.uk/",
+        "reference": "FITNESS FIRST"
+    }
+},
+{
+    "model": "subscriptions.subscription",
+    "pk": 7,
+    "fields": {
+        "name": "Hello Fresh",
+        "company": 28,
+        "description": "Make your life easier with the HelloFresh Food Box. Easy recipes and delicious ingredients sent to your door weekly, thanks to our fresh food delivery service.",
+        "monthly_price": 39.0,
+        "subscription_url": "https://www.hellofresh.co.uk/",
+        "reference": "HELLO FRESH"
+    }
+},
+{
+    "model": "subscriptions.subscription",
+    "pk": 6,
+    "fields": {
+        "name": "Pact Coffee",
+        "company": 29,
+        "description": "Get great tasting, freshly roasted coffee delivered to your door.",
+        "monthly_price": 6.95,
+        "subscription_url": "https://www.pactcoffee.com/",
+        "reference": "PACT COFFEE"
+    }
+},
+{
+    "model": "subscriptions.subscription",
+    "pk": 5,
+    "fields": {
+        "name": "Graze",
+        "company": 30,
+        "description": "With a graze subscription you\u2019ll get access to all the newest snacks created by our taste experts and approved by our nutritionist. Discover a new favourite today!",
+        "monthly_price": 3.99,
+        "subscription_url": "https://www.graze.com",
+        "reference": "GRAZE"
     }
 },
 {

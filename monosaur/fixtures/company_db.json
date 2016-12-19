@@ -1,6 +1,20 @@
 [
 {
     "model": "monosaur.category",
+    "pk": 7,
+    "fields": {
+        "name": "Healthcare"
+    }
+},
+{
+    "model": "monosaur.category",
+    "pk": 8,
+    "fields": {
+        "name": "Holiday"
+    }
+},
+{
+    "model": "monosaur.category",
     "pk": 9,
     "fields": {
         "name": "Home & Garden"
@@ -39,6 +53,150 @@
     "pk": 5,
     "fields": {
         "name": "Entertainment & Leisure"
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 32,
+    "fields": {
+        "name": "Fitness First",
+        "reference": "FITNESS FIRST",
+        "category": 7
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 31,
+    "fields": {
+        "name": "Bloom & Wild",
+        "reference": "BLOOM AND WILD",
+        "category": 9
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 30,
+    "fields": {
+        "name": "Graze",
+        "reference": "GRAZE",
+        "category": 6
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 29,
+    "fields": {
+        "name": "Pact Coffee",
+        "reference": "PACT COFFEE",
+        "category": 6
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 28,
+    "fields": {
+        "name": "Hello Fresh",
+        "reference": "HELLO FRESH",
+        "category": 6
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 27,
+    "fields": {
+        "name": "Marks & Spencer",
+        "reference": "MARKS&SPENCER",
+        "category": 15
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 26,
+    "fields": {
+        "name": "Boots",
+        "reference": "BOOTS",
+        "category": 7
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 25,
+    "fields": {
+        "name": "Argos",
+        "reference": "ARGOS LONDON",
+        "category": 15
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 24,
+    "fields": {
+        "name": "Ryanair",
+        "reference": "RYANAIR",
+        "category": 8
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 23,
+    "fields": {
+        "name": "Cafe East",
+        "reference": "CAFE EAST",
+        "category": 6
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 22,
+    "fields": {
+        "name": "Tokyo Diner",
+        "reference": "TOKYO DINER",
+        "category": 6
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 21,
+    "fields": {
+        "name": "Chatime UK",
+        "reference": "CHATIME",
+        "category": 6
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 20,
+    "fields": {
+        "name": "Com Viet Garrick St",
+        "reference": "COM VIET",
+        "category": 6
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 19,
+    "fields": {
+        "name": "easyJet",
+        "reference": "EASYJET",
+        "category": 8
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 18,
+    "fields": {
+        "name": "seethelight ISP",
+        "reference": "IFR TA SEETHELIGHT",
+        "category": 10
+    }
+},
+{
+    "model": "monosaur.company",
+    "pk": 17,
+    "fields": {
+        "name": "Lemonia Restaurant",
+        "reference": "LEMONIA RESTAURANT",
+        "category": 6
     }
 },
 {

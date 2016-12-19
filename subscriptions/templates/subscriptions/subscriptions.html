@@ -13,23 +13,33 @@
 <div class="col-md-10">
 	{% for subscription in subscriptions %}
 			<div class="col-md-4 filter {{ subscription.company.category.name|cut:" "|cut:"("|cut:")"|cut:"&" }}">
-				<div class="card">
-					<div class="card-block">
+				<div class="card cap-top">
+					<div class="card-header">
 				    <h4 class="card-title"><a class="plain" href="{{ subscription.subscription_url }}" target="_blank">{{ subscription.name }}</a></h4>
-				    <h6 class="card-subtitle text-muted">{{ subscription.company }}</h6>
+				    <h6 class="card-subtitle text-muted"><b>£{{ subscription.monthly_price }}</b> per month</h6>
+						<span class="tag tag-default">{{ subscription.company.category.name }}</span>
 				  </div>
 					<div class="text-xs-center">
+						<br>
 					  <a class="plain" href="{{ subscription.subscription_url }}" target="_blank"><img src="https://logo.clearbit.com/{{ subscription.subscription_url }}" alt="Card image"></a>
 					</div>
 					<div class="card-block">
-						<h3 class="card-title"></a></h3>
-					  <p class="card-text">{{ subscription.description }}</p>
-					  <div class="text-xs-center">
+	 					<p class="card-text limit">
+							{{ subscription.description }}
+						</p>
+						<i class="fa fa-question-circle" aria-hidden="true"></i>
+					</div>
+					<figcaption>
+						{{ subscription.description }}
+						<br>
+						<br>
+						<div class="text-xs-center">
 							<a href="{{ subscription.subscription_url }}" target="_blank" class="btn btn-primary">Find out more</a>
 						</div>
-					</div>
+					</figcaption>
 				</div>
 			</div>
+
 	{% endfor %}
 </div>
 
