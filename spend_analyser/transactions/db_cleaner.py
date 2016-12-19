@@ -2,7 +2,7 @@
     This script deletes transactions that are older than 3 hours
     Ran every day by scheduled task on pythonanywhere
 """
-from spend_analyser.transactions import transactions
+import transaction_handler
 
 
-transactions.delete_old_entries()
+transaction_handler.delete_old_entries()
