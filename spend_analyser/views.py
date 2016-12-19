@@ -1,5 +1,6 @@
 from django.db import connection
 from django.shortcuts import render, redirect
+import pdfcrowd
 
 from monosaur import cookie
 from monosaur.models import Category
@@ -7,11 +8,15 @@ from monosaur.utils import admin_utils, cursor_utils
 from spend_analyser.models import Transaction, Session
 from spend_analyser.transactions import transaction_handler
 from spend_analyser.utils import chart_utils
+
 from .transactions import constants
 
 
-def spend_analyser(request):
-    session = cookie.get_session(request, False)
+def spend_analyser(request, session_id=None):
+    if session_id:
+        session = cookie.get_session(session_id)
+    else:
+        session = cookie.extract_session(request, False)
 
     content = {'navbar':'spend_analyser', }
 
@@ -139,3 +144,16 @@ def process_transactions(files, session):
     print ("Error report: " + str(negative_message))
 
     return positive_message, negative_message
+
+def print_to_pdf(request):
+    pageclan = spend_analyser(request)
+    html = str(pageclan.content)
+    client = pdfcrowd.Client("arlecchino", "fb890ee085fc87bd3e4e989a0b5805b0")
+    client.setPageLayout(pdfcrowd.FIT_HEIGHT)
+    client.setInitialPdfZoomType(1)
+    client.setPdfScalingFactor(0.003)
+    print(html)
+    output_file = open('C:/html.pdf', 'wb')
+    pdf = client.convertHtml(html, output_file)
+    output_file.close()
+    return pageclan

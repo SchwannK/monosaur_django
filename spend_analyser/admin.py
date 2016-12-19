@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from spend_analyser.models import Transaction
+from spend_analyser.models import Transaction, Session
 
 
-myModels = [Transaction]
+myModels = [Transaction, Session]
 
 admin.site.register(myModels)

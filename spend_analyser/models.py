@@ -23,7 +23,7 @@ class Transaction(models.Model):
     subscription = models.ForeignKey(
         Subscription, null=True, blank=True, on_delete=models.DO_NOTHING
     )
-    session = models.ForeignKey(Session, on_delete=models.DO_NOTHING)
+    session = models.ForeignKey(Session)
 
     @property
     def uncategorised(self):
