@@ -66,38 +66,38 @@ def spend_analyser(request):
             print('Updating transaction ' + transaction.reference + ' to subscription None')
         transaction.save()
 
-    # This is just for debugging.
-    flag = True
-    for t in Transaction.objects.filter(session = session):
-        sub = transaction_handler.get_subscription(t.reference)
-        if sub:
-            if t.subscription_id != sub.pk:
-                if flag:
-                    print('Failed to update these subscriptions: ')
-                    flag = False
-                print(str(t.subscription_id) + "\t" + str(t.pk) + ":\t"+ str(sub.pk) + "\t\t" + t.reference)
-        else:
-            if t.subscription_id:
-                if flag:
-                    print('Failed to update these subscriptions: ')
-                    flag = False
-                print(str(t.subscription_id) + "\t" + str(t.pk) + ":\tNone\t\t" + t.reference)
-
-    flag = True
-    for t in Transaction.objects.filter(session = session):
-        cat = transaction_handler.get_category(t.reference)
-        if cat:
-            if t.category_id != cat.pk:
-                if flag:
-                    print('Failed to update these categories: ')
-                    flag = False 
-                print(str(t.category_id) + "\t" + str(t.pk) + ":\t"+ str(cat.pk) + "\t\t" + t.reference)
-        else:
-            if t.category_id:
-                if flag:
-                    print('Failed to update these categories: ')
-                    flag = False 
-                print(str(t.category_id) + "\t" + str(t.pk) + ":\tNone\t\t" + t.reference)
+#     # This is just for debugging.
+#     flag = True
+#     for t in Transaction.objects.filter(session = session):
+#         sub = transaction_handler.get_subscription(t.reference)
+#         if sub:
+#             if t.subscription_id != sub.pk:
+#                 if flag:
+#                     print('Failed to update these subscriptions: ')
+#                     flag = False
+#                 print(str(t.subscription_id) + "\t" + str(t.pk) + ":\t"+ str(sub.pk) + "\t\t" + t.reference)
+#         else:
+#             if t.subscription_id:
+#                 if flag:
+#                     print('Failed to update these subscriptions: ')
+#                     flag = False
+#                 print(str(t.subscription_id) + "\t" + str(t.pk) + ":\tNone\t\t" + t.reference)
+# 
+#     flag = True
+#     for t in Transaction.objects.filter(session = session):
+#         cat = transaction_handler.get_category(t.reference)
+#         if cat:
+#             if t.category_id != cat.pk:
+#                 if flag:
+#                     print('Failed to update these categories: ')
+#                     flag = False 
+#                 print(str(t.category_id) + "\t" + str(t.pk) + ":\t"+ str(cat.pk) + "\t\t" + t.reference)
+#         else:
+#             if t.category_id:
+#                 if flag:
+#                     print('Failed to update these categories: ')
+#                     flag = False 
+#                 print(str(t.category_id) + "\t" + str(t.pk) + ":\tNone\t\t" + t.reference)
 
     content['admin_methods'] = admin_utils.get_admin_methods()
     content['sessions'] = admin_utils.get_sessions()
