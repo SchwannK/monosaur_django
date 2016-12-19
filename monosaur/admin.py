@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from monosaur.models import Category, Company
+from monosaur.models import Category, Company, Uncategorised
 
 
-myModels = [Category, Company]
+myModels = [Category, Company, Uncategorised]
 
 admin.site.register(myModels)
 

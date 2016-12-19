@@ -36,14 +36,26 @@
 	</div>
 	{% endif %}
 	
+	{% if error_message and not formset.non_form_errors %}
+	<div class="container">
+		<div class="alert alert-danger alert-dismissable">
+			<button class="close" data-dismiss="alert" aria-label="close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<strong>Error!</strong> {{ error_message|safe }}
+		</div>
+	</div>
+	{% endif %}
 	{% block content %}
 	<form action="/admin/{{ table }}/" method="post"
 		style="padding-left: 20px; padding-right: 20px;">
 		{% csrf_token %} 
 		{% include 'monosaur/table.html' with formset=formset row_html=row_html %}
-		<div style="position: fixed; top: .085in; right: 20px; z-index: 2000;">
-			<input class="btn btn-primary custom-width" type="submit" value="Save & Continue">
-		</div>
+		{% if submit %}
+			{% include submit %}
+		{% else %}
+			{% include 'monosaur/submit.html' %}
+		{% endif %}
 	</form>
 	{% endblock %}
 </body>

@@ -12,7 +12,11 @@ class Parser(ABC):
         pass
     
     def get_transaction(self, payee, memo, amount, date, session):
-        reference = (string_utils.to_empty(payee) + ' ' + string_utils.to_empty(memo)).strip()
+        reference = ''
+        if not string_utils.is_empty(payee):
+            reference = payee.strip()
+        if not string_utils.is_empty(memo):
+            reference += ' ' + memo
         category = transaction_handler.get_category(reference)
         subscription = transaction_handler.get_subscription(reference)
         return Transaction(reference=reference, \

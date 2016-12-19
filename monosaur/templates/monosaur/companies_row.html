@@ -2,7 +2,7 @@
 {% block content %} 
 {% if form.instance.id >= 0 %}
 <a hint="Add subscirptions for this company"
-	href="/promote_to_subscription/{{ form.instance.id }}/?next=/admin/subscription"
+	href="/migrate/company/{{ form.instance.id }}/subscription/?next=/admin/subscription"
 	class="btn btn-primary custom-width">Subs.</a>
 </td>
 <td>
