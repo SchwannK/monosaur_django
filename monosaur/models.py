@@ -40,6 +40,16 @@ class Company(models.Model):
     def load_from_fixture():
         Company.objects.all().delete()
         fixture_utils.import_fixture('monosaur/fixtures/company_db.json')
+        
+    @staticmethod
+    def search_by_reference(reference):
+        # Not the best solution as it's specific to SQLite. And the point of querysets is to be abstracted from the concrete db implementation. But it's ok for now
+        companies = Company.objects.raw("SELECT * FROM monosaur_company where %s LIKE '%%' || reference || '%%'", [reference])[:1]
+        
+        if companies:
+            return companies[0]
+        else:
+            return None
 
 # This table is used to categorise uploaded transactions.
 class Uncategorised(models.Model):

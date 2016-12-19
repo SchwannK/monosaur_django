@@ -225,9 +225,9 @@
 						{% else %}
 							<td>{{ transaction.category }}</td>
 						{% endif %}
-						{% if transaction.subscription and user.is_authenticated and user.is_superuser %}
+						{% if not transaction.subscription and user.is_authenticated and user.is_superuser %}
 							{% if transaction.company %}
-								<td><a href="/migrate/{{ transaction.company.pk }}/subscription/?next=/admin/subscription">No</a></td>
+								<td><a href="/migrate/transaction/{{ transaction.pk }}/subscription/?next=/admin/subscription">No</a></td>
 							{% else %}
 								<td>No</td>
 							{% endif %}

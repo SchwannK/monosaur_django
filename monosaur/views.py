@@ -10,6 +10,7 @@ from django.forms.models import BaseModelFormSet
 from django.shortcuts import redirect, render
 
 from monosaur.models import Company, Uncategorised
+from spend_analyser.models import Transaction
 from spend_analyser.transactions import transaction_handler
 from subscriptions.models import Subscription
 
@@ -132,8 +133,7 @@ def migrate(request, from_table, what_pk, to_table):
         else:
             if from_table == 'company':
                 if to_table == 'subscription':
-                    company = Company.objects.get(pk=what_pk)
-                    Subscription(company=company, reference=company.reference, name=company.name).save()
+                    print('Not yet implemented')
                 elif to_table == 'uncategorised':
                     print('Not yet implemented')
                 else:
@@ -152,6 +152,15 @@ def migrate(request, from_table, what_pk, to_table):
                     uncategorised.delete()
                 elif to_table == 'subscription':
                     print('Not yet implemented')
+                else:
+                    print('Unknown table: ' + to_table)
+            elif from_table == 'transaction':
+                if to_table == 'company':
+                    print('Not yet implemented')
+                elif to_table == 'subscription':
+                    transaction = Transaction.objects.get(pk=what_pk)
+                    company = Company.search_by_reference(transaction.reference)
+                    Subscription(company=company, reference=transaction.reference, name=company.name, monthly_price=-transaction.amount).save()
                 else:
                     print('Unknown table: ' + to_table)
             else:
