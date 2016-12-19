@@ -18,13 +18,20 @@
 </head>
 
 <body style="padding-top: 70px">
-	<nav style="background-color: #f5f5f5;"
-		class="navbar navbar-default navbar-fixed-top">
-		<div>
-			<a class="navbar-brand" href="#">Manage {% sameas title %}</a>
+	<nav class="navbar navbar-dark bg-inverse navbar-fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="{{ request.path }}">Manage {% sameas title %}</a>
+			<ul class="nav navbar-nav float-sm-left">
+				<li class="nav-item">
+					<a class="nav-link {% if navbar == 'subscriptions' %}active{% endif %}"	href="/">Subscriptions</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link {% if navbar == 'spend_analyser' %}active{% endif %}" href="/analyse">Analyser</a>
+				</li>
+			</ul>
 		</div>
 	</nav>
-	
+
 	{% if success_message %}
 	<div class="container">
 		<div class="alert alert-success alert-dismissable">

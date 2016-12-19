@@ -14,7 +14,7 @@ from spend_analyser.models import Transaction
 from spend_analyser.transactions import transaction_handler
 from subscriptions.models import Subscription
 
-from .forms import UncategorisedForm
+from .forms import UncategorisedForm, SubscriptionForm
 
 
 def company(request):
@@ -23,8 +23,7 @@ def company(request):
     return response
 
 def subscription(request):
-    fields = ['reference', 'company', 'name', 'description', 'monthly_price', 'subscription_url']
-    response = get_response(request, 'monosaur/subscriptions.html', Subscription, extra=2, fields=fields)
+    response = get_response(request, 'monosaur/subscriptions.html', Subscription, SubscriptionForm, extra=2)
     return response
 
 def uncategorised(request):
@@ -65,6 +64,9 @@ def get_response(request, target_url, model, form=None, extra=3, fields='__all__
     FormSet = get_formset(request, model, form, extra=extra, fields=fields)
     formset, valid = save_formset(request, model, FormSet)
     content = {'formset': formset}
+    
+    for form in formset[:1]:
+        print(form.visible_fields())
     
     if not valid:
         content['error_message'] = 'See errors below!'

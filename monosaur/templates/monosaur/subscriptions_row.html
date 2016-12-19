@@ -1,9 +1,104 @@
-{% extends "monosaur/table_row.html" %} 
-{% load sameastags %}
-{% block content %}
-{% if form.instance.id >= 0 %}
-<a href="/delete/{{ table }}/{{ form.instance.id }}/?next={{ request.path }}" data-method="delete" class="close">
-	<span aria-hidden="true">&times;</span>
-</a>
+{% if forloop.first and print_header %}
+<thead>
+	<tr>
+		<th>pk</th>
+	{% with field0=form.visible_fields.0 %}
+		<th>{{ field0.label|capfirst }}</th>
+	{% endwith %}	
+	{% with field1=form.visible_fields.1 field2=form.visible_fields.2 field3=form.visible_fields.3 field4=form.visible_fields.4 %}
+		<th>{{ field1.label|capfirst }}, {{ field2.label|capfirst }}, {{ field3.label|capfirst }}, {{ field4.label|capfirst }}</td>
+	{% endwith %}
+	{% with field5=form.visible_fields.5 %}
+		<th>{{ field5.label|capfirst }}</th>
+	{% endwith %}
+		<th></th>
+		<th></th>
+	</tr>
+</thead>
 {% endif %}
-{% endblock %}
+<tr id={{ form.instance.id }}>
+	<td>
+		{# Include the hidden fields in the form #}
+		{% for hidden in form.hidden_fields %}
+			{{ hidden }}
+		{% endfor %}
+		{{ form.instance.id }}
+	</td>
+
+	{% with field0=form.visible_fields.0 %}
+		<td>
+			{% if field0.errors %}
+			<div class="alert alert-danger alert-dismissable">
+				<button class="close" data-dismiss="alert" aria-label="close" title="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<strong>Error!</strong> {{ field0.errors|safe }}
+			</div>
+			{% endif %}
+			{{ field0 }}
+		</td>
+	{% endwith %}	
+	{% with field1=form.visible_fields.1 field2=form.visible_fields.2 field3=form.visible_fields.3 field4=form.visible_fields.4 %}
+		<td>
+			{% if field1.errors %}
+			<div class="alert alert-danger alert-dismissable">
+				<button class="close" data-dismiss="alert" aria-label="close" title="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<strong>Error!</strong> {{ field1.errors|safe }}
+			</div>
+			{% endif %}
+			<div class="card">{{ field1 }}</div>
+			
+			{% if field2.errors %}
+			<div class="alert alert-danger alert-dismissable">
+				<button class="close" data-dismiss="alert" aria-label="close" title="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<strong>Error!</strong> {{ field2.errors|safe }}
+			</div>
+			{% endif %}
+			<div class="card">{{ field2 }}</div>
+			
+			{% if field3.errors %}
+			<div class="alert alert-danger alert-dismissable">
+				<button class="close" data-dismiss="alert" aria-label="close" title="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<strong>Error!</strong> {{ field3.errors|safe }}
+			</div>
+			{% endif %}
+			<div class="card">{{ field3 }}</div>
+			
+			{% if field4.errors %}
+			<div class="alert alert-danger alert-dismissable">
+				<button class="close" data-dismiss="alert" aria-label="close" title="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<strong>Error!</strong> {{ field4.errors|safe }}
+			</div>
+			{% endif %}
+			<div class="card">{{ field4 }}</div>
+		</td>
+	{% endwith %}
+	{% with field5=form.visible_fields.5 %}
+		<td>
+			{% if field5.errors %}
+			<div class="alert alert-danger alert-dismissable">
+				<button class="close" data-dismiss="alert" aria-label="close" title="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<strong>Error!</strong> {{ field5.errors|safe }}
+			</div>
+			{% endif %}
+			{{ field5 }}
+		</td>
+	{% endwith %}
+	<td>
+		{% if form.instance.id >= 0 %}
+		<a href="/delete/{{ table }}/{{ form.instance.id }}/?next={{ request.path }}" data-method="delete" class="close">
+			<span aria-hidden="true">&times;</span>
+		</a>
+		{% endif %}
+	</td>
+</tr>
