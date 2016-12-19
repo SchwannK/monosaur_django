@@ -223,8 +223,10 @@
 						{% if user.is_authenticated and user.is_superuser %}
 							{% if transaction.company %}
 								<td><a href="http://localhost:8000/admin/company/#{{ transaction.company.pk }}" target="_blank">{{ transaction.category }}</a></td>
+							{% elif transaction.category %}
+								<td><a href="/migrate/transaction/{{ transaction.pk }}/company/?next=/admin/company" target="_blank">{{ transaction.category }}</a></td>
 							{% else %}
-								<td><a href="/migrate/transaction/{{ transaction.pk }}/company/?next=/admin/company">Add</a></td>
+								<td><a href="/migrate/transaction/{{ transaction.pk }}/company/?next=/admin/company" target="_blank">Add</a></td>
 							{% endif %}
 						{% else %}
 							<td>{{ transaction.category }}</td>
@@ -234,7 +236,7 @@
 								{% if transaction.subscription %} 
 									<td><a href="http://localhost:8000/admin/subscription/#{{ transaction.subscription.pk }}" target="_blank">{{ transaction.subscription }}</a></td>
 								{% else %}
-									<td><a href="/migrate/transaction/{{ transaction.pk }}/subscription/?next=/admin/subscription">Add</a></td>
+									<td><a href="/migrate/transaction/{{ transaction.pk }}/subscription/?next=/admin/subscription" target="_blank">Add</a></td>
 								{% endif %}
 							{% else %}
 								<td>{{ transaction.subscription }}</td>

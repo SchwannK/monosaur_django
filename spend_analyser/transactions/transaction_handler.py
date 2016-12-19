@@ -12,7 +12,7 @@ from spend_analyser.transactions.qif_helper import QifHelper
 from subscriptions.models import Subscription
 from .ofx_helper import OfxHelper
 
-from .constants import DEFAULT_TRANSACTION_CATEGORY
+from spend_analyser.transactions import constants
 
 
 # Returns the number of transactions read from the file 
@@ -73,7 +73,7 @@ def get_category(reference):
             Uncategorised(reference=reference).save()
         except:
             pass
-        return Category.objects.get(name=DEFAULT_TRANSACTION_CATEGORY)
+        return Category.objects.get(name=constants.DEFAULT_TRANSACTION_CATEGORY)
     else:
         return category
 

@@ -7,6 +7,7 @@ from monosaur.utils import admin_utils, cursor_utils
 from spend_analyser.models import Transaction, Session
 from spend_analyser.transactions import transaction_handler
 from spend_analyser.utils import chart_utils
+from .transactions import constants
 
 
 def spend_analyser(request):
@@ -38,8 +39,7 @@ def spend_analyser(request):
 
     # update all transactions the category id of which is incorrect
     cursor = connection.cursor()
-    query = "SELECT reference as ref, id FROM spend_analyser_transaction WHERE session_id = '%s' AND \
-        COALESCE(category_id, -1) <> (SELECT category_id FROM monosaur_company WHERE ref LIKE '%%' || monosaur_company.reference || '%%' LIMIT 1)" % session.pk
+    query = "SELECT reference as ref, id FROM spend_analyser_transaction WHERE session_id = '%s' AND COALESCE(category_id, -1) <> (SELECT COALESCE((SELECT category_id FROM monosaur_company WHERE ref LIKE '%%' || monosaur_company.reference || '%%' LIMIT 1), (SELECT id FROM monosaur_category WHERE name='%s')))" % (session.pk, constants.DEFAULT_TRANSACTION_CATEGORY)
     cursor.execute(query)
     for row in cursor_utils.dictfetchall(cursor):
         transaction = Transaction.objects.get(pk=row['id'])
