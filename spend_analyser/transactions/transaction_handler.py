@@ -1,13 +1,13 @@
 """
     Database manipulating/querying methods related to transactions
 """
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from django.db.utils import IntegrityError
 from django.utils import timezone
 
 from monosaur.models import Category, Company, Uncategorised
-from spend_analyser.models import Transaction
+from spend_analyser.models import Transaction, Session
 from spend_analyser.transactions.qif_helper import QifHelper
 from subscriptions.models import Subscription
 from .ofx_helper import OfxHelper
@@ -104,12 +104,12 @@ def save(transactions):
     return row_count
                 
 def delete_old_entries():
-    older_than = timezone.now() - datetime.timedelta(days=1)
-    delete_count, breakdown = Transaction.objects.filter(session__last_read__lt=older_than).delete()
-    print("Clearing transactions older than 1 day: " + str(delete_count))
+    older_than = timezone.now() - timedelta(days=1)
+    delete_count, breakdown = Session.objects.filter(last_read__lt=older_than).delete()
+    print("Clearing sessions older than 1 day: " + str(delete_count))
     return delete_count
 
 def delete_all_entries():
-    delete_count, breakdown = Transaction.objects.all().delete()
-    print("Clearing transactions: " + str(delete_count))
+    delete_count, breakdown = Session.objects.all().delete()
+    print("Clearing all sessions: " + str(delete_count))
     return delete_count
