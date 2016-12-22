@@ -16,7 +16,7 @@
 				<div class="card cap-top">
 					<div class="card-header">
 				    <h4 class="card-title"><a class="plain" href="{{ subscription.subscription_url }}" target="_blank">{{ subscription.name }}</a></h4>
-				    <h6 class="card-subtitle text-muted"><b>£{{ subscription.monthly_price }}</b> per month</h6>
+				    <h6 class="card-subtitle text-muted"><b>£{{ subscription.monthly_price|floatformat:2 }}</b> per month</h6>
 						<span class="tag tag-default">{{ subscription.company.category.name }}</span>
 				  </div>
 					<div class="text-xs-center">

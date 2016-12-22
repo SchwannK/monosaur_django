@@ -1,7 +1,10 @@
 {% extends "monosaur/base.html" %}
+
+{% load staticfiles %}
+
 {% block content %}
 <div class="col-md-12">
-	<a href="/analyse/print_to_pdf"><img alt="Download report" src="img/ic_file_download_white_18dp_2x.png"></a>
+	<a href="/analyse/print_to_pdf"><img alt="Download report" src="{% static 'img/ic_file_download_white_18dp_2x.png' %}"></a>
 	</p>
 	{% include "monosaur/admin_section.html" %}
 
@@ -234,7 +237,7 @@
 						{% endif %}
 						{% if user.is_authenticated and user.is_superuser %}
 							{% if transaction.company %}
-								{% if transaction.subscription %} 
+								{% if transaction.subscription %}
 									<td><a href="http://localhost:8000/admin/subscription/#{{ transaction.subscription.pk }}" target="_blank">{{ transaction.subscription }}</a></td>
 								{% else %}
 									<td><a href="/migrate/transaction/{{ transaction.pk }}/subscription/?next=/admin/subscription" target="_blank">Add</a></td>
